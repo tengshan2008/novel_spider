@@ -9,12 +9,6 @@ USERNAME = 'tengshan2008'
 PASSWORD = '8443658y'
 
 
-def store(novel_info, content):
-    browser = login(USERNAME, PASSWORD, APAN_URL)
-    delete(browser, novel_info['title'])
-    upload(browser, novel_info, content)
-
-
 def login(username, password, url):
     browser = RoboBrowser(history=True, parser='lxml')
     browser.open(url)
@@ -28,7 +22,9 @@ def login(username, password, url):
     browser.follow_link(account)
     return browser
 
-def upload(browser, novel_info, content):
+def upload(novel_info, content):
+    browser = login(USERNAME, PASSWORD, APAN_URL)
+    delete(browser, novel_info['title'])
     upload_form = browser.get_forms()[0]
     # add upload action field
     upload_action_str = '<input type="hidden" name="action" value="upload_file_post" />'
@@ -82,4 +78,4 @@ if __name__ == "__main__":
         'link': 'http://www.example.com'
     }
     content = '这是一个新的abc测试文件。\n'
-    store(ni, content)
+    upload(ni, content)
