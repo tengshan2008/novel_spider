@@ -8,6 +8,8 @@ import time
 
 from robobrowser import RoboBrowser
 from loguru import logger
+import db
+import apan
 
 NEXT_PAGE = '下一頁'
 TODAY = '今天'
@@ -36,7 +38,8 @@ def run(url):
             logger.debug(novel_info)
             content = get_content(novel_info)
             logger.debug(len(content))
-            # output(novel_info, content)
+            if db.insert(novel_info):
+                apan.upload(novel_info, content)
 
         try:
             browser.follow_link(next_page(browser))
