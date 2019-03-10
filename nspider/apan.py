@@ -10,7 +10,7 @@ PASSWORD = '8443658y'
 
 
 def login(username, password, url):
-    browser = RoboBrowser(history=True, parser='lxml')
+    browser = RoboBrowser(history=True)
     browser.open(url)
     # login
     login_form = browser.get_form(id='log-in')
@@ -22,12 +22,14 @@ def login(username, password, url):
     browser.follow_link(account)
     return browser
 
+
 def upload(novel_info, content):
     browser = login(USERNAME, PASSWORD, APAN_URL)
     delete(browser, novel_info['title'])
     upload_form = browser.get_forms()[0]
     # add upload action field
-    upload_action_str = '<input type="hidden" name="action" value="upload_file_post" />'
+    upload_action_str = '<input type="hidden" \
+        name="action" value="upload_file_post" />'
     upload_action = forms.fields.Input(upload_action_str)
     upload_form.add_field(upload_action)
     # add upload file field
@@ -57,6 +59,7 @@ def delete(browser, title):
             form['file_id'].value = nid
             browser.submit_form(form)
             break
+
 
 def file_content(novel_info, content):
     return '\n'.join([

@@ -21,31 +21,31 @@ def close_db(db):
 
 def init_db():
     db = get_db()
-    c = db.cursor()
     with open('schema.sql', 'r') as f:
         try:
-            with c:
-                c.executescript(f.read())
+            with db:
+                db.executescript(f.read())
         except sqlite3.OperationalError as e:
             print("init db error:", e)
         finally:
-            c.close()
             close_db(db)
 
 
-def insert(novel_info):
-    db = get_db()
-    c = db.cursor()
-    with c:
-        c.execute("SELECT * FROM novel WHERE nid = ?", (novel_info['id'],))
-        c.fetchone()
+def insert(novel_info, db):
+    novel_info = {k: v.replace("'", "''") for k, v in novel_info.items()}
 
-        c.execute("INSERT INTO novel(nid, title, author, ndate, ntype, link) values (?, ?, ?, ?, ?)", (
-            int(novel_info['id']), novel_info['title'], novel_info['author'], novel_info['date'], 
-            novel_info['type'], novel_info['link']))
+    try:
+        with db:
+            db.execute("INSERT INTO novel(nid, title, author, ndate, ntype, link) \
+                values (?, ?, ?, ?, ?, ?)", (
+                int(novel_info['id']), novel_info['title'],
+                novel_info['author'], novel_info['date'],
+                novel_info['type'], novel_info['link']))
+    except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
+        print('Could not complete operation:', e)
+        return False
 
-    c.close()
-    close_db(db)
+    return True
 
 
 if __name__ == "__main__":

@@ -31,6 +31,8 @@ def run(url):
     except:
         logger.error('request failed:' + url)
 
+    dbase = db.get_db()
+
     while not is_end_page(browser):
         for novel in get_novels(browser):
             time.sleep(5)
@@ -38,7 +40,7 @@ def run(url):
             logger.debug(novel_info)
             content = get_content(novel_info)
             logger.debug(len(content))
-            if db.insert(novel_info):
+            if db.insert(novel_info, dbase):
                 apan.upload(novel_info, content)
 
         try:
@@ -47,6 +49,8 @@ def run(url):
             logger.error('request failed: ' + browser.url)
         else:
             logger.debug('novel list page link: ' + browser.url)
+
+    db.close_db(dbase)
 
 
 def get_novels(browser):
