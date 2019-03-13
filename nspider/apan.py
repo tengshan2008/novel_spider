@@ -4,9 +4,7 @@ import os
 
 from robobrowser import RoboBrowser, forms
 
-APAN_URL = 'http://apanr.net/'
-USERNAME = 'tengshan2008'
-PASSWORD = '8443658y'
+from nspider import getConfig
 
 
 def login(username, password, url):
@@ -24,7 +22,10 @@ def login(username, password, url):
 
 
 def upload(novel_info, content):
-    browser = login(USERNAME, PASSWORD, APAN_URL)
+    username = getConfig('apan', 'User')
+    password = getConfig('apan', 'Pass')
+    apan_url = getConfig('apan', 'Url')
+    browser = login(username, password, apan_url)
     delete(browser, novel_info['title'])
     upload_form = browser.get_forms()[0]
     # add upload action field
@@ -63,12 +64,12 @@ def delete(browser, title):
 
 def file_content(novel_info, content):
     return '\n'.join([
-            '标题：' + novel_info['title'],
-            '作者：' + novel_info['author'],
-            '类型：' + novel_info['type'],
-            '日期：' + novel_info['date'],
-            content
-        ])
+        '标题：' + novel_info['title'],
+        '作者：' + novel_info['author'],
+        '类型：' + novel_info['type'],
+        '日期：' + novel_info['date'],
+        content
+    ])
 
 
 if __name__ == "__main__":

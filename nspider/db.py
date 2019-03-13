@@ -3,14 +3,16 @@
 
 import sqlite3
 
-from configparser import ConfigParser
+# from nspider import getConfig
+import nspider
 
-conf = ConfigParser()
-conf.read("app.config")
+from os import path
 
 
 def get_db():
-    db = sqlite3.connect("novel.db", detect_types=sqlite3.PARSE_DECLTYPES)
+    print(dir(nspider))
+    db_path = path.join(path.split(path.realpath(__file__))[0], nspider.getConfig('sqlite', 'File'))
+    db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
     return db
 
 
@@ -19,8 +21,8 @@ def close_db(db):
         db.close()
 
 
-def init_db():
-    db = get_db()
+def init_db(db=get_db()):
+    # db = get_db()
     with open('schema.sql', 'r') as f:
         try:
             with db:

@@ -6,10 +6,12 @@ import random
 import re
 import time
 
-from robobrowser import RoboBrowser
 from loguru import logger
-import db
-import apan
+from robobrowser import RoboBrowser
+
+from nspider.apan import upload
+from nspider.db import close_db, get_db, insert
+from nspider import getConfig
 
 NEXT_PAGE = '下一頁'
 TODAY = '今天'
@@ -17,9 +19,6 @@ YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 R_START = 5
 R_END = 10
-
-base_url = 'https://hs.dety.men'
-start_url = base_url + '/thread0806.php?fid=20'
 
 
 def run(url):
@@ -31,7 +30,7 @@ def run(url):
     except:
         logger.error('request failed:' + url)
 
-    dbase = db.get_db()
+    dbase = get_db()
 
     while not is_end_page(browser):
         for novel in get_novels(browser):
@@ -40,8 +39,8 @@ def run(url):
             logger.debug(novel_info)
             content = get_content(novel_info)
             logger.debug(len(content))
-            if db.insert(novel_info, dbase):
-                apan.upload(novel_info, content)
+            if insert(novel_info, dbase):
+                upload(novel_info, content)
 
         try:
             browser.follow_link(next_page(browser))
@@ -50,7 +49,7 @@ def run(url):
         else:
             logger.debug('novel list page link: ' + browser.url)
 
-    db.close_db(dbase)
+    close_db(dbase)
 
 
 def get_novels(browser):
@@ -143,7 +142,7 @@ def get_date(novel):
 
 
 def get_link(novel):
-    return base_url + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
+    return getConfig('t66y', 'BaseUrl') + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
 def get_content(info):
@@ -179,6 +178,3 @@ def get_cell_content(browser, author):
                                           'tpc_content']).strings:
                 content.append(cell_content.strip())
     return '\n'.join(content)
-
-if __name__ == "__main__":
-    run(start_url)
