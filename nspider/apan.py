@@ -44,7 +44,8 @@ def upload(novel_info, content):
         upload_form['file_to_upload'].value = f
         browser.submit_form(upload_form)
     # delete temp file
-    if path.exists(pth):
+    write_in_local = config.getboolean('app', 'WriteInLocal')
+    if not write_in_local and path.exists(pth):
         remove(pth)
 
 
