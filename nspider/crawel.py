@@ -6,10 +6,9 @@ import random
 import re
 import time
 
-from loguru import logger
 from robobrowser import RoboBrowser
 
-from nspider import apan, config, db
+from nspider import apan, config, db, logger
 
 NEXT_PAGE = '下一頁'
 TODAY = '今天'

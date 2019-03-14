@@ -1,6 +1,4 @@
-from loguru import logger
-
-from nspider import config, crawel, db
+from nspider import config, crawel, db, logger
 
 if __name__ == "__main__":
     # init database
