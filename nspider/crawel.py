@@ -9,8 +9,7 @@ import time
 from loguru import logger
 from robobrowser import RoboBrowser
 
-from nspider import config, db
-from nspider.apan import upload
+from nspider import apan, config, db
 
 NEXT_PAGE = '下一頁'
 TODAY = '今天'
@@ -37,7 +36,7 @@ def run(url):
             content = get_content(novel_info)
             logger.debug(len(content))
             if db.insert(novel_info, dbase):
-                upload(novel_info, content)
+                apan.upload(novel_info, content)
 
         try:
             browser.follow_link(next_page(browser))

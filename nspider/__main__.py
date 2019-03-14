@@ -1,5 +1,4 @@
-from nspider import config, db
-from nspider.crawel import run
+from nspider import config, crawel, db
 
 if __name__ == "__main__":
     # init database
@@ -7,4 +6,4 @@ if __name__ == "__main__":
 
     # run crawel spider
     start_url = config.get('t66y', 'BaseUrl') + '/thread0806.php?fid=20'
-    run(start_url)
+    crawel.run(start_url)
