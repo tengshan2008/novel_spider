@@ -1,14 +1,16 @@
 """save novel content into anyview website
 """
-import os
+from os import path, remove
 
 from robobrowser import RoboBrowser, forms
 
-from nspider import getConfig
+from nspider import config
+
+base_path = path.split(path.realpath(__file__))[0]
 
 
 def login(username, password, url):
-    browser = RoboBrowser(history=True)
+    browser = RoboBrowser(parser='html.parser', history=True)
     browser.open(url)
     # login
     login_form = browser.get_form(id='log-in')
@@ -22,9 +24,9 @@ def login(username, password, url):
 
 
 def upload(novel_info, content):
-    username = getConfig('apan', 'User')
-    password = getConfig('apan', 'Pass')
-    apan_url = getConfig('apan', 'Url')
+    username = config.get('apan', 'User')
+    password = config.get('apan', 'Pass')
+    apan_url = config.get('apan', 'Url')
     browser = login(username, password, apan_url)
     delete(browser, novel_info['title'])
     upload_form = browser.get_forms()[0]
@@ -34,16 +36,16 @@ def upload(novel_info, content):
     upload_action = forms.fields.Input(upload_action_str)
     upload_form.add_field(upload_action)
     # add upload file field
-    path = os.path.join('novels', novel_info['title'] + '.txt')
+    pth = path.join(base_path, 'novels', novel_info['title'] + '.txt')
     # submit upload form
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(pth, 'w', encoding='utf-8') as f:
         f.write(file_content(novel_info, content))
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(pth, 'r', encoding='utf-8') as f:
         upload_form['file_to_upload'].value = f
         browser.submit_form(upload_form)
     # delete temp file
-    if os.path.exists(path):
-        os.remove(path)
+    if path.exists(pth):
+        remove(pth)
 
 
 def delete(browser, title):

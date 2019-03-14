@@ -9,16 +9,13 @@ import time
 from loguru import logger
 from robobrowser import RoboBrowser
 
+from nspider import config, db
 from nspider.apan import upload
-from nspider.db import close_db, get_db, insert
-from nspider import getConfig
 
 NEXT_PAGE = '下一頁'
 TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
-R_START = 5
-R_END = 10
 
 
 def run(url):
@@ -30,7 +27,7 @@ def run(url):
     except:
         logger.error('request failed:' + url)
 
-    dbase = get_db()
+    dbase = db.get()
 
     while not is_end_page(browser):
         for novel in get_novels(browser):
@@ -39,7 +36,7 @@ def run(url):
             logger.debug(novel_info)
             content = get_content(novel_info)
             logger.debug(len(content))
-            if insert(novel_info, dbase):
+            if db.insert(novel_info, dbase):
                 upload(novel_info, content)
 
         try:
@@ -49,7 +46,7 @@ def run(url):
         else:
             logger.debug('novel list page link: ' + browser.url)
 
-    close_db(dbase)
+    db.close(dbase)
 
 
 def get_novels(browser):
@@ -142,7 +139,7 @@ def get_date(novel):
 
 
 def get_link(novel):
-    return getConfig('t66y', 'BaseUrl') + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
+    return config.get('t66y', 'BaseUrl') + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
 def get_content(info):
