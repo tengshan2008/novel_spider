@@ -49,12 +49,12 @@ def insert(novel_info, db):
 
     try:
         with db:
-            size = db.execute(sql_read, (int(novel_info['id'],))).fetchone()
+            novel = db.execute(sql_read, (int(novel_info['id'],))).fetchone()
+            if novel is not None:
+                logger.debug('novel:', novel)
 
-            logger.debug('size:', size)
-
-            if size > int(novel_info['size']):
-                return False
+                # if size > int(novel_info['size']):
+                #     return False
 
             db.execute(sql_insert, (int(novel_info['id']), novel_info['title'],
                              novel_info['author'], novel_info['date'],
