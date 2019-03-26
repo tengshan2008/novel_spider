@@ -7,10 +7,17 @@ from os import path
 from nspider import config
 
 base_path = path.split(path.realpath(__file__))[0]
-sql = """
+
+sql_read = """
+    SELECT size
+    FROM novel
+    WHERE nid = ?
+"""
+
+sql_insert = """
     INSERT
-    INTO novel(nid, title, author, ndate, ntype, link)
-    VALUES (?, ?, ?, ?, ?, ?)
+    INTO novel(nid, title, author, ndate, ntype, link, size)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
 """
 
 def get():
@@ -42,9 +49,15 @@ def insert(novel_info, db):
 
     try:
         with db:
-            db.execute(sql, (int(novel_info['id']), novel_info['title'],
+            size = db.execute(sql_read, (int(novel_info['id'],))).fetchone()[0]
+
+            if size > novel_info['size']:
+                return False
+
+            db.execute(sql_insert, (int(novel_info['id']), novel_info['title'],
                              novel_info['author'], novel_info['date'],
-                             novel_info['type'], novel_info['link']))
+                             novel_info['type'], novel_info['link']),
+                             novel_info['size'])
     except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
         print('Could not complete operation:', e)
         return False
