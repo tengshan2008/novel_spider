@@ -49,7 +49,7 @@ def insert(novel_info, db):
 
     try:
         with db:
-            size = db.execute(sql_read, (int(novel_info['id'],))).fetchone()[0]
+            size = db.execute(sql_read, (int(novel_info['id'],))).fetchone()
 
             logger.debug('size:', size)
 
