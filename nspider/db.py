@@ -4,7 +4,7 @@
 import sqlite3
 from os import path
 
-from nspider import config
+from nspider import config, logger
 
 base_path = path.split(path.realpath(__file__))[0]
 
@@ -50,6 +50,8 @@ def insert(novel_info, db):
     try:
         with db:
             size = db.execute(sql_read, (int(novel_info['id'],))).fetchone()[0]
+
+            logger.debug('size:', size)
 
             if size > int(novel_info['size']):
                 return False
