@@ -20,6 +20,12 @@ sql_insert = """
     VALUES (?, ?, ?, ?, ?, ?, ?)
 """
 
+sql_update = """
+    UPDATE novel
+    SET size = ?
+    WHERE nid = ?
+"""
+
 def get():
     db_path = path.join(base_path, config.get('sqlite', 'File'))
     db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
@@ -39,7 +45,7 @@ def init():
             with db:
                 db.executescript(f.read())
         except sqlite3.OperationalError as e:
-            print("init db error:", e)
+            logger.error("init db error: {}", e)
         finally:
             close(db)
 
@@ -49,19 +55,19 @@ def insert(novel_info, db):
 
     try:
         with db:
-            novel = db.execute(sql_read, (int(novel_info['id'],))).fetchone()
-            if novel is not None:
-                logger.debug('novel:', novel)
+            size = db.execute(sql_read, (int(novel_info['id']),)).fetchone()
+            if size is None:
+                db.execute(sql_insert, (int(novel_info['id']), novel_info['title'],
+                                novel_info['author'], novel_info['date'],
+                                novel_info['type'], novel_info['link'],
+                                int(novel_info['size'])),)
+            elif size[0] > int(novel_info['size']):
+                db.execute(sql_update, (int(novel_info['size']), int(novel_info['id'])))
+            else:
+                return False
 
-                # if size > int(novel_info['size']):
-                #     return False
-
-            db.execute(sql_insert, (int(novel_info['id']), novel_info['title'],
-                             novel_info['author'], novel_info['date'],
-                             novel_info['type'], novel_info['link']),
-                             int(novel_info['size']))
     except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
-        print('Could not complete operation:', e)
+        logger.error('Could not complete operation: {}', e)
         return False
 
     return True
