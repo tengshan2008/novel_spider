@@ -34,7 +34,7 @@ def run(url):
             # logger.debug(novel_info)
             logger.info(novel_info['title'])
             content = get_content(novel_info)
-            novel_info['size'] = len(content)
+            novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
                 apan.upload(novel_info, content)
 

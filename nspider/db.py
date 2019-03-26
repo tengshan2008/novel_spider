@@ -51,13 +51,13 @@ def insert(novel_info, db):
         with db:
             size = db.execute(sql_read, (int(novel_info['id'],))).fetchone()[0]
 
-            if size > novel_info['size']:
+            if size > int(novel_info['size']):
                 return False
 
             db.execute(sql_insert, (int(novel_info['id']), novel_info['title'],
                              novel_info['author'], novel_info['date'],
                              novel_info['type'], novel_info['link']),
-                             novel_info['size'])
+                             int(novel_info['size']))
     except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
         print('Could not complete operation:', e)
         return False
