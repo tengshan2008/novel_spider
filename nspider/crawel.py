@@ -27,7 +27,9 @@ def run(url):
 
     dbase = db.get()
 
+    count = 1
     while not is_end_page(browser):
+        logger.info("current page is {}", count)
         for novel in get_novels(browser):
             time.sleep(5)
             novel_info = get_info(novel)
@@ -35,12 +37,12 @@ def run(url):
             novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
                 apan.upload(novel_info, content)
-
         try:
             browser.follow_link(next_page(browser))
         except:
             logger.error('request failed: ' + browser.url)
             return
+        count += 1
 
     db.close(dbase)
 
