@@ -31,8 +31,6 @@ def run(url):
         for novel in get_novels(browser):
             time.sleep(5)
             novel_info = get_info(novel)
-            # logger.debug(novel_info)
-            logger.info(novel_info['title'])
             content = get_content(novel_info)
             novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
