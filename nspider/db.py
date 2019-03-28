@@ -57,16 +57,16 @@ def insert(novel_info, db):
         with db:
             size = db.execute(sql_read, (int(novel_info['id']),)).fetchone()
             if size is None:
-                logger.info("{} is new, insert it into database.", novel_info['title'])
+                logger.info("insert {}", novel_info['title'])
                 db.execute(sql_insert, (int(novel_info['id']), novel_info['title'],
                                 novel_info['author'], novel_info['date'],
                                 novel_info['type'], novel_info['link'],
                                 int(novel_info['size'])),)
             elif size[0] > int(novel_info['size']):
-                logger.info("{} have new content, update into database.", novel_info['title'])
+                logger.info("update {}", novel_info['title'])
                 db.execute(sql_update, (int(novel_info['size']), int(novel_info['id'])))
             else:
-                logger.info("{} already in database, escape it.", novel_info['title'])
+                logger.info("ignore {}", novel_info['title'])
                 return False
 
     except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
