@@ -62,7 +62,7 @@ def insert(novel_info, db):
                                 novel_info['author'], novel_info['date'],
                                 novel_info['type'], novel_info['link'],
                                 int(novel_info['size'])),)
-            elif size[0] > int(novel_info['size']):
+            elif int(novel_info['size']) > size[0]:
                 logger.info("update {}", novel_info['title'])
                 db.execute(sql_update, (int(novel_info['size']), int(novel_info['id'])))
             else:
