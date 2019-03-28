@@ -31,7 +31,7 @@ def run(url):
     while not is_end_page(browser):
         logger.info("current page is {}", count)
         for novel in get_novels(browser):
-            time.sleep(5)
+            time.sleep(random.randint(2, 5))
             novel_info = get_info(novel)
             content = get_content(novel_info)
             novel_info['size'] = str(len(content))
@@ -151,7 +151,7 @@ def get_content(info):
 
     contents = []
     while not is_end_page(browser):
-        time.sleep(5)
+        time.sleep(random.randint(2, 5))
         contents.append(get_cell_content(browser, info['author']))
         try:
             browser.follow_link(next_page(browser))
