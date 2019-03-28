@@ -22,8 +22,8 @@ def run(url):
 
     try:
         browser.open(url)
-    except:
-        logger.error('request failed:' + url)
+    except Exception as e:
+        logger.error('open failed: {}', e)
 
     dbase = db.get()
 
@@ -39,8 +39,8 @@ def run(url):
                 apan.upload(novel_info, content)
         try:
             browser.follow_link(next_page(browser))
-        except:
-            logger.error('request failed: ' + browser.url)
+        except Exception as e:
+            logger.error('request failed: {}\nerror: {}', browser.url, e)
             return
         count += 1
 
@@ -145,8 +145,8 @@ def get_content(info):
                           timeout=30, tries=5)
     try:
         browser.open(info['link'])
-    except:
-        logger.error('request failed: ' + info['link'])
+    except Exception as e:
+        logger.error('request failed: {}\nerror: {}', info['link'], e)
         return ''
 
     contents = []
@@ -155,8 +155,8 @@ def get_content(info):
         contents.append(get_cell_content(browser, info['author']))
         try:
             browser.follow_link(next_page(browser))
-        except:
-            logger.error('request failed: ' + browser.url)
+        except Exception as e:
+            logger.error('request failed: {}\nerror: {}', browser.url, e)
 
     return '\n'.join(contents)
 
