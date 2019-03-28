@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS `novel` (
     `ndate` TEXT NOT NULL,
     `ntype` TEXT NOT NULL,
     `link` TEXT NOT NULL,
-    `size` INTEGER NOT NULL,
+    `size` INTEGER NOT NULL DEFAULT 0,
     `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
