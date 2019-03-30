@@ -157,6 +157,7 @@ def get_content(info):
             browser.follow_link(next_page(browser))
         except Exception as e:
             logger.error('request failed: {}\nerror: {}', browser.url, e)
+            break
 
     return '\n'.join(contents)
 
