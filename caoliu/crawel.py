@@ -8,7 +8,8 @@ import time
 
 from robobrowser import RoboBrowser
 
-from nspider import apan, config, db, logger
+from caoliu import apan, db, logger
+from util import config
 
 NEXT_PAGE = '下一頁'
 TODAY = '今天'

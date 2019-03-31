@@ -1,4 +1,5 @@
-from nspider import config, crawel, db, logger
+from caoliu import crawel, db, logger
+from util import config
 
 if __name__ == "__main__":
     # init database

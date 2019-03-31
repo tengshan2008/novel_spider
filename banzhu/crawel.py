@@ -1,40 +1,52 @@
-from robobrowser import RoboBrowser
-from loguru import logger
+"""crawel 001banzhu website novels
+"""
 
+
+import random
 import time
+import os
 
-from nspider import db, config, apan
+from robobrowser import RoboBrowser
+
+from banzhu import db, logger
+from util import config
+import os
+
+base_path = os.path.split(os.path.realpath(__file__))[0]
 
 
-def run(url):
+def run():
     browser = RoboBrowser(parser='html.parser', history=True,
                           timeout=30, tries=5)
 
     db_file = config.get('sqlite', 'banzhu')
-    dbase = db.get(db_file)
+    # dbase = db.get(db_file)
 
-    ids = []
+    base_url = config.get('banzhu', 'BaseUrl')
+    novel_links = []
+    ids_path = os.path.join(base_path, 'ids.txt')
     with open(ids_path, 'r') as f:
-        ids = f.readlines()
+        for novel_id in f.readlines():
+            novel_links.append(base_url + novel_id)
 
-    for novel_id in ids:
-        novel_link = config.get('banzhu', 'BaseUrl') + novel_id
-        logger.info('link ', novel_link)
-        time.sleep(5)
+    for novel_link in novel_links:
+        time.sleep(random.randint(2, 5))
 
         try:
             browser.open(novel_link.strip())
-        except:
-            logger.error('request error', novel_link)
+        except Exception as e:
+            logger.error('request failed: {}\nerror: {}', novel_link, e)
             continue
         else:
-            get_novel(browser, novel_id, dbase)
+            get_novel(browser, "")
 
-    db.close(dbase)
+    # db.close(dbase)
 
 
-def get_novel(browser, novel_id, dbase):
+def get_novel(browser, dbase):
+    logger.info("link {}", browser.url)
     info = browser.find(id='info')
+    logger.info(info)
     novel_info = {
         'title': get_title(info),
         'author': get_author(info),
@@ -43,8 +55,9 @@ def get_novel(browser, novel_id, dbase):
 
     chapters = browser.find(id='list').find_all('a')
     content = get_content(chapters)
-    if db.insert(novel_info, dbase):
-        apan.upload(novel_info, content)
+    logger.info(content)
+    # if db.insert(novel_info, dbase):
+    #     apan.upload(novel_info, content)
 
 
 def get_title(info):
@@ -84,4 +97,3 @@ def get_chapter_content(browser):
     if content is None:
         return []
     return [line.strip('\n') for line in content.strings]
-

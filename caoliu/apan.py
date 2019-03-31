@@ -4,7 +4,8 @@ from os import path, remove
 
 from robobrowser import RoboBrowser, forms
 
-from nspider import config, logger
+from caoliu import logger
+from util import config
 
 base_path = path.split(path.realpath(__file__))[0]
 
@@ -17,7 +18,7 @@ def login(username, password, url):
         browser.open(url)
     except Exception as e:
         logger.error('open failed: {}', e)
-    
+
     # login
     login_form = browser.get_form(id='log-in')
     login_form['account'].value = username
@@ -29,7 +30,7 @@ def login(username, password, url):
         browser.follow_link(account)
     except Exception as e:
         logger.error('request failed: {}', e)
-    
+
     return browser
 
 
