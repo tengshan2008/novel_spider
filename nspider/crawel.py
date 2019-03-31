@@ -97,6 +97,7 @@ def is_end_page(browser):
     for label_a in browser.find_all('a'):
         if label_a.string == NEXT_PAGE:
             if label_a.get('href') == 'javascript:#':
+                logger.info("end page")
                 return True
 
     return False
@@ -137,7 +138,8 @@ def get_date(novel):
 
 
 def get_link(novel):
-    return config.get('t66y', 'BaseUrl') + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
+    return config.get('t66y', 'BaseUrl') + \
+        '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
 def get_content(info):
