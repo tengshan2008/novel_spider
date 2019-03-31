@@ -26,8 +26,9 @@ sql_update = """
     WHERE nid = ?
 """
 
-def get():
-    db_path = path.join(base_path, config.get('sqlite', 'File'))
+
+def get(filename):
+    db_path = path.join(base_path, filename)
     db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
     return db
 
@@ -38,7 +39,8 @@ def close(db):
 
 
 def init():
-    db = get()
+    db_file = config.get('sqlite', 'caoliu')
+    db = get(db_file)
     script_path = path.join(base_path, 'schema.sql')
     with open(script_path, 'r') as f:
         try:

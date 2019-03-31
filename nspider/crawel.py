@@ -25,7 +25,8 @@ def run(url):
     except Exception as e:
         logger.error('open failed: {}', e)
 
-    dbase = db.get()
+    db_file = config.get('sqlite', 'caoliu')
+    dbase = db.get(db_file)
 
     count = 1
     while not is_end_page(browser):
@@ -138,8 +139,8 @@ def get_date(novel):
 
 
 def get_link(novel):
-    return config.get('t66y', 'BaseUrl') + \
-        '/' + novel.find('td', class_='tal').h3.a['href'].strip()
+    base_url = config.get('t66y', 'BaseUrl')
+    return base_url + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
 def get_content(info):
