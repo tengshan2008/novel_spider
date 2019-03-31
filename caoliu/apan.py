@@ -49,11 +49,19 @@ def upload(novel_info, content):
     # add upload file field
     pth = path.join(base_path, 'novels', novel_info['title'] + '.txt')
     # submit upload form
-    with open(pth, 'w', encoding='utf-8') as f:
-        f.write(file_content(novel_info, content))
-    with open(pth, 'r', encoding='utf-8') as f:
-        upload_form['file_to_upload'].value = f
-        browser.submit_form(upload_form)
+    try:
+        with open(pth, 'w', encoding='utf-8') as f:
+            f.write(file_content(novel_info, content))
+    except (OSError, IOError) as e:
+        logger.error('write file error: {}', e)
+        return
+    try:
+        with open(pth, 'r', encoding='utf-8') as f:
+            upload_form['file_to_upload'].value = f
+            browser.submit_form(upload_form)
+    except (OSError, IOError) as e:
+        logger.error('read file error: {}', e)
+        return
     # delete temp file
     write_in_local = config.getboolean('app', 'WriteInLocal')
     if not write_in_local and path.exists(pth):
