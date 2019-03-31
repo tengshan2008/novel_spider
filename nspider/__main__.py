@@ -7,4 +7,5 @@ if __name__ == "__main__":
 
     # run crawel spider
     start_url = config.get('t66y', 'BaseUrl') + '/thread0806.php?fid=20'
-    crawel.run(start_url)
+    for i in range(10):
+        crawel.run(start_url)
