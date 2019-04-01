@@ -47,7 +47,7 @@ def run(url):
         count += 1
 
     db.close(dbase)
-
+    logger.info("FINISH")
 
 def get_novels(browser):
     """ get all novels link
@@ -99,7 +99,6 @@ def is_end_page(browser):
     for label_a in browser.find_all('a'):
         if label_a.string == NEXT_PAGE:
             if label_a.get('href') == 'javascript:#':
-                logger.info("end page")
                 return True
 
     return False

@@ -29,7 +29,7 @@ def login(username, password, url):
     try:
         browser.follow_link(account)
     except Exception as e:
-        logger.error('request failed: {}', e)
+        logger.error('request failed: {}\nerror: {}', browser.url,  e)
 
     return browser
 
