@@ -37,6 +37,7 @@ def get(filename):
 def close(db):
     if db is not None:
         db.close()
+        logger.info("database close")
 
 
 def init():
@@ -47,6 +48,7 @@ def init():
         try:
             with db:
                 db.executescript(f.read())
+            logger.info("database init success")
         except sqlite3.OperationalError as e:
             logger.error("init db error: {}", e)
         finally:
