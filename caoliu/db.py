@@ -78,8 +78,11 @@ def insert(novel_info, db):
                 logger.info("ignore {}", novel_info['title'])
                 return False
 
-    except (sqlite3.OperationalError, sqlite3.IntegrityError, ValueError) as e:
+    except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
         logger.error('Could not complete operation: {}', e)
+        return False
+    except ValueError as e:
+        logger.error('novel info {} has wrong value, error: {}', novel_info, e)
         return False
 
     return True
