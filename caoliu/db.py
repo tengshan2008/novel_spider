@@ -58,6 +58,7 @@ def init():
 def insert(novel_info, db):
     novel_info = {k: v.replace("'", "''") for k, v in novel_info.items()}
 
+    logger.debug("novel_info {}", novel_info)
     try:
         with db:
             size = db.execute(sql_read, (int(novel_info['id']),)).fetchone()
