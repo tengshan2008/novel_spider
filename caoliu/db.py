@@ -58,7 +58,6 @@ def init():
 def insert(novel_info, db):
     novel_info = {k: v.replace("'", "''") for k, v in novel_info.items()}
 
-    logger.debug("novel_info {}", novel_info)
     try:
         with db:
             size = db.execute(sql_read, (int(novel_info['id']),)).fetchone()
@@ -79,7 +78,7 @@ def insert(novel_info, db):
                 logger.info("ignore {}", novel_info['title'])
                 return False
 
-    except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
+    except (sqlite3.OperationalError, sqlite3.IntegrityError, ValueError) as e:
         logger.error('Could not complete operation: {}', e)
         return False
 
