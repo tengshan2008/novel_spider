@@ -5,7 +5,6 @@ import datetime
 import random
 import re
 import time
-import gc
 
 from robobrowser import RoboBrowser
 
@@ -19,7 +18,7 @@ PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于
 
 
 def run(url, apan_browser):
-    browser = RoboBrowser(parser='html.parser', history=True,
+    browser = RoboBrowser(parser='html.parser', history=False,
                           timeout=30, tries=5)
 
     try:
@@ -40,8 +39,6 @@ def run(url, apan_browser):
             novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
                 apan.upload(apan_browser, novel_info, content)
-            del content
-            gc.collect()
         try:
             browser.follow_link(next_page(browser))
         except Exception as e:
@@ -146,7 +143,7 @@ def get_link(novel):
 
 
 def get_content(info):
-    browser = RoboBrowser(parser='html.parser', history=True,
+    browser = RoboBrowser(parser='html.parser', history=False,
                           timeout=30, tries=5)
     try:
         browser.open(info['link'])
