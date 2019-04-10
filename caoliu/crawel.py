@@ -18,7 +18,7 @@ PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于
 
 
 def run(url, apan_browser):
-    browser = RoboBrowser(parser='html.parser', history=False,
+    browser = RoboBrowser(parser='html.parser', history=True,
                           timeout=30, tries=5)
 
     try:
@@ -143,7 +143,7 @@ def get_link(novel):
 
 
 def get_content(info):
-    browser = RoboBrowser(parser='html.parser', history=False,
+    browser = RoboBrowser(parser='html.parser', history=True,
                           timeout=30, tries=5)
     try:
         browser.open(info['link'])
