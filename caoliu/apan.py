@@ -17,7 +17,8 @@ def login(username, password, url):
     try:
         browser.open(url)
     except Exception as e:
-        logger.error('open failed: {}', e)
+        logger.error('request failed: {url}', url=url)
+        logger.exception('detail')
 
     # login
     login_form = browser.get_form(id='log-in')
@@ -29,7 +30,8 @@ def login(username, password, url):
     try:
         browser.follow_link(account)
     except Exception as e:
-        logger.error('request failed: {}\nerror: {}', browser.url,  e)
+        logger.error('request failed: {url}', url=browser.url)
+        logger.exception('detail')
 
     return browser
 
@@ -57,6 +59,7 @@ def upload(novel_info, content):
             f.write(file_content(novel_info, content))
     except (OSError, IOError) as e:
         logger.error('write file error: {}', e)
+        logger.exception('detail')
         return
     try:
         with open(pth, 'r', encoding='utf-8') as f:
@@ -64,6 +67,7 @@ def upload(novel_info, content):
             browser.submit_form(upload_form)
     except (OSError, IOError) as e:
         logger.error('read file error: {}', e)
+        logger.exception('detail')
         return
     # delete temp file
     write_in_local = config.getboolean('app', 'WriteInLocal')

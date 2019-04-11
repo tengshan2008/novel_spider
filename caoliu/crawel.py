@@ -24,7 +24,8 @@ def run(url):
     try:
         browser.open(url)
     except Exception as e:
-        logger.error('open failed: {}', e)
+        logger.error('request failed: {url}', url=url)
+        logger.exception("detail")
 
     db_file = config.get('sqlite', 'caoliu')
     dbase = db.get(db_file)
@@ -42,7 +43,8 @@ def run(url):
         try:
             browser.follow_link(next_page(browser))
         except Exception as e:
-            logger.error('request failed: {}\nerror: {}', browser.url, e)
+            logger.error('request failed: {url}', url=browser.url)
+            logger.exception("detail")
             return
         count += 1
 
@@ -148,7 +150,8 @@ def get_content(info):
     try:
         browser.open(info['link'])
     except Exception as e:
-        logger.error('request failed: {}\nerror: {}', info['link'], e)
+        logger.error('request failed: {url}', url=info['link'])
+        logger.exception("detail")
         return ''
 
     contents = []
@@ -158,7 +161,8 @@ def get_content(info):
         try:
             browser.follow_link(next_page(browser))
         except Exception as e:
-            logger.error('request failed: {}\nerror: {}', browser.url, e)
+            logger.error('request failed: {url}', url=browser.url)
+            logger.exception("detail")
             break
 
     return '\n'.join(contents)
