@@ -17,7 +17,7 @@ YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
 
-def run(url, apan_browser):
+def run(url):
     browser = RoboBrowser(parser='html.parser', history=True,
                           timeout=30, tries=5)
 
@@ -38,7 +38,7 @@ def run(url, apan_browser):
             content = get_content(novel_info)
             novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
-                apan.upload(apan_browser, novel_info, content)
+                apan.upload(novel_info, content)
         try:
             browser.follow_link(next_page(browser))
         except Exception as e:

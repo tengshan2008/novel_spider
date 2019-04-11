@@ -34,7 +34,14 @@ def login(username, password, url):
     return browser
 
 
-def upload(browser, novel_info, content):
+def upload(novel_info, content):
+    # get apan config
+    username = config.get('apan', 'User')
+    password = config.get('apan', 'Pass')
+    apan_url = config.get('apan', 'Url')
+    # login
+    browser = login(username, password, apan_url)
+    # delete
     delete(browser, novel_info['title'])
     upload_form = browser.get_forms()[0]
     # add upload action field
