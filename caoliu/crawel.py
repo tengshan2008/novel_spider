@@ -165,6 +165,9 @@ def get_content(info):
             logger.exception("detail")
             break
 
+    if len(contents) == 0:
+        logger.info('void novel detail is \n{}', browser.find())
+
     return '\n'.join(contents)
 
 
