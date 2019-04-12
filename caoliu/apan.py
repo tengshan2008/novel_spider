@@ -52,7 +52,11 @@ def upload(novel_info, content):
         time.sleep(10)
         return
     # delete
-    delete(browser, novel_info['title'])
+    browser = delete(browser, novel_info['title'])
+    if browser is None:
+        logger.error("delete novel failed")
+        time.sleep(10)
+        return
     upload_form = browser.get_forms()[0]
     # add upload action field
     upload_action_str = '<input type="hidden" \
@@ -87,6 +91,9 @@ def delete(browser, title):
     form = browser.get_forms()[1]
     # find old file and delete it
     table = browser.find(class_='table table-bordered table-striped')
+    if table is None:
+        logger.info("page detail is: \n{}", browser.find())
+        return None
     for tr in table.tbody.find_all('tr'):
         if title == tr.find('td', class_="item-title").string[1:-4]:
             button = tr.find('button')
@@ -96,7 +103,7 @@ def delete(browser, title):
             form.add_field(delete_action)
             form['file_id'].value = nid
             browser.submit_form(form)
-            break
+            return browser
 
 
 def file_content(novel_info, content):
