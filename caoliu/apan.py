@@ -1,5 +1,6 @@
 """save novel content into anyview website
 """
+import time
 from os import path, remove
 
 from robobrowser import RoboBrowser, forms
@@ -12,7 +13,7 @@ base_path = path.split(path.realpath(__file__))[0]
 
 def login(username, password, url):
     browser = RoboBrowser(parser='html.parser', history=True,
-                          timeout=30, tries=5)
+                          timeout=30, tries=5, multiplier=0.3)
 
     try:
         browser.open(url)
@@ -27,6 +28,9 @@ def login(username, password, url):
     browser.submit_form(login_form)
     # access account
     account = browser.find(href='/account')
+    if account is None:
+        logger.info("page detail is: \n{}", browser.find())
+        return None
     try:
         browser.follow_link(account)
     except Exception as e:
@@ -43,6 +47,10 @@ def upload(novel_info, content):
     apan_url = config.get('apan', 'Url')
     # login
     browser = login(username, password, apan_url)
+    if browser is None:
+        logger.error("login apan failed")
+        time.sleep(10)
+        return
     # delete
     delete(browser, novel_info['title'])
     upload_form = browser.get_forms()[0]
