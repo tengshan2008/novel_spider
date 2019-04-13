@@ -39,7 +39,7 @@ def run(url):
             content = get_content(novel_info)
             novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
-                ok = apan.upload(novel_info, content, dbase)
+                ok = apan.upload(novel_info, content)
                 if not ok:
                     db.delete(novel_info, dbase)
         page_link = next_page(browser)
