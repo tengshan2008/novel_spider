@@ -20,6 +20,7 @@ def login(username, password, url):
     except Exception as e:
         logger.error('request failed: {url}', url=url)
         logger.exception('detail')
+        return None
 
     # login
     login_form = browser.get_form(id='log-in')
@@ -36,6 +37,7 @@ def login(username, password, url):
     except Exception as e:
         logger.error('request failed: {url}', url=browser.url)
         logger.exception('detail')
+        return None
 
     return browser
 
