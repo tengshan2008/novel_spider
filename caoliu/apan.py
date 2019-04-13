@@ -106,6 +106,7 @@ def delete(browser, title):
             form['file_id'].value = nid
             browser.submit_form(form)
             return browser
+    return browser
 
 
 def file_content(novel_info, content):
