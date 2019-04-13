@@ -39,16 +39,26 @@ def run(url):
             content = get_content(novel_info)
             novel_info['size'] = str(len(content))
             if db.insert(novel_info, dbase):
-                apan.upload(novel_info, content)
+                ok = apan.upload(novel_info, content, dbase)
+                if not ok:
+                    db.delete(novel_info, dbase)
+        page_link = next_page(browser)
+        if page_link is None:
+            logger.error("get next page failed")
+            logger.info('detail\n{}', browser.find())
+            db.close(dbase)
+            return
         try:
-            browser.follow_link(next_page(browser))
+            browser.follow_link(page_link)
         except Exception as e:
             logger.error('request failed: {url}', url=browser.url)
             logger.exception("detail")
+            db.close(dbase)
             return
         count += 1
 
     db.close(dbase)
+
 
 def get_novels(browser):
     """ get all novels link
@@ -158,8 +168,13 @@ def get_content(info):
     while not is_end_page(browser):
         time.sleep(random.randint(2, 5))
         contents.append(get_cell_content(browser, info['author']))
+        page_link = next_page(browser)
+        if page_link is None:
+            logger.error("get next page failed")
+            logger.info("detail\n{}", browser.find())
+            break
         try:
-            browser.follow_link(next_page(browser))
+            browser.follow_link(page_link)
         except Exception as e:
             logger.error('request failed: {url}', url=browser.url)
             logger.exception("detail")

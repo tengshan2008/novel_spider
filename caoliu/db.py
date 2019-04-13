@@ -27,6 +27,12 @@ sql_update = """
     WHERE nid = ?
 """
 
+sql_delete = """
+    DELETE
+    FROM  novel
+    WHERE nid = ?
+"""
+
 
 def get(filename):
     db_path = path.join(base_path, filename)
@@ -89,6 +95,15 @@ def insert(novel_info, db):
         return False
 
     return True
+
+
+def delete(novel_info, db):
+    try:
+        with db:
+            db.execute(sql_delete, (int(novel_info['id']),))
+    except Exception as e:
+        logger.error('could not complete delete operation')
+        logger.exception('detail')
 
 
 if __name__ == "__main__":

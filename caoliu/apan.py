@@ -50,13 +50,13 @@ def upload(novel_info, content):
     if browser is None:
         logger.error("login apan failed")
         time.sleep(10)
-        return
+        return False
     # delete
     browser = delete(browser, novel_info['title'])
     if browser is None:
         logger.error("delete novel failed")
         time.sleep(10)
-        return
+        return False
     upload_form = browser.get_forms()[0]
     # add upload action field
     upload_action_str = '<input type="hidden" \
@@ -72,7 +72,7 @@ def upload(novel_info, content):
     except (OSError, IOError) as e:
         logger.error('write file error: {}', e)
         logger.exception('detail')
-        return
+        return False
     try:
         with open(pth, 'r', encoding='utf-8') as f:
             upload_form['file_to_upload'].value = f
@@ -80,11 +80,13 @@ def upload(novel_info, content):
     except (OSError, IOError) as e:
         logger.error('read file error: {}', e)
         logger.exception('detail')
-        return
+        return False
     # delete temp file
     write_in_local = config.getboolean('app', 'WriteInLocal')
     if not write_in_local and path.exists(pth):
         remove(pth)
+
+    return True
 
 
 def delete(browser, title):
