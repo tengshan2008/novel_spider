@@ -26,6 +26,7 @@ def run(url):
     except Exception as e:
         logger.error('request failed: {url}', url=url)
         logger.exception("detail")
+        return
 
     db_file = config.get('sqlite', 'caoliu')
     dbase = db.get(db_file)
