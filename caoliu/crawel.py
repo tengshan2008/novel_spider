@@ -6,6 +6,7 @@ import random
 import re
 import time
 
+import requests
 from robobrowser import RoboBrowser
 
 from caoliu import apan, db, logger
@@ -23,6 +24,8 @@ def run(url):
 
     try:
         browser.open(url)
+    except requests.ConnectionError as e:
+        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
     except Exception as e:
         logger.error('request failed: {url}', url=url)
         logger.exception("detail")
@@ -176,6 +179,8 @@ def get_content(info):
             break
         try:
             browser.follow_link(page_link)
+        except requests.ConnectionError as e:
+            logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
         except Exception as e:
             logger.error('request failed: {url}', url=browser.url)
             logger.exception("detail")
