@@ -3,6 +3,7 @@
 import time
 from os import path, remove
 
+import requests
 from robobrowser import RoboBrowser, forms
 
 from caoliu import logger
@@ -17,6 +18,9 @@ def login(username, password, url):
 
     try:
         browser.open(url)
+    except requests.ConnectionError as e:
+        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        return None
     except Exception as e:
         logger.error('request failed: {url}', url=url)
         logger.exception('detail')
@@ -34,6 +38,9 @@ def login(username, password, url):
         return None
     try:
         browser.follow_link(account)
+    except requests.ConnectionError as e:
+        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        return None
     except Exception as e:
         logger.error('request failed: {url}', url=browser.url)
         logger.exception('detail')
@@ -73,15 +80,22 @@ def upload(novel_info, content):
             f.write(file_content(novel_info, content))
     except (OSError, IOError) as e:
         logger.error('write file error: {}', e)
+        return False
+    except Exception as e:
         logger.exception('detail')
         return False
     try:
         with open(pth, 'r', encoding='utf-8') as f:
             upload_form['file_to_upload'].value = f
             browser.submit_form(upload_form)
+    except requests.ConnectionError as e:
+        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        return False
     except (OSError, IOError) as e:
         logger.error('read file error: {}', e)
-        logger.exception('detail')
+        return False
+    except Exception as e:
+        logger.exception("detail")
         return False
     # delete temp file
     write_in_local = config.getboolean('app', 'WriteInLocal')
@@ -106,8 +120,17 @@ def delete(browser, title):
             delete_action = forms.fields.Input(delete_button_str)
             form.add_field(delete_action)
             form['file_id'].value = nid
-            browser.submit_form(form)
-            return browser
+            try:
+                browser.submit_form(form)
+                return browser
+            except requests.ConnectionError as e:
+                logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+                return None
+            except Exception as e:
+                logger.error('request failed: {url}', url=browser.url)
+                logger.exception("detail")
+                return None
+
     return browser
 
 

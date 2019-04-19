@@ -26,9 +26,9 @@ def run(url):
         browser.open(url)
     except requests.ConnectionError as e:
         logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        return
     except Exception as e:
-        logger.error('request failed: {url}', url=url)
-        logger.exception("detail")
+        logger.exception('request failed: {url}', url=url)
         return
 
     db_file = config.get('sqlite', 'caoliu')
@@ -54,9 +54,12 @@ def run(url):
             return
         try:
             browser.follow_link(page_link)
+        except requests.ConnectionError as e:
+            logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+            db.close(dbase)
+            return
         except Exception as e:
-            logger.error('request failed: {url}', url=browser.url)
-            logger.exception("detail")
+            logger.exception('request failed: {url}', url=browser.url)
             db.close(dbase)
             return
         count += 1
@@ -163,9 +166,11 @@ def get_content(info):
                           timeout=30, tries=5, multiplier=0.3)
     try:
         browser.open(info['link'])
+    except requests.ConnectionError as e:
+        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        return ''
     except Exception as e:
-        logger.error('request failed: {url}', url=info['link'])
-        logger.exception("detail")
+        logger.exception('request failed: {url}', url=info['link'])
         return ''
 
     contents = []
@@ -181,9 +186,9 @@ def get_content(info):
             browser.follow_link(page_link)
         except requests.ConnectionError as e:
             logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+            break
         except Exception as e:
-            logger.error('request failed: {url}', url=browser.url)
-            logger.exception("detail")
+            logger.exception('request failed: {url}', url=browser.url)
             break
 
     if len(contents) == 0:
