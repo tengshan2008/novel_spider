@@ -57,6 +57,7 @@ def init():
             logger.info("database init success")
         except sqlite3.OperationalError as e:
             logger.error("init db error: {}", e)
+        except:
             logger.exception('detail')
         finally:
             close(db)
@@ -86,11 +87,12 @@ def insert(novel_info, db):
                 return False
 
     except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
-        logger.error('Could not complete operation')
-        logger.exception('detail')
+        logger.error('Could not complete operation, error: {}', e)
         return False
     except ValueError as e:
         logger.error('novel info {} has wrong value', novel_info)
+        return False
+    except:
         logger.exception('detail')
         return False
 
@@ -101,8 +103,9 @@ def delete(novel_info, db):
     try:
         with db:
             db.execute(sql_delete, (int(novel_info['id']),))
-    except Exception as e:
-        logger.error('could not complete delete operation')
+    except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
+        logger.error('Could not complete operation, error: {}', e)
+    except:
         logger.exception('detail')
 
 

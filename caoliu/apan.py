@@ -21,7 +21,7 @@ def login(username, password, url):
     except requests.ConnectionError as e:
         logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
         return None
-    except Exception as e:
+    except:
         logger.error('request failed: {url}', url=url)
         logger.exception('detail')
         return None
@@ -41,7 +41,7 @@ def login(username, password, url):
     except requests.ConnectionError as e:
         logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
         return None
-    except Exception as e:
+    except:
         logger.error('request failed: {url}', url=browser.url)
         logger.exception('detail')
         return None
@@ -81,7 +81,7 @@ def upload(novel_info, content):
     except (OSError, IOError) as e:
         logger.error('write file error: {}', e)
         return False
-    except Exception as e:
+    except:
         logger.exception('detail')
         return False
     try:
@@ -94,7 +94,7 @@ def upload(novel_info, content):
     except (OSError, IOError) as e:
         logger.error('read file error: {}', e)
         return False
-    except Exception as e:
+    except:
         logger.exception("detail")
         return False
     # delete temp file
@@ -126,7 +126,7 @@ def delete(browser, title):
             except requests.ConnectionError as e:
                 logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
                 return None
-            except Exception as e:
+            except:
                 logger.error('request failed: {url}', url=browser.url)
                 logger.exception("detail")
                 return None

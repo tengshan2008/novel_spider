@@ -27,7 +27,7 @@ def run(url):
     except requests.ConnectionError as e:
         logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
         return
-    except Exception as e:
+    except:
         logger.exception('request failed: {url}', url=url)
         return
 
@@ -58,7 +58,7 @@ def run(url):
             logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
             db.close(dbase)
             return
-        except Exception as e:
+        except:
             logger.exception('request failed: {url}', url=browser.url)
             db.close(dbase)
             return
@@ -169,7 +169,7 @@ def get_content(info):
     except requests.ConnectionError as e:
         logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
         return ''
-    except Exception as e:
+    except:
         logger.exception('request failed: {url}', url=info['link'])
         return ''
 
@@ -187,7 +187,7 @@ def get_content(info):
         except requests.ConnectionError as e:
             logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
             break
-        except Exception as e:
+        except:
             logger.exception('request failed: {url}', url=browser.url)
             break
 
