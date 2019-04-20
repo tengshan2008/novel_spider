@@ -9,6 +9,7 @@ import time
 import requests
 from robobrowser import RoboBrowser
 
+import errors
 from caoliu import apan, db, logger
 from util import config
 
@@ -25,7 +26,7 @@ def run(url):
     try:
         browser.open(url)
     except requests.ConnectionError as e:
-        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        logger.error(errors.RequestsFail, url=url, err=e)
         return
     except:
         logger.exception('request failed: {url}', url=url)
@@ -55,7 +56,7 @@ def run(url):
         try:
             browser.follow_link(page_link)
         except requests.ConnectionError as e:
-            logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+            logger.error(errors.RequestsFail, url=browser.url, err=e)
             db.close(dbase)
             return
         except:
@@ -167,7 +168,7 @@ def get_content(info):
     try:
         browser.open(info['link'])
     except requests.ConnectionError as e:
-        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        logger.error(errors.RequestsFail, url=info['link'], err=e)
         return ''
     except:
         logger.exception('request failed: {url}', url=info['link'])
@@ -185,7 +186,7 @@ def get_content(info):
         try:
             browser.follow_link(page_link)
         except requests.ConnectionError as e:
-            logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+            logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
         except:
             logger.exception('request failed: {url}', url=browser.url)

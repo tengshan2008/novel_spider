@@ -6,6 +6,7 @@ from os import path, remove
 import requests
 from robobrowser import RoboBrowser, forms
 
+import errors
 from caoliu import logger
 from util import config
 
@@ -19,7 +20,7 @@ def login(username, password, url):
     try:
         browser.open(url)
     except requests.ConnectionError as e:
-        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        logger.error(errors.RequestsFail, url=url, err=e)
         return None
     except:
         logger.error('request failed: {url}', url=url)
@@ -39,7 +40,7 @@ def login(username, password, url):
     try:
         browser.follow_link(account)
     except requests.ConnectionError as e:
-        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        logger.error(errors.RequestsFail, url=browser.url, err=e)
         return None
     except:
         logger.error('request failed: {url}', url=browser.url)
@@ -89,7 +90,7 @@ def upload(novel_info, content):
             upload_form['file_to_upload'].value = f
             browser.submit_form(upload_form)
     except requests.ConnectionError as e:
-        logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+        logger.error(errors.RequestsFail, url=browser.url, err=e)
         return False
     except (OSError, IOError) as e:
         logger.error('read file error: {}', e)
@@ -124,7 +125,7 @@ def delete(browser, title):
                 browser.submit_form(form)
                 return browser
             except requests.ConnectionError as e:
-                logger.error('requests failed: {url}\nconnetion error: {err}', url=browser.url, err=e)
+                logger.error(errors.RequestsFail, url=browser.url, err=e)
                 return None
             except:
                 logger.error('request failed: {url}', url=browser.url)
