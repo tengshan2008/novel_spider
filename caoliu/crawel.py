@@ -9,8 +9,7 @@ import time
 import requests
 from robobrowser import RoboBrowser
 
-import errors
-from caoliu import apan, db, logger
+from caoliu import apan, db, logger, errors
 from util import config
 
 NEXT_PAGE = '下一頁'

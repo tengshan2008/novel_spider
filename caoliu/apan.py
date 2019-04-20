@@ -6,8 +6,7 @@ from os import path, remove
 import requests
 from robobrowser import RoboBrowser, forms
 
-import errors
-from caoliu import logger
+from caoliu import logger, errors
 from util import config
 
 base_path = path.split(path.realpath(__file__))[0]
