@@ -1,4 +1,6 @@
-from caoliu import crawel, db, logger, apan
+import time
+
+from caoliu import apan, crawel, db, logger
 from util import config
 
 if __name__ == "__main__":
@@ -12,4 +14,5 @@ if __name__ == "__main__":
     # run crawel spider 10 times
     for i in range(10):
         # crawel run
+        time.sleep(20)
         crawel.run(start_url)
