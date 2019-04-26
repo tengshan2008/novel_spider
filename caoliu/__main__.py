@@ -18,4 +18,4 @@ if __name__ == "__main__":
         # crawel run
         time.sleep(20)
         url = random.choice(urls)
-        crawel.run(url)
+        crawel.run(url, urls.index(url))

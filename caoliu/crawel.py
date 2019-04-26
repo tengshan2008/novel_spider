@@ -18,7 +18,7 @@ YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
 
-def run(url):
+def run(url, idx):
     browser = RoboBrowser(parser='html.parser', history=True,
                           timeout=30, tries=5, multiplier=0.3)
 
@@ -34,7 +34,7 @@ def run(url):
     db_file = config.get('sqlite', 'caoliu')
     dbase = db.get(db_file)
 
-    count = 1
+    count = idx + 1
     while not is_end_page(browser):
         logger.info("current page is {}", count)
         for novel in get_novels(browser):
