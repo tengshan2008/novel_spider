@@ -112,7 +112,7 @@ def is_end_page(browser):
     """
 
     if browser.find(class_='pages') is None:
-        logger.debug('no pages detail: {}\n{}', browser.url, browser.find())
+        logger.debug('no pages detail: {}\n{}', browser.url, browser.parsed())
         return True
 
     for label_a in browser.find_all('a'):
