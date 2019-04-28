@@ -116,6 +116,7 @@ def is_end_page(browser):
         return True
 
     for label_a in browser.find_all('a'):
+        logger.debug('label a string, {}', label_a.string)
         if NEXT_PAGE in label_a.string:
             if label_a.get('href') == 'javascript:#':
                 return True
