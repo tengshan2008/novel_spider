@@ -96,7 +96,7 @@ def next_page(browser):
 
     pages = browser.find(class_='pages')
     for page in pages:
-        if NEXT_PAGE in page.string:
+        if page.string is not None and NEXT_PAGE in page.string:
             return page
     return None
 
@@ -116,8 +116,7 @@ def is_end_page(browser):
         return True
 
     for label_a in browser.find_all('a'):
-        logger.debug('label a string, {}, {}', label_a, label_a.string)
-        if label_a is not None and NEXT_PAGE in label_a.string:
+        if label_a.string is not None and NEXT_PAGE in label_a.string:
             if label_a.get('href') == 'javascript:#':
                 return True
 
