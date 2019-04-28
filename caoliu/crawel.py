@@ -114,7 +114,7 @@ def is_end_page(browser):
     if browser.find(class_='pages') is None:
         logger.debug('no pages detail: {}', browser.url)
         for state in browser._states:
-            logger.debug(state.response.content.decode('utf-8').encode('gb18030').decode('gb18030'))
+            logger.debug(state.response.content.decode('utf-8', 'replace'))
         return True
 
     for label_a in browser.find_all('a'):
