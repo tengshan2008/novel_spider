@@ -12,7 +12,7 @@ from robobrowser import RoboBrowser
 from caoliu import apan, db, logger, errors
 from util import config
 
-NEXT_PAGE = '下一頁'
+NEXT_PAGE = '下一'
 TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
@@ -96,7 +96,7 @@ def next_page(browser):
 
     pages = browser.find(class_='pages')
     for page in pages:
-        if page.string == NEXT_PAGE:
+        if NEXT_PAGE in page.string:
             return page
     return None
 
@@ -116,7 +116,7 @@ def is_end_page(browser):
         return True
 
     for label_a in browser.find_all('a'):
-        if label_a.string == NEXT_PAGE:
+        if NEXT_PAGE in label_a.string:
             if label_a.get('href') == 'javascript:#':
                 return True
 
