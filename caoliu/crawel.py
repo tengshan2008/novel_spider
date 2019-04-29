@@ -6,6 +6,8 @@ import random
 import re
 import time
 
+from bs4 import BeautifulSoup
+
 import requests
 from robobrowser import RoboBrowser
 
@@ -30,6 +32,17 @@ def run(url, idx):
     except:
         logger.exception('request failed: {url}', url=url)
         return
+
+    if need_redirects(browser):
+        redirect_link = redirect(browser)
+        try:
+            browser.follow_link(redirect_link)
+        except requests.ConnectionError as e:
+            logger.error(errors.RequestsFail, url=browser.url, err=e)
+            return
+        except:
+            logger.exception('request failed: {url}', url=browser.url)
+            return
 
     db_file = config.get('sqlite', 'caoliu')
     dbase = db.get(db_file)
@@ -177,6 +190,18 @@ def get_content(info):
         logger.exception('request failed: {url}', url=info['link'])
         return ''
 
+    if need_redirects(browser):
+        redirect_link = redirect(browser)
+        try:
+            browser.follow_link(redirect_link)
+        except requests.ConnectionError as e:
+            logger.error(errors.RequestsFail, url=browser.url, err=e)
+            return ''
+        except:
+            logger.exception('request failed: {url}', url=browser.url)
+            return ''
+
+
     contents = []
     while not is_end_page(browser):
         time.sleep(random.randint(2, 5))
@@ -209,3 +234,16 @@ def get_cell_content(browser, author):
                                           'tpc_content']).strings:
                 content.append(cell_content.strip())
     return '\n'.join(content)
+
+
+def need_redirects(browser):
+    state = browser.state.response.content.decode('gbk')
+    bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
+    return len(bs.find_all('a')) == 2
+
+
+def redirect(browser):
+    state = browser.state.response.content.decode('gbk')
+    bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
+    redirect_link = bs.find_all('a')[1]
+    return redirect_link
