@@ -126,7 +126,7 @@ def is_end_page(browser):
 
     if browser.find(class_='pages') is None:
         logger.debug('no pages detail: {}', browser.url)
-        logger.debug('response: {}', browser.state.response.content.decode('gbk'))
+        logger.debug('response: {}', browser.state.response.text)
         logger.debug('beautiful soup parse: {}', browser.parsed())
         return True
 
@@ -236,13 +236,13 @@ def get_cell_content(browser, author):
 
 
 def need_redirects(browser):
-    state = browser.state.response.content.decode('gbk')
+    state = browser.state.response.text
     bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
     return len(bs.find_all('a')) == 2
 
 
 def redirect(browser):
-    state = browser.state.response.content.decode('gbk')
+    state = browser.state.response.text
     bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
     redirect_link = bs.find_all('a')[1]
     return redirect_link
