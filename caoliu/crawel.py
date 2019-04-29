@@ -6,12 +6,12 @@ import random
 import re
 import time
 
-from bs4 import BeautifulSoup
-
 import requests
+from bs4 import BeautifulSoup
+from bs4.element import Tag
 from robobrowser import RoboBrowser
 
-from caoliu import apan, db, logger, errors
+from caoliu import apan, db, errors, logger
 from util import config
 
 NEXT_PAGE = '下一'
@@ -20,7 +20,7 @@ YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
 
-def run(url, idx):
+def run(url : str, idx : int):
     browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
 
@@ -80,7 +80,7 @@ def run(url, idx):
     db.close(dbase)
 
 
-def get_novels(browser):
+def get_novels(browser : RoboBrowser) -> list:
     """ get all novels link
 
     Arguments:
@@ -97,7 +97,7 @@ def get_novels(browser):
     return novels
 
 
-def next_page(browser):
+def next_page(browser : RoboBrowser) -> Tag:
     """get next page link
 
     Arguments:
@@ -114,7 +114,7 @@ def next_page(browser):
     return None
 
 
-def is_end_page(browser):
+def is_end_page(browser : RoboBrowser) -> bool:
     """ lookup the end page
 
     Arguments:
@@ -138,7 +138,7 @@ def is_end_page(browser):
     return False
 
 
-def get_info(novel):
+def get_info(novel : Tag) -> dict:
     return {
         'id': get_id(novel), 'title': get_title(novel),
         'author': get_author(novel), 'date': get_date(novel),
@@ -146,24 +146,24 @@ def get_info(novel):
     }
 
 
-def get_id(novel):
+def get_id(novel : Tag) -> str:
     href = novel.find('td', class_='tal').a['href']
     return href.split('/')[-1].split('.')[0]
 
 
-def get_title(novel):
+def get_title(novel : Tag) -> str:
     return novel.find('td', class_='tal').a.string.strip()
 
 
-def get_author(novel):
+def get_author(novel : Tag) -> str:
     return novel.find('a', class_='bl').string.strip()
 
 
-def get_type(novel):
+def get_type(novel : Tag) -> str:
     return novel.find(class_='tal').contents[0].strip()
 
 
-def get_date(novel):
+def get_date(novel : Tag) -> str:
     date = novel.find('div', class_='f12').string
     if TODAY in date:
         return str(datetime.date.today())
@@ -172,12 +172,12 @@ def get_date(novel):
     return date
 
 
-def get_link(novel):
+def get_link(novel : Tag) -> str:
     base_url = config.get('t66y', 'BaseUrl')
     return base_url + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
-def get_content(info):
+def get_content(info : dict) -> str:
     browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
     try:
@@ -225,7 +225,7 @@ def get_content(info):
     return '\n'.join(contents)
 
 
-def get_cell_content(browser, author):
+def get_cell_content(browser : RoboBrowser, author : str) -> str:
     content = []
     for cell in browser.find_all(class_='t t2'):
         if cell.find(class_='r_two').b.string == author:
@@ -235,13 +235,13 @@ def get_cell_content(browser, author):
     return '\n'.join(content)
 
 
-def need_redirects(browser):
+def need_redirects(browser : RoboBrowser) -> bool:
     state = browser.state.response.text
     bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
     return len(bs.find_all('a')) == 2
 
 
-def redirect(browser):
+def redirect(browser : RoboBrowser) -> Tag:
     state = browser.state.response.text
     bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
     redirect_link = bs.find_all('a')[1]
