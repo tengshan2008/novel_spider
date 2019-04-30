@@ -22,7 +22,6 @@ PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于
 session = requests.Session()
 session.headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-    'accept-encoding': 'gzip, deflate, br',
     'accept-language': 'zh-CN,zh;q=0.9',
     'cache-control': 'no-cache',
     'cookie': '__cfduid=daf1c243a21cc49f4807f162bc3a5ad6d1556430257; UM_distinctid=16a6278ff9b658-00d91e85434a76-7a1b34-144000-16a6278ff9c815; 227c9_lastvisit=0%091556591446%09%2Fread.php%3Ftid%3D3337712%26page%3D2; CNZZDATA950900=cnzz_eid%3D1797340401-1556428250-%26ntime%3D1556590258',
