@@ -206,7 +206,7 @@ def get_content(info : dict) -> str:
     browser.session.headers['pragma'] = header_pragma
     browser.session.headers['upgrade-insecure-requests'] = header_upgrade_insecure_requests
     browser.session.headers['user-agent'] = header_user_agent
-    
+
     try:
         browser.open(info['link'])
     except requests.ConnectionError as e:
@@ -220,6 +220,7 @@ def get_content(info : dict) -> str:
         redirect_link = redirect(browser)
         try:
             browser.follow_link(redirect_link)
+            logger.debug('new link is {}', browser.url)
         except requests.ConnectionError as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             return ''
