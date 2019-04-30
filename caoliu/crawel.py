@@ -19,8 +19,8 @@ TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
-
-headers = {
+session = requests.Session()
+session.headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
     'accept-language': 'zh-CN,zh;q=0.9',
     'cache-control': 'no-cache',
@@ -136,6 +136,7 @@ def is_end_page(browser : RoboBrowser) -> bool:
 
     if browser.find(class_='pages') is None:
         logger.debug('no pages detail: {}', browser.url)
+        logger.debug('request headers: {}', browser.session.headers)
         logger.debug('response: {}', browser.state.response.text)
         logger.debug('beautiful soup parse: {}', browser.parsed())
         return True
@@ -188,10 +189,10 @@ def get_link(novel : Tag) -> str:
 
 
 def get_content(info : dict) -> str:
-    browser = RoboBrowser(parser='html5lib', history=True,
+    browser = RoboBrowser(parser='html5lib', history=True, session=session,
                           timeout=30, tries=5, multiplier=0.3)
     try:
-        browser.open(info['link'], headers=headers)
+        browser.open(info['link'])
     except requests.ConnectionError as e:
         logger.error(errors.RequestsFail, url=info['link'], err=e)
         return ''
@@ -202,7 +203,7 @@ def get_content(info : dict) -> str:
     if need_redirects(browser):
         redirect_link = redirect(browser)
         try:
-            browser.follow_link(redirect_link, headers=headers)
+            browser.follow_link(redirect_link)
         except requests.ConnectionError as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             return ''
