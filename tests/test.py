@@ -4,8 +4,8 @@ import requests
 url = 'https://hs.etet.men/read.php?tid=1204183&page=2'
 
 def open():
-    session = requests.Session()
-    session.headers = {
+
+    headers = {
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
         'accept-language': 'zh-CN,zh;q=0.9',
         'cache-control': 'no-cache',
@@ -16,9 +16,9 @@ def open():
     }
 
     browser = RoboBrowser(history=True, parser='html5lib', 
-                          timeout=30, session=session)
+                          timeout=30)
 
-    browser.open(url)
+    browser.open(url, headers=headers)
     
     print(browser.state.response.headers)
 
