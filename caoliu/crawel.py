@@ -145,6 +145,7 @@ def is_end_page(browser : RoboBrowser) -> bool:
         logger.debug('no pages detail: {}', browser.url)
         logger.debug('request headers: {}', browser.session.headers)
         logger.debug('response: {}', browser.state.response.content.decode('gbk'))
+        logger.debug('response code: {}', browser.state.response.status_code)
         logger.debug('beautiful soup parse: {}', browser.parsed()[0])
         return True
 
