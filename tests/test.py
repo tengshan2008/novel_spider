@@ -3,6 +3,7 @@ import requests
 
 url = 'https://hs.etet.men/read.php?tid=3337712&page=2'
 
+user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0'
 
 def open():
@@ -25,9 +26,9 @@ def open():
                           timeout=30)
     browser.open(url)
     
-    print(browser.state.response.headers)
+    # print(browser.state.response.headers)
 
-    # print(browser.parsed()[0])
+    print(browser.parsed()[0])
 
 if __name__ == "__main__":
     open()
