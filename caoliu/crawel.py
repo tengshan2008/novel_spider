@@ -31,7 +31,7 @@ session.headers = {
 }
 
 def run(url : str, idx : int):
-    browser = RoboBrowser(parser='html5lib', history=True, session=session,
+    browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
 
     try:
@@ -136,7 +136,7 @@ def is_end_page(browser : RoboBrowser) -> bool:
 
     if browser.find(class_='pages') is None:
         logger.debug('no pages detail: {}', browser.url)
-        logger.debug('response: {}', browser.state.response.content)
+        logger.debug('response: {}', browser.state.response.text)
         logger.debug('beautiful soup parse: {}', browser.parsed())
         return True
 
