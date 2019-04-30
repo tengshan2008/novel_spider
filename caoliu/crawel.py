@@ -137,7 +137,7 @@ def is_end_page(browser : RoboBrowser) -> bool:
 
     if browser.find(class_='pages') is None:
         logger.debug('no pages detail: {}', browser.url)
-        logger.debug('response: {}', browser.state.response.text)
+        logger.debug('response: {}', browser.state.response.content.decode('gbk'))
         logger.debug('beautiful soup parse: {}', browser.parsed())
         return True
 
