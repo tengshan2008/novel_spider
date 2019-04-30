@@ -19,8 +19,8 @@ TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
-session = requests.Session()
-session.headers = {
+
+headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
     'accept-language': 'zh-CN,zh;q=0.9',
     'cache-control': 'no-cache',
@@ -188,10 +188,10 @@ def get_link(novel : Tag) -> str:
 
 
 def get_content(info : dict) -> str:
-    browser = RoboBrowser(parser='html5lib', history=True, session=session,
+    browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
     try:
-        browser.open(info['link'])
+        browser.open(info['link'], headers=headers)
     except requests.ConnectionError as e:
         logger.error(errors.RequestsFail, url=info['link'], err=e)
         return ''
@@ -202,7 +202,7 @@ def get_content(info : dict) -> str:
     if need_redirects(browser):
         redirect_link = redirect(browser)
         try:
-            browser.follow_link(redirect_link)
+            browser.follow_link(redirect_link, headers=headers)
         except requests.ConnectionError as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             return ''
