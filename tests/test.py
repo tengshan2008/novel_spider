@@ -1,7 +1,7 @@
 from robobrowser import RoboBrowser
 import requests
 
-url = 'https://hs.etet.men/read.php?tid=3337712&page=2'
+url = 'https://hs.etet.men/thread0806.php?fid=20&search=&page=6'
 
 def open():
     session = requests.Session()
