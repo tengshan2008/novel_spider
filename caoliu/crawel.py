@@ -205,7 +205,7 @@ def get_content(info : dict) -> str:
     browser.session.headers['cookie'] = header_cookie
     browser.session.headers['pragma'] = header_pragma
     browser.session.headers['upgrade-insecure-requests'] = header_upgrade_insecure_requests
-    browser.session.headers['user-agent'] = header_user_agent
+    browser.session.headers['User-Agent'] = header_user_agent
 
     try:
         browser.open(info['link'])
