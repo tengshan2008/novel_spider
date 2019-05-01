@@ -15,17 +15,20 @@ url = 'https://hs.etet.men/read.php?tid=3479641&page=2'
 # upgrade-insecure-requests: 1
 # user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
 
+
+# user-agent: Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML, like Gecko) Raspbian Chromium/72.0.3626.121 Chrome/72.0.3626.121 Safari/537.36
+
 def open():
     session = requests.Session()
     session.headers = {
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'accept-language': 'zh-CN,zh;q=0.9',
         'cache-control': 'no-cache',
-        'cookie': '__cfduid=daf1c243a21cc49f4807f162bc3a5ad6d1556430257; UM_distinctid=16a6278ff9b658-00d91e85434a76-7a1b34-144000-16a6278ff9c815; CNZZDATA950900=cnzz_eid%3D1797340401-1556428250-%26ntime%3D1556601058; 227c9_lastvisit=0%091556604559%09%2Fread.php%3Ftid%3D3510604%26page%3D2',
+        'cookie': '__cfduid=dd645a9e4471d35f84b08580b5dc95fc31556544797; UM_distinctid=16a694cc9e685-0252e494129499-1f694e4e-42a00-16a694cc9ea69; 227c9_lastvisit=0%091556692557%09%2Fread.php%3Ftid%3D3479641%26fpage%3D0%26toread%3D%26page%3D1; CNZZDATA950900=cnzz_eid%3D1220144536-1556542338-%26ntime%3D1556691450',
         'pragma': 'no-cache',
-        # 'referer': 'https://hs.etet.men/htm_data/20/1904/3500394.html',
+        'Referer': 'https://hs.etet.men/htm_data/20/1903/3479641.html',
         'upgrade-insecure-requests': '1',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'
+        'User-Aagent': 'Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML, like Gecko) Raspbian Chromium/72.0.3626.121 Chrome/72.0.3626.121 Safari/537.36'
     }
 
     browser = RoboBrowser(history=True, parser='html5lib', 
