@@ -198,7 +198,8 @@ def get_link(novel: Tag) -> str:
 
 def get_content(info: dict) -> str:
     session = requests.Session()
-    session.proxies = {'https': random.choice(ip_pool)}
+    # session.proxies = {'https': random.choice(ip_pool)}
+    session.proxies = {'https': '163.125.223.214:8118'}
     browser = RoboBrowser(parser='html5lib', history=True, session=session,
                           timeout=30, tries=5, multiplier=0.3)
     # browser.session.headers['User-Agent'] = user_agent
