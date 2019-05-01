@@ -197,10 +197,10 @@ def get_link(novel: Tag) -> str:
 
 
 def get_content(info: dict) -> str:
-    session = requests.Session()
+    # session = requests.Session()
     # session.proxies = {'https': random.choice(ip_pool)}
-    session.proxies = {'https': '122.193.244.126:9999'}
-    browser = RoboBrowser(parser='html5lib', history=True, session=session,
+    # session.proxies = {'https': '122.193.244.126:9999'}
+    browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
     # browser.session.headers['User-Agent'] = user_agent
 
@@ -239,7 +239,7 @@ def get_content(info: dict) -> str:
             logger.info("detail\n{}", browser.find())
             break
         try:
-            browser.follow_link(page_link)
+            browser.follow_link(page_link, proxies={'https': '122.193.244.126:9999'})
         except requests.ConnectionError as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
