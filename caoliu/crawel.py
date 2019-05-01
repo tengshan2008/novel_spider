@@ -65,7 +65,7 @@ def run(url: str, idx: int):
     dbase = db.get(db_file)
 
     count = idx + 1
-    while not is_end_page(browser):
+    while True:
         logger.info("current page is {}", count)
         for novel in get_novels(browser):
             time.sleep(random.randint(2, 5))
@@ -76,6 +76,8 @@ def run(url: str, idx: int):
                 ok = apan.upload(novel_info, content)
                 if not ok:
                     db.delete(novel_info, dbase)
+        if is_end_page(browser):
+            break
         page_link = next_page(browser)
         if page_link is None:
             logger.error("get next page failed")
@@ -227,10 +229,12 @@ def get_content(info: dict) -> str:
 
     count = 1
     contents = []
-    while not is_end_page(browser):
+    while True:
         logger.info("current page is {}", count)
         time.sleep(random.randint(2, 5))
         contents.append(get_cell_content(browser, info['author']))
+        if is_end_page(browser):
+            break
         page_link = next_page(browser)
         if page_link is None:
             logger.error("get next page failed")
