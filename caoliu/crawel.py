@@ -199,7 +199,7 @@ def get_link(novel: Tag) -> str:
 def get_content(info: dict) -> str:
     session = requests.Session()
     # session.proxies = {'https': random.choice(ip_pool)}
-    session.proxies = {'https': '163.125.223.214:8118'}
+    session.proxies = {'https': '122.193.244.126:9999'}
     browser = RoboBrowser(parser='html5lib', history=True, session=session,
                           timeout=30, tries=5, multiplier=0.3)
     # browser.session.headers['User-Agent'] = user_agent
@@ -212,6 +212,7 @@ def get_content(info: dict) -> str:
     except requests.exceptions.ProxyError as e:
         logger.error(errors.RequestsFail, url=info['link'], err=e)
         logger.error('bad proxy is: {}', browser.session.proxies)
+        return ''
     except:
         logger.exception('request failed: {url}', url=info['link'])
         return ''
