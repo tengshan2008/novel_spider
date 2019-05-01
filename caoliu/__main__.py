@@ -1,5 +1,5 @@
 import time
-# import random
+import random
 
 from caoliu import apan, crawel, db, logger
 from util import config
