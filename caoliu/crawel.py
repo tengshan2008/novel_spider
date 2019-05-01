@@ -205,9 +205,12 @@ def get_content(info: dict) -> str:
 
     try:
         browser.open(info['link'])
-    except requests.ConnectionError as e:
+    except requests.exceptions.Timeout as e:
         logger.error(errors.RequestsFail, url=info['link'], err=e)
         return ''
+    except requests.exceptions.ProxyError as e:
+        logger.error(errors.RequestsFail, url=info['link'], err=e)
+        logger.error('bad proxy is: {}', browser.session.proxies)
     except:
         logger.exception('request failed: {url}', url=info['link'])
         return ''
