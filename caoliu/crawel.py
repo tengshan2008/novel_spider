@@ -235,7 +235,7 @@ def get_content(info: dict) -> str:
             logger.info("detail\n{}", browser.find())
             break
         try:
-            browser.follow_link(page_link, proxies={'https': '122.193.244.126:9999'})
+            browser.follow_link(page_link, proxies={'https': '118.187.58.35:53281'})
         except requests.exceptions.Timeout as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
