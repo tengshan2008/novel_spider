@@ -209,10 +209,6 @@ def get_content(info: dict) -> str:
     except requests.exceptions.Timeout as e:
         logger.error(errors.RequestsFail, url=info['link'], err=e)
         return ''
-    except requests.exceptions.ProxyError as e:
-        logger.error(errors.RequestsFail, url=info['link'], err=e)
-        logger.error('bad proxy is: {}', browser.session.proxies)
-        return ''
     except:
         logger.exception('request failed: {url}', url=info['link'])
         return ''
@@ -240,8 +236,12 @@ def get_content(info: dict) -> str:
             break
         try:
             browser.follow_link(page_link, proxies={'https': '122.193.244.126:9999'})
-        except requests.ConnectionError as e:
+        except requests.exceptions.Timeout as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
+            break
+        except requests.exceptions.ProxyError as e:
+            logger.error(errors.RequestsFail, url=browser.url, err=e)
+            logger.error('bad proxy is: {}', browser.session.proxies)
             break
         except:
             logger.exception('request failed: {url}', url=browser.url)
