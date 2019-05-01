@@ -225,8 +225,10 @@ def get_content(info: dict) -> str:
             logger.exception('request failed: {url}', url=browser.url)
             return ''
 
+    count = 1
     contents = []
     while not is_end_page(browser):
+        logger.info("current page is {}", count)
         time.sleep(random.randint(2, 5))
         contents.append(get_cell_content(browser, info['author']))
         page_link = next_page(browser)
@@ -246,6 +248,7 @@ def get_content(info: dict) -> str:
         except:
             logger.exception('request failed: {url}', url=browser.url)
             break
+        count += 1
 
     if len(contents) == 0:
         logger.info('void novel detail is \n{}', browser.find())
