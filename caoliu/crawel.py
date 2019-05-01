@@ -19,25 +19,25 @@ TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
-header_accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3'
-header_accept_language = 'zh-CN,zh;q=0.9'
-header_cache_control = 'no-cache'
-header_cookie = '__cfduid=daf1c243a21cc49f4807f162bc3a5ad6d1556430257; UM_distinctid=16a6278ff9b658-00d91e85434a76-7a1b34-144000-16a6278ff9c815; 227c9_lastvisit=0%091556591446%09%2Fread.php%3Ftid%3D3337712%26page%3D2; CNZZDATA950900=cnzz_eid%3D1797340401-1556428250-%26ntime%3D1556590258'
-header_pragma = 'no-cache'
-header_upgrade_insecure_requests = '1'
-header_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'
-# session = requests.Session()
-# session.headers = {
-    # 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-    # 'accept-language': 'zh-CN,zh;q=0.9',
-    # 'cache-control': 'no-cache',
-    # 'cookie': '__cfduid=daf1c243a21cc49f4807f162bc3a5ad6d1556430257; UM_distinctid=16a6278ff9b658-00d91e85434a76-7a1b34-144000-16a6278ff9c815; 227c9_lastvisit=0%091556591446%09%2Fread.php%3Ftid%3D3337712%26page%3D2; CNZZDATA950900=cnzz_eid%3D1797340401-1556428250-%26ntime%3D1556590258',
-    # 'pragma': 'no-cache',
-    # 'upgrade-insecure-requests': '1',
-    # 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'
-# }
+user_agent = '''Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+                AppleWebKit/537.36 (KHTML, like Gecko)
+                Chrome/73.0.3683.75 Safari/537.36'''
 
-def run(url : str, idx : int):
+ip_pool = [
+        '221.11.105.68:56120',
+        '222.189.191.9:9999',
+        '116.209.57.6:9999',
+        '219.159.38.201:56210',
+        '114.249.119.52:9000',
+        '122.193.244.126:9999',
+        '118.187.58.35:53281',
+        '116.209.58.85:9999',
+        '125.123.140.201:9999',
+        '163.125.223.214:8118'
+    ]
+
+
+def run(url: str, idx: int):
     browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
 
@@ -97,7 +97,7 @@ def run(url : str, idx : int):
     db.close(dbase)
 
 
-def get_novels(browser : RoboBrowser) -> list:
+def get_novels(browser: RoboBrowser) -> list:
     """ get all novels link
 
     Arguments:
@@ -114,7 +114,7 @@ def get_novels(browser : RoboBrowser) -> list:
     return novels
 
 
-def next_page(browser : RoboBrowser) -> Tag:
+def next_page(browser: RoboBrowser) -> Tag:
     """get next page link
 
     Arguments:
@@ -131,7 +131,7 @@ def next_page(browser : RoboBrowser) -> Tag:
     return None
 
 
-def is_end_page(browser : RoboBrowser) -> bool:
+def is_end_page(browser: RoboBrowser) -> bool:
     """ lookup the end page
 
     Arguments:
@@ -144,7 +144,7 @@ def is_end_page(browser : RoboBrowser) -> bool:
     if browser.find(class_='pages') is None:
         logger.debug('no pages detail: {}', browser.url)
         logger.debug('request headers: {}', browser.session.headers)
-        logger.debug('response: {}', browser.state.response.content.decode('gbk'))
+        logger.debug('resp :{}', browser.state.response.content.decode('gbk'))
         logger.debug('response code: {}', browser.state.response.status_code)
         logger.debug('beautiful soup parse: {}', browser.parsed()[0])
         return True
@@ -157,7 +157,7 @@ def is_end_page(browser : RoboBrowser) -> bool:
     return False
 
 
-def get_info(novel : Tag) -> dict:
+def get_info(novel: Tag) -> dict:
     return {
         'id': get_id(novel), 'title': get_title(novel),
         'author': get_author(novel), 'date': get_date(novel),
@@ -165,24 +165,24 @@ def get_info(novel : Tag) -> dict:
     }
 
 
-def get_id(novel : Tag) -> str:
+def get_id(novel: Tag) -> str:
     href = novel.find('td', class_='tal').a['href']
     return href.split('/')[-1].split('.')[0]
 
 
-def get_title(novel : Tag) -> str:
+def get_title(novel: Tag) -> str:
     return novel.find('td', class_='tal').a.string.strip()
 
 
-def get_author(novel : Tag) -> str:
+def get_author(novel: Tag) -> str:
     return novel.find('a', class_='bl').string.strip()
 
 
-def get_type(novel : Tag) -> str:
+def get_type(novel: Tag) -> str:
     return novel.find(class_='tal').contents[0].strip()
 
 
-def get_date(novel : Tag) -> str:
+def get_date(novel: Tag) -> str:
     date = novel.find('div', class_='f12').string
     if TODAY in date:
         return str(datetime.date.today())
@@ -191,22 +191,17 @@ def get_date(novel : Tag) -> str:
     return date
 
 
-def get_link(novel : Tag) -> str:
+def get_link(novel: Tag) -> str:
     base_url = config.get('t66y', 'BaseUrl')
     return base_url + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
-def get_content(info : dict) -> str:
+def get_content(info: dict) -> str:
+    session = requests.Session()
+    session.proxies = {'https': random.choice(ip_pool)}
     browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
-
-    browser.session.headers['accept'] = header_accept
-    browser.session.headers['accept-language'] = header_accept_language
-    browser.session.headers['cache-control'] = header_cache_control
-    browser.session.headers['cookie'] = header_cookie
-    browser.session.headers['pragma'] = header_pragma
-    browser.session.headers['upgrade-insecure-requests'] = header_upgrade_insecure_requests
-    browser.session.headers['User-Agent'] = header_user_agent
+    browser.session.headers['User-Agent'] = user_agent
 
     try:
         browser.open(info['link'])
@@ -228,7 +223,6 @@ def get_content(info : dict) -> str:
         except:
             logger.exception('request failed: {url}', url=browser.url)
             return ''
-
 
     contents = []
     while not is_end_page(browser):
@@ -254,7 +248,7 @@ def get_content(info : dict) -> str:
     return '\n'.join(contents)
 
 
-def get_cell_content(browser : RoboBrowser, author : str) -> str:
+def get_cell_content(browser: RoboBrowser, author: str) -> str:
     content = []
     for cell in browser.find_all(class_='t t2'):
         if cell.find(class_='r_two').b.string == author:
@@ -264,13 +258,13 @@ def get_cell_content(browser : RoboBrowser, author : str) -> str:
     return '\n'.join(content)
 
 
-def need_redirects(browser : RoboBrowser) -> bool:
+def need_redirects(browser: RoboBrowser) -> bool:
     state = browser.state.response.text
     bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
     return len(bs.find_all('a')) == 2
 
 
-def redirect(browser : RoboBrowser) -> Tag:
+def redirect(browser: RoboBrowser) -> Tag:
     state = browser.state.response.text
     bs = BeautifulSoup(state.replace('<!---->', ''), 'html5lib')
     redirect_link = bs.find_all('a')[1]
