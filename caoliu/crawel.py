@@ -78,15 +78,9 @@ def run(url: str, idx: int):
                     db.delete(novel_info, dbase)
         if is_end_page(browser):
             break
-        page_link = next_page(browser)
-        if page_link is None:
-            logger.error("get next page failed")
-            logger.info('detail\n{}', browser.find())
-            db.close(dbase)
-            return
         try:
-            browser.follow_link(page_link)
-        except requests.ConnectionError as e:
+            browser.follow_link(next_page(browser))
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             db.close(dbase)
             return
@@ -237,13 +231,8 @@ def get_content(info: dict):
         if is_end_page(browser):
             break
         page_totel = find_total_page(browser)
-        page_link = next_page(browser)
-        if page_link is None:
-            logger.error("get next page failed")
-            logger.info("detail\n{}", browser.find())
-            break
         try:
-            browser.follow_link(page_link, proxies={'https': '182.92.105.136:3128'})
+            browser.follow_link(next_page(browser), proxies={'https': '182.92.105.136:3128'})
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
