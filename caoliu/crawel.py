@@ -163,7 +163,8 @@ def get_info(novel: Tag) -> dict:
     return {
         'id': get_id(novel), 'title': get_title(novel),
         'author': get_author(novel), 'date': get_date(novel),
-        'type': get_type(novel), 'link': get_link(novel)
+        'type': get_type(novel), 'link': get_link(novel),
+        'page': '0/0',
     }
 
 
@@ -198,7 +199,7 @@ def get_link(novel: Tag) -> str:
     return base_url + '/' + novel.find('td', class_='tal').h3.a['href'].strip()
 
 
-def get_content(info: dict) -> str:
+def get_content(info: dict):
     # session = requests.Session()
     # session.proxies = {'https': random.choice(ip_pool)}
     # session.proxies = {'https': '122.193.244.126:9999'}
@@ -227,10 +228,10 @@ def get_content(info: dict) -> str:
             logger.exception('request failed: {url}', url=browser.url)
             return ''
 
-    count = 1
+    page_totel = find_total_page(browser)
+    page_count = 1
     contents = []
     while True:
-        logger.info("current page is {}", count)
         time.sleep(random.randint(2, 5))
         contents.append(get_cell_content(browser, info['author']))
         if is_end_page(browser):
@@ -241,7 +242,7 @@ def get_content(info: dict) -> str:
             logger.info("detail\n{}", browser.find())
             break
         try:
-            browser.follow_link(page_link, proxies={'https': '118.187.58.35:53281'})
+            browser.follow_link(page_link, proxies={'https': '182.92.105.136:3128'})
         except requests.exceptions.Timeout as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
@@ -252,10 +253,12 @@ def get_content(info: dict) -> str:
         except:
             logger.exception('request failed: {url}', url=browser.url)
             break
-        count += 1
+        page_count += 1
 
     if len(contents) == 0:
         logger.info('void novel detail is \n{}', browser.find())
+
+    info['page'] = str(page_count) + '/' + page_totel
 
     return '\n'.join(contents)
 
@@ -268,6 +271,18 @@ def get_cell_content(browser: RoboBrowser, author: str) -> str:
                                           'tpc_content']).strings:
                 content.append(cell_content.strip())
     return '\n'.join(content)
+
+
+def find_total_page(browser: RoboBrowser):
+    pages = browser.find(class_='pages')
+    if pages is None:
+        logger.debug('no pages detail: {}', browser.url)
+        logger.debug('request headers: {}', browser.session.headers)
+        logger.debug('resp :{}', browser.state.response.content.decode('gbk'))
+        logger.debug('response code: {}', browser.state.response.status_code)
+        logger.debug('beautiful soup parse: {}', browser.parsed()[0])
+        return '0'
+    return pages.find_all('a')[-1]['href'].split('=')[-1]
 
 
 def need_redirects(browser: RoboBrowser) -> bool:

@@ -63,14 +63,16 @@ def init():
             close(db)
 
 
-def insert(novel_info, db):
+def insert(novel_info: dict, db):
     novel_info = {k: v.replace("'", "''") for k, v in novel_info.items()}
 
     try:
         with db:
             size = db.execute(sql_read, (int(novel_info['id']),)).fetchone()
             if size is None:
-                logger.info("insert {}", novel_info['title'])
+                logger.info("insert {}, page {}",
+                            novel_info['title'],
+                            novel_info['page'])
                 db.execute(sql_insert, (int(novel_info['id']),
                                         novel_info['title'],
                                         novel_info['author'],
@@ -79,11 +81,15 @@ def insert(novel_info, db):
                                         novel_info['link'],
                                         int(novel_info['size'])),)
             elif int(novel_info['size']) > size[0]:
-                logger.info("update {}", novel_info['title'])
+                logger.info("update {}, page {}",
+                            novel_info['title'],
+                            novel_info['page'])
                 db.execute(sql_update, (int(novel_info['size']),
                                         int(novel_info['id'])))
             else:
-                logger.info("ignore {}", novel_info['title'])
+                logger.info("ignore {}, page {}",
+                            novel_info['title'],
+                            novel_info['page'])
                 return False
 
     except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
