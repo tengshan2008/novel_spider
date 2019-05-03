@@ -228,7 +228,7 @@ def get_content(info: dict):
             logger.exception('request failed: {url}', url=browser.url)
             return ''
 
-    page_totel = find_total_page(browser)
+    page_total = '0'
     page_count = 1
     contents = []
     while True:
@@ -236,6 +236,7 @@ def get_content(info: dict):
         contents.append(get_cell_content(browser, info['author']))
         if is_end_page(browser):
             break
+        page_totel = find_total_page(browser)
         page_link = next_page(browser)
         if page_link is None:
             logger.error("get next page failed")
@@ -243,7 +244,7 @@ def get_content(info: dict):
             break
         try:
             browser.follow_link(page_link, proxies={'https': '182.92.105.136:3128'})
-        except requests.exceptions.Timeout as e:
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
         except requests.exceptions.ProxyError as e:
@@ -275,13 +276,6 @@ def get_cell_content(browser: RoboBrowser, author: str) -> str:
 
 def find_total_page(browser: RoboBrowser):
     pages = browser.find(class_='pages')
-    if pages is None:
-        logger.debug('no pages detail: {}', browser.url)
-        logger.debug('request headers: {}', browser.session.headers)
-        logger.debug('resp :{}', browser.state.response.content.decode('gbk'))
-        logger.debug('response code: {}', browser.state.response.status_code)
-        logger.debug('beautiful soup parse: {}', browser.parsed()[0])
-        return '0'
     return pages.find_all('a')[-1]['href'].split('=')[-1]
 
 
