@@ -12,7 +12,7 @@ from bs4.element import Tag
 from robobrowser import RoboBrowser
 
 from caoliu import apan, db, errors, logger
-from util import config
+from util import config, proxy_pool
 
 NEXT_PAGE = '下一'
 TODAY = '今天'
@@ -194,12 +194,9 @@ def get_link(novel: Tag) -> str:
 
 
 def get_content(info: dict):
-    # session = requests.Session()
-    # session.proxies = {'https': random.choice(ip_pool)}
-    # session.proxies = {'https': '122.193.244.126:9999'}
     browser = RoboBrowser(parser='html5lib', history=True,
                           timeout=30, tries=5, multiplier=0.3)
-    # browser.session.headers['User-Agent'] = user_agent
+    proxies = {'https': proxy_pool.get_random()}
 
     try:
         browser.open(info['link'])
@@ -232,7 +229,7 @@ def get_content(info: dict):
             break
         page_totel = find_total_page(browser)
         try:
-            browser.follow_link(next_page(browser), proxies={'https': '182.92.105.136:3128'})
+            browser.follow_link(next_page(browser), proxies=proxies)
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             break
