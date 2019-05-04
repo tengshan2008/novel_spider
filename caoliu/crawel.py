@@ -26,7 +26,7 @@ def run(url: str, idx: int):
 
     try:
         browser.open(url)
-    except requests.ConnectionError as e:
+    except (requests.exceptions.Timeout, requests.ConnectionError) as e:
         logger.error(errors.RequestsFail, url=url, err=e)
         return
     except:
@@ -37,7 +37,7 @@ def run(url: str, idx: int):
         redirect_link = redirect(browser)
         try:
             browser.follow_link(redirect_link)
-        except requests.ConnectionError as e:
+        except (requests.exceptions.Timeout, requests.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             return
         except:
@@ -183,7 +183,7 @@ def get_content(info: dict):
 
     try:
         browser.open(info['link'])
-    except requests.exceptions.Timeout as e:
+    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
         logger.error(errors.RequestsFail, url=info['link'], err=e)
         return ''
     except:
@@ -195,7 +195,7 @@ def get_content(info: dict):
         try:
             browser.follow_link(redirect_link)
             logger.debug('new link is {}', browser.url)
-        except requests.ConnectionError as e:
+        except (requests.exceptions.Timeout, requests.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
             return ''
         except:
