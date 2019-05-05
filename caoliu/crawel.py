@@ -120,12 +120,13 @@ def is_end_page(browser: RoboBrowser) -> bool:
         Boolean -- judge the end page
     """
 
+    if browser.state.response.content is None:
+        logger.warning('request content failed')
+        return True
+
     if browser.find(class_='pages') is None:
-        logger.debug('no pages detail: {}', browser.url)
-        logger.debug('request headers: {}', browser.session.headers)
-        logger.debug('resp :{}', browser.state.response.content.decode('gbk'))
-        logger.debug('response code: {}', browser.state.response.status_code)
-        logger.debug('beautiful soup parse: {}', browser.parsed()[0])
+        logger.warning('no pages detail: {}', browser.url)
+        logger.warning('beautiful soup parse: {}', browser.find())
         return True
 
     for label_a in browser.find_all('a'):
