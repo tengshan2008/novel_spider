@@ -126,7 +126,7 @@ def is_end_page(browser: RoboBrowser) -> bool:
 
     if browser.find(class_='pages') is None:
         logger.warning('no pages detail: {}', browser.url)
-        logger.warning('beautiful soup parse: {}', browser.find())
+        logger.warning('beautiful soup parse: \n{}', browser.state.response.content)
         return True
 
     for label_a in browser.find_all('a'):
