@@ -21,7 +21,7 @@ TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
 
-base_path = path.split(path.realpath(__file__))[0]
+base_path = os.path.split(os.path.realpath(__file__))[0]
 
 
 def run(url: str, idx: int):
