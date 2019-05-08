@@ -2,8 +2,10 @@
 """
 
 import datetime
+import os
 import random
 import re
+import string
 import time
 
 import requests
@@ -18,6 +20,8 @@ NEXT_PAGE = '下一'
 TODAY = '今天'
 YESTERDAY = '昨天'
 PATTERN = '草榴官方客戶端|來訪者必看的內容|发帖前必读|关于论坛的搜索功能|文学区违规举报专贴|文區版規'
+
+base_path = path.split(path.realpath(__file__))[0]
 
 
 def run(url: str, idx: int):
@@ -125,8 +129,12 @@ def is_end_page(browser: RoboBrowser) -> bool:
         return True
 
     if browser.find(class_='pages') is None:
-        logger.warning('no pages detail: {}', browser.url)
-        logger.warning('beautiful soup parse: \n{}', browser.state.response.content)
+        logger.warning('no pages url: {}', browser.url)
+        fid = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+        logger.warning('response detail in: \n{}', fid+'.html')
+        fail_file_path = os.path.join(base_path, fid+'.html')
+        with open(fail_file_path, 'wb') as f:
+            f.write(browser.state.response.content)
         return True
 
     for label_a in browser.find_all('a'):
