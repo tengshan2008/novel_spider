@@ -211,7 +211,7 @@ def get_content(info: dict):
         contents.append(get_cell_content(browser, info['author']))
         if is_end_page(browser):
             break
-        page_totel = find_total_page(browser)
+        page_total = find_total_page(browser)
         try:
             browser.follow_link(next_page(browser), proxies=proxies)
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
@@ -231,7 +231,7 @@ def get_content(info: dict):
     if len(contents) == 0:
         logger.info('void novel detail is \n{}', browser.find())
 
-    info['page'] = str(page_count) + '/' + page_totel
+    info['page'] = str(page_count) + '/' + page_total
 
     return '\n'.join(contents)
 
