@@ -131,7 +131,7 @@ def is_end_page(browser: RoboBrowser) -> bool:
     if browser.find(class_='pages') is None:
         logger.warning('no pages url: {}', browser.url)
         fid = ''.join(random.sample(string.ascii_letters + string.digits, 8))
-        logger.warning('response detail in: \n{}', fid+'.html')
+        logger.warning('response detail in: {}', fid+'.html')
         fail_file_path = os.path.join(base_path, 'pages', fid+'.html')
         with open(fail_file_path, 'wb') as f:
             f.write(browser.state.response.content)
