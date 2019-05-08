@@ -211,7 +211,7 @@ def get_content(info: dict):
             logger.exception('request failed: {url}', url=browser.url)
             return ''
 
-    page_total = '0'
+    page_total = '1'
     page_count = 1
     contents = []
     while True:
