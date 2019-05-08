@@ -216,13 +216,15 @@ def get_content(info: dict):
             browser.follow_link(next_page(browser), proxies=proxies)
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
+            logger.error('proxy is: {}', proxies)
             break
         except requests.exceptions.ProxyError as e:
             logger.error(errors.RequestsFail, url=browser.url, err=e)
-            logger.error('bad proxy is: {}', browser.session.proxies)
+            logger.error('proxy is: {}', proxies)
             break
         except:
             logger.exception('request failed: {url}', url=browser.url)
+            logger.error('proxy is: {}', proxies)
             break
         page_count += 1
 
