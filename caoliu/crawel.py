@@ -114,7 +114,7 @@ def next_page(browser: RoboBrowser) -> Tag:
     return None
 
 
-def is_end_page(browser: RoboBrowser) -> bool:
+def is_end_page(browser: RoboBrowser, proxies={}) -> bool:
     """ lookup the end page
 
     Arguments:
@@ -131,7 +131,7 @@ def is_end_page(browser: RoboBrowser) -> bool:
     if browser.find(class_='pages') is None:
         logger.warning('no pages url: {}', browser.url)
         fid = ''.join(random.sample(string.ascii_letters + string.digits, 8))
-        logger.warning('response detail in: {}, proxy is: {}', fid+'.html', browser.url)
+        logger.warning('response detail in: {}, proxy is: {}', fid+'.html', proxies)
         fail_file_path = os.path.join(base_path, 'pages', fid+'.html')
         with open(fail_file_path, 'wb') as f:
             f.write(browser.state.response.content)
@@ -217,7 +217,7 @@ def get_content(info: dict):
     while True:
         time.sleep(random.randint(10, 15))
         contents.append(get_cell_content(browser, info['author']))
-        if is_end_page(browser):
+        if is_end_page(browser, proxies):
             break
         page_total = find_total_page(browser)
         try:
