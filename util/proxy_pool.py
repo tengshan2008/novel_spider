@@ -14,3 +14,6 @@ def get_all():
 
 def get_random():
     return random.choice(get_all())
+
+# https://www.xicidaili.com/
+# http://www.gatherproxy.com/zh/
