@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-DAV = Path('/home/sayinfo/workspace')
+DAV = Path('/mnt/DAV/book')
 
 
 def upload(title, id, data):

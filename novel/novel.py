@@ -1,5 +1,6 @@
 from mechanicalsoup import StatefulBrowser as Browser
 from bs4.element import Tag
+import dav
 import re
 import time
 
@@ -161,7 +162,7 @@ class Crawl(object):
         self.url = url
         for item in self.__request_novel_list():
             novel = Novel(item['url'], item['author'])
-            upload(novel.title, novel.id, novel.content)
+            dav.upload(novel.title, novel.id, novel.content)
 
     def __parse_page(self, url):
         # urls = []
@@ -190,14 +191,15 @@ if __name__ == "__main__":
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3777760.html'
     # author = 'yq8226171'
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
-    # url = 'https://cb.386i.xyz/htm_data/2002/20/3828496.html'
-    # author = '潇湘竹'
+    url = 'https://cb.386i.xyz/htm_data/2002/20/3828496.html'
+    author = '潇湘竹'
     # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
     # author = 'ROLLIN'
-    # novel = Novel(url, author=author)
+    novel = Novel(url, tid='ab12', title='未知', author=author)
 
-    # novel.request()
+    novel.request()
 
+    dav.upload(novel.title, novel.id, novel.content)
     # print(novel.author)
     # print(novel.content)
     # print(novel.links)
@@ -205,5 +207,3 @@ if __name__ == "__main__":
     # for cell in page.get_cells():
     #     print(cell.author)
     #     print(cell.content)
-    pagination = Pagination('https://cb.386i.xyz/thread0806.php?fid=20')
-    print(pagination.links)
