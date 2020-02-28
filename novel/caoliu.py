@@ -8,7 +8,10 @@ host = "https://cb.386i.xyz"
 
 
 class Pagination(object):
-    def __init__(self, url):
+    def __init__(self, url, format=None):
+        self.format = "/read.php?tid={tid}&page="
+        if format is not None:
+            self.format = format
         self.links = self.__parse(url)
 
     def __parse(self, url):
@@ -32,7 +35,7 @@ class Pagination(object):
 
         link = []
         for i in range(last):
-            link.append((i+1, f"{host}/read.php?tid={tid}&page={i+1}"))
+            link.append((i+1, f"{host}{self.format}{i+1}"))
         return link
 
 
@@ -111,10 +114,10 @@ class Novel(object):
         self.links = []
 
     def upload(self):
-        pass
+        dav.upload(self.title, self.id, self.content)
 
     def delete(self):
-        pass
+        dav.remove(self.title, self.id)
 
     def __parse_page(self, url):
         if self.id == "":
@@ -156,34 +159,6 @@ class Novel(object):
                     self.content += cell.content
 
 
-class Crawl(object):
-
-    def __init__(self, url):
-        self.url = url
-        for item in self.__request_novel_list():
-            novel = Novel(item['url'], item['author'])
-            dav.upload(novel.title, novel.id, novel.content)
-
-    def __parse_page(self, url):
-        # urls = []
-        # for url in urls:
-        #     self.novels.append(Novel(url))
-        pass
-
-    def __request_novel_list(self):
-        pagination = Pagination(self.url)
-        for i, link in pagination.links:
-            page = Page(link, i)
-            for item in self.__parse_page():
-                yield item
-
-    def __open(self, url):
-        browser = Browser()
-        browser.open(url)
-        soup = browser.get_current_page()
-        return soup
-
-
 if __name__ == "__main__":
     # url, author = 'https://cb.386i.xyz/htm_data/2001/20/3778625.html', '晨起凸起'
     # url = 'https://cb.386i.xyz/read.php?tid=3777610&page=2'
@@ -199,10 +174,10 @@ if __name__ == "__main__":
 
     novel.request()
 
-    dav.upload(novel.title, novel.id, novel.content)
-    # print(novel.author)
-    # print(novel.content)
-    # print(novel.links)
+    # dav.upload(novel.title, novel.id, novel.content)
+    print(novel.author)
+    print(novel.content)
+    print(novel.links)
     # page = Page(url, 1)
     # for cell in page.get_cells():
     #     print(cell.author)

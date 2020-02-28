@@ -32,6 +32,7 @@ sql_delete = """
     WHERE nid = ?
 """
 
+
 class Database(object):
     def __init__(self, logger, filename):
         self.logger = logger
@@ -57,7 +58,7 @@ class Database(object):
                 self.logger.info("database init success")
             except sqlite3.OperationalError as e:
                 self.logger.error("init db error: {}", e)
-            except:
+            except Exception:
                 self.logger.exception('detail')
             finally:
                 self.close()
