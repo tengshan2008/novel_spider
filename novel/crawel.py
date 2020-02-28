@@ -21,13 +21,14 @@ class Page(object):
             item = {}
             link, title, author, _, _ = block("td")
             item["link"] = f"{host}/{link.a['href']}"
-            item["type"], item["title"] = [i.strip() for i in list(title.strings)[:2]]
+            type_title = [i.strip() for i in list(title.strings)[:2]]
+            item["type"], item["title"] = type_title
             item["author"] = author.a.string.strip()
             if author.div.span is None:
                 item["date"] = author.div.string.strip()
             else:
                 item["date"] = author.div.span.string.strip()
-            item["id"] = ''
+            item["id"] = item["link"].split('/')[-1][:-5]
             items.append(item)
         return items
 
@@ -49,12 +50,15 @@ class Crawl(object):
         page_format = "/thread0806.php?fid=20&search=&page="
         pagination = Pagination(self.url, page_format)
         for i, link in pagination.links:
-            print(i, link)
-            # page = Page(link, i)
-            # for item in page.get_items():
-            #     novel = Novel(item['url'],
-            #                   item['author'])
-            #     novel.upload()
+            page = Page(link, i)
+            for item in page.get_items():
+                novel = Novel(url=item['url'],
+                              tid=item['id'],
+                              title=item['title'],
+                              author=item['author'],
+                              date=item['date'],
+                              category=item['type'])
+                novel.upload()
 
 
 if __name__ == "__main__":
