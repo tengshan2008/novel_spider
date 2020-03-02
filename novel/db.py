@@ -105,10 +105,10 @@ class Database(object):
 
         return True
 
-    def delete(self, novel_info: dict):
+    def delete(self, novel_id):
         try:
             with self.db:
-                self.db.execute(sql_delete, (int(novel_info['id']),))
+                self.db.execute(sql_delete, (int(novel_id),))
         except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
             self.logger.error('Could not complete operation, error: {}', e)
         except Exception:

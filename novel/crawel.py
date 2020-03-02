@@ -1,6 +1,6 @@
 from mechanicalsoup import StatefulBrowser as Browser
 from bs4.element import Tag
-from caoliu import Novel, Pagination
+from book import Novel, Pagination
 # from novel.caoliu import Novel, Pagination
 
 host = "https://cb.386i.xyz"

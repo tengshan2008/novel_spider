@@ -1,8 +1,11 @@
-from mechanicalsoup import StatefulBrowser as Browser
-from bs4.element import Tag
-import dav
 import re
 import time
+
+from bs4.element import Tag
+from mechanicalsoup import StatefulBrowser as Browser
+
+import dav
+from db import Database
 
 host = "https://cb.386i.xyz"
 
@@ -114,9 +117,20 @@ class Novel(object):
         self.links = []
 
     def upload(self):
-        dav.upload(self.title, self.id, self.content)
+        db = Database(filename='book.db')
+        if db.insert({"id": self.id,
+                      "title": self.title,
+                      "author": self.author,
+                      "date": self.date,
+                      "type": self.category,
+                      "link": self.links,
+                      "size": len(self.content),
+                      "page": len(self.links)}):
+            dav.upload(self.title, self.id, self.content)
 
     def delete(self):
+        db = Database(filename='book.db')
+        db.delete(self.id)
         dav.remove(self.title, self.id)
 
     def __parse_page(self, url):
