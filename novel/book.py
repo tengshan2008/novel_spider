@@ -88,6 +88,7 @@ class Page(object):
 
     def get_cells(self):
         soup = self.__open(self.url)
+        print(soup)
         main = soup.body("div", id="main", recursive=False)[0]
         if main.form["name"] == "delatc":
             main = main.form
@@ -97,7 +98,7 @@ class Page(object):
     def __open(self, url):
         browser = Browser()
         print(url)
-        browser.open(url, verify=False)
+        browser.open(url)
         soup = browser.get_current_page()
         soup = self.redirect(soup)
         return soup
@@ -190,7 +191,7 @@ if __name__ == "__main__":
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3777760.html'
     # author = 'yq8226171'
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
-    url = 'https://cl.330f.tk/htm_data/2003/20/3833830.html'
+    url = 'https://cl.330f.tk/htm_data/2003/20/3835421.html'
     author = 'abc'
     # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
     # author = 'ROLLIN'
