@@ -61,6 +61,7 @@ class Crawl(object):
                               author=item['author'],
                               date=item['date'],
                               category=item['type'])
+                novel.request()
                 novel.upload()
                 print(novel.title)
 
