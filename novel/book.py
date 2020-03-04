@@ -1,5 +1,6 @@
 import re
 import time
+import os
 
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
