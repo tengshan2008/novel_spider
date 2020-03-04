@@ -4,7 +4,7 @@
 import sqlite3
 import os
 
-from util import config
+# from util import config
 
 base_path = os.path.split(os.path.realpath(__file__))[0]
 
@@ -49,7 +49,8 @@ class Database(object):
             self.logger.info('database cloas')
 
     def init(self):
-        db_file = config.get('sqlite', 'caoliu')
+        # db_file = config.get('sqlite', 'caoliu')
+        db_file = 'book.db'
         script_path = os.path.join(base_path, 'schema.sql')
         with open(script_path, 'r') as f:
             try:
