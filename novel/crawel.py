@@ -47,8 +47,7 @@ class Crawl(object):
         self.__request_novel_list()
 
     def __request_novel_list(self):
-        page_format = "/thread0806.php?fid=20&search=&page="
-        pagination = Pagination(self.url, page_format)
+        pagination = Pagination(self.url, page_type="out")
         for i, link in pagination.links:
             page = Page(link, i)
             for item in page.get_items():

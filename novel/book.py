@@ -11,10 +11,8 @@ host = "https://cb.386i.xyz"
 
 
 class Pagination(object):
-    def __init__(self, url, format=None):
-        self.format = "/read.php?tid={tid}&page="
-        if format is not None:
-            self.format = format
+    def __init__(self, url, page_type=None):
+        self.page_type = page_type
         self.links = self.__parse(url)
 
     def __parse(self, url):
@@ -38,7 +36,10 @@ class Pagination(object):
 
         link = []
         for i in range(last):
-            link.append((i+1, f"{host}{self.format}{i+1}"))
+            if self.page_type == "out":
+                link.append((i+1, f"{host}/thread0806.php?fid=20&search=&page={i+1}"))
+            else:
+                link.append((i+1, f"{host}/read.php?tid={tid}&page={i+1}"))
         return link
 
 
