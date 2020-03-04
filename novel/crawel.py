@@ -63,7 +63,7 @@ class Crawl(object):
 
 
 if __name__ == "__main__":
-    crawl = Crawl('https://cb.386i.xyz/thread0806.php?fid=20')
+    crawl = Crawl('https://cb.386i.xyz/thread0806.php?fid=20&search=&page=1')
     crawl.start()
     # page = Page('https://cb.386i.xyz/thread0806.php?fid=20&search=&page=1', 1)
     # for i in page.get_items():
