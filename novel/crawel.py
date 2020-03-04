@@ -1,6 +1,7 @@
 from mechanicalsoup import StatefulBrowser as Browser
 from bs4.element import Tag
 from book import Novel, Pagination, logger
+from db import Database
 # from novel.caoliu import Novel, Pagination
 
 host = "https://cl.330f.tk"
