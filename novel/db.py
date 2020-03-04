@@ -49,8 +49,6 @@ class Database(object):
             self.logger.info('database cloas')
 
     def init(self):
-        # db_file = config.get('sqlite', 'caoliu')
-        db_file = 'book.db'
         script_path = os.path.join(base_path, 'schema.sql')
         with open(script_path, 'r') as f:
             try:

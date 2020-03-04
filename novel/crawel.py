@@ -1,6 +1,6 @@
 from mechanicalsoup import StatefulBrowser as Browser
 from bs4.element import Tag
-from book import Novel, Pagination
+from book import Novel, Pagination, logger
 # from novel.caoliu import Novel, Pagination
 
 host = "https://cl.330f.tk"
@@ -64,6 +64,8 @@ class Crawl(object):
 
 if __name__ == "__main__":
     crawl = Crawl('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1')
+    db = Database(logger=logger, filename='book.db')
+    db.init()
     crawl.start()
     # page = Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1', 1)
     # for i in page.get_items():
