@@ -14,7 +14,7 @@ base_path = os.path.split(os.path.realpath(__file__))[0]
 logger.add(os.path.join(base_path, 'output.log'),
            colorize=True, encoding='utf-8')
 
-host = "https://cb.386i.xyz"
+host = "https://cl.330f.tk"
 
 
 class Pagination(object):
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3777760.html'
     # author = 'yq8226171'
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
-    url = 'https://cb.386i.xyz/htm_data/2002/20/3828496.html'
+    url = 'https://cl.330f.tk/htm_data/2002/20/3828496.html'
     author = '潇湘竹'
     # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
     # author = 'ROLLIN'

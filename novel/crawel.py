@@ -3,7 +3,7 @@ from bs4.element import Tag
 from book import Novel, Pagination
 # from novel.caoliu import Novel, Pagination
 
-host = "https://cb.386i.xyz"
+host = "https://cl.330f.tk"
 
 
 class Page(object):
@@ -63,8 +63,8 @@ class Crawl(object):
 
 
 if __name__ == "__main__":
-    crawl = Crawl('https://cb.386i.xyz/thread0806.php?fid=20&search=&page=1')
+    crawl = Crawl('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1')
     crawl.start()
-    # page = Page('https://cb.386i.xyz/thread0806.php?fid=20&search=&page=1', 1)
+    # page = Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1', 1)
     # for i in page.get_items():
     #     print(i)
