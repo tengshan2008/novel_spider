@@ -65,6 +65,7 @@ class Database(object):
                 self.close()
 
     def insert(self, novel_info: dict):
+        print(novel_info)
         novel_info = {k: v.replace("'", "''") for k, v in novel_info.items()}
 
         try:
