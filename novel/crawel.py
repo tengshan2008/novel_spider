@@ -63,7 +63,6 @@ class Crawl(object):
                               category=item['type'])
                 novel.request()
                 novel.upload()
-                print(novel.title)
 
 
 if __name__ == "__main__":
