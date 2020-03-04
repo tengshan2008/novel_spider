@@ -46,7 +46,7 @@ class Database(object):
     def close(self):
         if self.db is not None:
             self.db.close()
-            self.logger.info('database cloas')
+            self.logger.info('database close')
 
     def init(self):
         script_path = os.path.join(base_path, 'schema.sql')
