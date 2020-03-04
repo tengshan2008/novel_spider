@@ -133,9 +133,9 @@ class Novel(object):
                       "author": self.author,
                       "date": self.date,
                       "type": self.category,
-                      "link": self.links,
-                      "size": len(self.content),
-                      "page": len(self.links)}):
+                      "link": ':'.join(self.links),
+                      "size": str(len(self.content)),
+                      "page": str(len(self.links))}):
             dav.upload(self.title, self.id, self.content)
 
     def delete(self):
