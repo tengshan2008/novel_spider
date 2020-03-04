@@ -128,6 +128,7 @@ class Novel(object):
 
     def upload(self):
         db = Database(logger=logger, filename='book.db')
+        db.init()
         if db.insert({"id": self.id,
                       "title": self.title,
                       "author": self.author,
