@@ -6,6 +6,10 @@ from mechanicalsoup import StatefulBrowser as Browser
 
 import dav
 from db import Database
+from loguru import logger
+
+logger.add(os.path.join(base_path, 'output.log'),
+           colorize=True, encoding='utf-8')
 
 host = "https://cb.386i.xyz"
 
@@ -120,7 +124,7 @@ class Novel(object):
         self.links = []
 
     def upload(self):
-        db = Database(filename='book.db')
+        db = Database(logger=logger, filename='book.db')
         if db.insert({"id": self.id,
                       "title": self.title,
                       "author": self.author,
