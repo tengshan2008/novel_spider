@@ -52,13 +52,14 @@ class Crawl(object):
         for i, link in pagination.links:
             page = Page(link, i)
             for item in page.get_items():
-                novel = Novel(url=item['url'],
+                novel = Novel(url=item['link'],
                               tid=item['id'],
                               title=item['title'],
                               author=item['author'],
                               date=item['date'],
                               category=item['type'])
                 novel.upload()
+                print(novel.title)
 
 
 if __name__ == "__main__":
