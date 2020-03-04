@@ -34,6 +34,7 @@ class Page(object):
 
     def __open(self, url):
         browser = Browser()
+        print(url)
         browser.open(url)
         soup = browser.get_current_page()
         return soup
