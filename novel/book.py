@@ -133,7 +133,7 @@ class Novel(object):
                       "author": self.author,
                       "date": self.date,
                       "type": self.category,
-                      "link": ':'.join(self.links),
+                      "link": self.url,
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
             dav.upload(self.title, self.id, self.content)
