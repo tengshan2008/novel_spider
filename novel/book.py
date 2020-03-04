@@ -9,6 +9,8 @@ import dav
 from db import Database
 from loguru import logger
 
+base_path = os.path.split(os.path.realpath(__file__))[0]
+
 logger.add(os.path.join(base_path, 'output.log'),
            colorize=True, encoding='utf-8')
 
