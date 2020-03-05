@@ -97,7 +97,7 @@ class Page(object):
     def __open(self, url):
         browser = Browser()
         print(url)
-        browser.open(url)
+        browser.open(url, verify=False)
         soup = browser.get_current_page()
         soup = self.redirect(soup)
         return soup
@@ -190,8 +190,8 @@ if __name__ == "__main__":
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3777760.html'
     # author = 'yq8226171'
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
-    url = 'https://cl.330f.tk/htm_data/2003/20/3836779.html'
-    author = '王建然够了'
+    url = 'https://cl.330f.tk/htm_data/2003/20/3834990.html'
+    author = '壹贰'
     # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
     # author = 'ROLLIN'
     novel = Novel(url, tid='ab12', title='未知', author=author)
