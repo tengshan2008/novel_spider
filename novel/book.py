@@ -65,7 +65,7 @@ class Cell(object):
         return author, date, level, content
 
     def __get_author(self, data: Tag):
-        return data.b.string
+        return data.b.string.strip()
 
     def __get_date_level(self, data: Tag):
         _, posted, floor = list(data.th("div",
@@ -88,7 +88,6 @@ class Page(object):
 
     def get_cells(self):
         soup = self.__open(self.url)
-        print(soup)
         main = soup.body("div", id="main", recursive=False)[0]
         if main.form["name"] == "delatc":
             main = main.form
@@ -192,7 +191,7 @@ if __name__ == "__main__":
     # author = 'yq8226171'
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
     url = 'https://cl.330f.tk/htm_data/2003/20/3835421.html'
-    author = 'abc'
+    author = '王建然够了'
     # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
     # author = 'ROLLIN'
     novel = Novel(url, tid='ab12', title='未知', author=author)
