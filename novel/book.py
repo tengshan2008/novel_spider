@@ -65,7 +65,7 @@ class Cell(object):
         return author, date, level, content
 
     def __get_author(self, data: Tag):
-        return data.b.string.strip()
+        return next(data.b.strings).strip()
 
     def __get_date_level(self, data: Tag):
         _, posted, floor = list(data.th("div",
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3777760.html'
     # author = 'yq8226171'
     # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
-    url = 'https://cl.330f.tk/htm_data/2003/20/3835421.html'
+    url = 'https://cl.330f.tk/htm_data/2003/20/3836779.html'
     author = '王建然够了'
     # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
     # author = 'ROLLIN'
