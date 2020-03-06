@@ -105,7 +105,8 @@ class Page(object):
         try:
             browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:
-            logger.error(e)
+            logger.error(e, url)
+            return None
         else:
             soup = browser.get_current_page()
             soup = self.redirect(soup)
@@ -151,36 +152,6 @@ class Novel(object):
         db = Database(filename='book.db')
         db.delete(self.id)
         dav.remove(self.title, self.id)
-
-    def __parse_page(self, url):
-        if self.id == "":
-            self.__get_id(url)
-        if self.title == "":
-            self.__get_title(url)
-        if self.author == "":
-            self.__get_author(url)
-        if self.date == "":
-            self.__get_date(url)
-        if self.category == "":
-            self.__get_category(url)
-
-    def __get_id(self, url):
-        pass
-
-    def __get_title(self, url):
-        pass
-
-    def __get_author(self, url):
-        pass
-
-    def __get_date(self, url):
-        pass
-
-    def __get_category(self, url):
-        pass
-
-    def __get_cells(self, url):
-        pass
 
     def request(self):
         pagination = Pagination(self.url)
