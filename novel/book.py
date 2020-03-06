@@ -101,7 +101,7 @@ class Page(object):
         print(url)
         browser.open(url)
         soup = browser.get_current_page()
-        soup = self.redirect(soup)
+        # soup = self.redirect(soup)
         return soup
 
     def redirect(self, data: Tag):
@@ -186,21 +186,12 @@ class Novel(object):
 
 
 if __name__ == "__main__":
-    # url, author = 'https://cb.386i.xyz/htm_data/2001/20/3778625.html', '晨起凸起'
-    # url = 'https://cb.386i.xyz/read.php?tid=3777610&page=2'
-    # url = 'https://cb.386i.xyz/htm_data/2001/20/3779065.html'
-    # url = 'https://cb.386i.xyz/htm_data/2001/20/3777760.html'
-    # author = 'yq8226171'
-    # url = 'https://cb.386i.xyz/htm_data/2001/20/3768299.html'
     url = 'https://cl.330f.tk/htm_data/2003/20/3836627.html'
     author = '壹贰'
-    # url = 'https://cb.386i.xyz/htm_data/0803/20/118995.html'
-    # author = 'ROLLIN'
     novel = Novel(url, tid='ab12', title='未知', author=author)
 
     novel.request()
 
-    # dav.upload(novel.title, novel.id, novel.content)
     print(novel.author)
     print(novel.content)
     print(novel.links)
