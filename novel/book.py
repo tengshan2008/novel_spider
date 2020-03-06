@@ -2,6 +2,7 @@ import os
 import re
 import time
 
+import requests
 from bs4.element import Tag
 from loguru import logger
 from mechanicalsoup import StatefulBrowser as Browser
@@ -90,6 +91,8 @@ class Page(object):
 
     def get_cells(self):
         soup = self.__open(self.url)
+        if soup is None:
+            return []
         main = soup.body("div", id="main", recursive=False)[0]
         if main.form["name"] == "delatc":
             main = main.form
@@ -99,10 +102,14 @@ class Page(object):
     def __open(self, url):
         print(url)
         browser = Browser(user_agent=USER_AGENT)
-        browser.open(url, timeout=(5, 60))
-        soup = browser.get_current_page()
-        soup = self.redirect(soup)
-        return soup
+        try:
+            browser.open(url, timeout=(5, 60))
+        except requests.exceptions.ReadTimeout as e:
+            logger.error(e)
+        else:
+            soup = browser.get_current_page()
+            soup = self.redirect(soup)
+            return soup
 
     def redirect(self, data: Tag):
         cleanbg = data.find_all("div", class_="cleanbg")
