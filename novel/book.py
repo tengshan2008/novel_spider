@@ -99,13 +99,9 @@ class Page(object):
     def __open(self, url):
         print(url)
         browser = Browser(user_agent=USER_AGENT)
-        print('make browser object')
-        browser.open(url, timeout=30)
-        print('open url')
+        browser.open(url, timeout=(5, 60))
         soup = browser.get_current_page()
-        print('get current page')
         soup = self.redirect(soup)
-        print('get final soup')
         return soup
 
     def redirect(self, data: Tag):
@@ -113,7 +109,6 @@ class Page(object):
         if len(cleanbg) == 0:
             return data
         else:
-            print('start redirect')
             url = host + "/" + cleanbg[0].find_all("a")[1]['href']
             return self.__open(url)
 
