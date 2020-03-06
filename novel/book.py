@@ -16,8 +16,8 @@ logger.add(os.path.join(base_path, 'output.log'),
 
 host = "https://cl.330f.tk"
 
-USER_AGENT = """Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1
- (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1"""
+USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/
+537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"""
 
 
 class Pagination(object):
