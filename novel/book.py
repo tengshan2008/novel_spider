@@ -28,7 +28,7 @@ class Pagination(object):
 
     def __parse(self, url):
         browser = Browser(user_agent=USER_AGENT)
-        browser.open(url)
+        browser.open(url, verify=False)
         soup = browser.get_current_page()
 
         pages = soup.find_all("div", class_="pages")
@@ -77,9 +77,6 @@ class Cell(object):
         return posted[7:23], floor
 
     def __get_content(self, data: Tag):
-        # div = data.table.tr.td("div",
-        #                        class_="tpc_content",
-        #                        recursive=False)[0]
         div = data("div", class_="tpc_content")[0]
         return '\n'.join(list(div.stripped_strings))
 
