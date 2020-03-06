@@ -101,7 +101,11 @@ class Page(object):
         try:
             browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:
-            logger.info(url)
+            logger.error(url)
+            logger.error(e)
+            return None
+        except requests.exceptions.ConnectionError as e:
+            logger.error(url)
             logger.error(e)
             return None
         else:
