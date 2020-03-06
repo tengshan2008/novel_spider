@@ -2,7 +2,6 @@ import os
 import re
 import time
 
-import requests
 from bs4.element import Tag
 from loguru import logger
 from mechanicalsoup import StatefulBrowser as Browser
@@ -99,8 +98,7 @@ class Page(object):
 
     def __open(self, url):
         print(url)
-        adapter = requests.adapters.HTTPAdapter(timeout=10)
-        browser = Browser(requests_adapters=adapter, user_agent=USER_AGENT)
+        browser = Browser(user_agent=USER_AGENT, timeout=30)
         print('make browser object')
         browser.open(url)
         print('open url')
