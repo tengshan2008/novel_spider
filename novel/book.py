@@ -26,9 +26,7 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __parse(self, url):
-        print(USER_AGENT)
         browser = Browser(user_agent=USER_AGENT)
-        print(url)
         browser.open(url)
         soup = browser.get_current_page()
 
@@ -46,8 +44,8 @@ class Pagination(object):
         tid = onkeydown.split('?')[1].split('&')[0][4:]
         last = int(value.split('/')[1])
 
-        link = []
-        for i in range(last):
+        link = [(1, url)]
+        for i in range(1, last):
             if self.page_type == "out":
                 link.append((i+1, f"{host}/thread0806.php?fid=20&search=&page={i+1}"))
             else:
