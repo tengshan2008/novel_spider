@@ -16,6 +16,9 @@ logger.add(os.path.join(base_path, 'output.log'),
 
 host = "https://cl.330f.tk"
 
+USER_AGENT = """Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1
+ (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1"""
+
 
 class Pagination(object):
     def __init__(self, url, page_type=None):
@@ -23,7 +26,7 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __parse(self, url):
-        browser = Browser()
+        browser = Browser(user_agent=USER_AGENT)
         print(url)
         browser.open(url)
         soup = browser.get_current_page()
@@ -95,7 +98,7 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
-        browser = Browser()
+        browser = Browser(user_agent=USER_AGENT)
         print(url)
         browser.open(url)
         soup = browser.get_current_page()
