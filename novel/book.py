@@ -1,13 +1,14 @@
+import os
 import re
 import time
-import os
 
+import requests
 from bs4.element import Tag
+from loguru import logger
 from mechanicalsoup import StatefulBrowser as Browser
 
 import dav
 from db import Database
-from loguru import logger
 
 base_path = os.path.split(os.path.realpath(__file__))[0]
 
@@ -98,7 +99,8 @@ class Page(object):
 
     def __open(self, url):
         print(url)
-        browser = Browser(user_agent=USER_AGENT)
+        adapter = requests.adapters.HTTPAdapter(timeout=10)
+        browser = Browser(requests_adapters=adapter, user_agent=USER_AGENT)
         print('make browser object')
         browser.open(url)
         print('open url')
