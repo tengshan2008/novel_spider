@@ -98,9 +98,9 @@ class Page(object):
 
     def __open(self, url):
         print(url)
-        browser = Browser(user_agent=USER_AGENT, timeout=30)
+        browser = Browser(user_agent=USER_AGENT)
         print('make browser object')
-        browser.open(url)
+        browser.open(url, timeout=30)
         print('open url')
         soup = browser.get_current_page()
         print('get current page')
