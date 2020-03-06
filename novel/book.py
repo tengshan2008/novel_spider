@@ -31,8 +31,7 @@ class Pagination(object):
         try:
             browser.open(url)
         except requests.exceptions.SSLError as e:
-            logger.info(url)
-            logger.error(e)
+            logger.exception(url)
             return None
         else:
             soup = browser.get_current_page()
@@ -60,9 +59,11 @@ class Pagination(object):
         link = [(1, url)]
         for i in range(1, last):
             if self.page_type == "out":
-                link.append((i+1, f"{host}/thread0806.php?fid=20&search=&page={i+1}"))
+                link.append((i+1, (f"{host}/thread0806.php?"
+                                   f"fid=20&search=&page={i+1}")))
             else:
-                link.append((i+1, f"{host}/read.php?tid={tid}&page={i+1}"))
+                link.append((i+1, (f"{host}/read.php?"
+                                   f"tid={tid}&page={i+1}")))
         return link
 
 
@@ -73,7 +74,7 @@ class Cell(object):
     def __parse(self, data: Tag):
         chead = data.table.tr.th
         cbody = data.tr("th", recursive=False)[1]
-        cfoot = data.table("tr", recursive=False)[1]
+        cfoot = data.table.tbody("tr", recursive=False)[1]
         author = self.__get_author(chead)
         date, level = self.__get_date_level(cfoot)
         content = self.__get_content(cbody)
@@ -103,22 +104,21 @@ class Page(object):
         if soup is None:
             return []
         main = soup.body("div", id="main", recursive=False)[0]
-        if main.form["name"] == "delatc":
+        if len(main("form")) > 0 and main.form["name"] == "delatc":
             main = main.form
         for t_t2 in main("div", class_="t t2", recursive=False):
             yield Cell(t_t2)
 
     def __open(self, url):
-        browser = Browser(user_agent=USER_AGENT)
+        browser = Browser(user_agent=USER_AGENT,
+                          soup_config={'features': 'html5lib'})
         try:
             browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:
-            logger.info(url)
-            logger.error(e)
+            logger.exception(url)
             return None
         except requests.exceptions.ConnectionError as e:
-            logger.info(url)
-            logger.error(e)
+            logger.exception(url)
             return None
         else:
             soup = browser.get_current_page()
@@ -177,8 +177,8 @@ class Novel(object):
 
 
 if __name__ == "__main__":
-    url = 'https://cl.330f.tk/htm_data/2003/20/3836627.html'
-    author = '壹贰'
+    url = 'https://cl.330f.tk/htm_data/2002/20/3829529.html'
+    author = '路易十三'
     novel = Novel(url, tid='ab12', title='未知', author=author)
 
     novel.request()
