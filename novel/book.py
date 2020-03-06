@@ -104,7 +104,8 @@ class Page(object):
         try:
             browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:
-            logger.error(e, url)
+            logger.info(url)
+            logger.error(e)
             return None
         else:
             soup = browser.get_current_page()
