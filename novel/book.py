@@ -16,7 +16,7 @@ logger.add(os.path.join(base_path, 'output.log'),
 
 host = "https://cl.330f.tk"
 
-USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/
+USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
 537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"""
 
 
@@ -26,6 +26,7 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __parse(self, url):
+        print(USER_AGENT)
         browser = Browser(user_agent=USER_AGENT)
         print(url)
         browser.open(url)
