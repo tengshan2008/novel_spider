@@ -97,11 +97,15 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
-        browser = Browser(user_agent=USER_AGENT)
         print(url)
+        browser = Browser(user_agent=USER_AGENT)
+        print('make browser object')
         browser.open(url)
+        print('open url')
         soup = browser.get_current_page()
-        # soup = self.redirect(soup)
+        print('get current page')
+        soup = self.redirect(soup)
+        print('get final soup')
         return soup
 
     def redirect(self, data: Tag):
@@ -109,6 +113,7 @@ class Page(object):
         if len(cleanbg) == 0:
             return data
         else:
+            print('start redirect')
             url = host + "/" + cleanbg[0].find_all("a")[1]['href']
             return self.__open(url)
 
