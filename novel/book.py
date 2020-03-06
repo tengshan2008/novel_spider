@@ -26,10 +26,22 @@ class Pagination(object):
         self.page_type = page_type
         self.links = self.__parse(url)
 
-    def __parse(self, url):
+    def __open(self, url):
         browser = Browser(user_agent=USER_AGENT)
-        browser.open(url, verify=False)
-        soup = browser.get_current_page()
+        try:
+            browser.open(url)
+        except requests.exceptions.SSLError as e:
+            logger.info(url)
+            logger.error(e)
+            return None
+        else:
+            soup = browser.get_current_page()
+            return soup
+
+    def __parse(self, url):
+        soup = self.__open(url)
+        if soup is None:
+            return []
 
         pages = soup.find_all("div", class_="pages")
         if len(pages) == 0:
