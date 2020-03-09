@@ -27,6 +27,7 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __open(self, url):
+        print(url)
         browser = Browser(user_agent=USER_AGENT)
         try:
             browser.open(url)
@@ -110,6 +111,7 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
+        print(url)
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'})
         try:
