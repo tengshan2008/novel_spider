@@ -175,10 +175,17 @@ class Novel(object):
         db.delete(self.id)
         dav.remove(self.title, self.id)
 
+    def __pagination(self):
+        links = [(1, self.url)]
+        for i in range(2, self.pages+1):
+            links.append((i, (f"{host}/read.php?tid={self.id}&page={i}")))
+        return links
+
     def request(self):
-        pagination = Pagination(self.url)
-        self.links = pagination.links
-        for i, link in pagination.links:
+        # pagination = Pagination(self.url)
+        # self.links = pagination.links
+        self.links = self.__pagination()
+        for i, link in self.links:
             page = Page(link, i)
             for cell in page.get_cells():
                 if cell.author == self.author:
@@ -188,8 +195,8 @@ class Novel(object):
 if __name__ == "__main__":
     url = 'https://cl.330f.tk/htm_data/2002/20/3829529.html'
     author = '路易十三'
-    novel = Novel(url, tid='ab12', title='未知', author=author)
-
+    pages = 4
+    novel = Novel(url, tid='3829529', title='未知', author=author, pages=pages)
     novel.request()
 
     print(novel.author)
