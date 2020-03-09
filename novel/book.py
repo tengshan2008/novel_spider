@@ -31,7 +31,7 @@ class Pagination(object):
         try:
             browser.open(url)
         except requests.exceptions.SSLError as e:
-            logger.exception(url)
+            logger.error("url is {}, error is {error}" url, error=e)
             return None
         else:
             soup = browser.get_current_page()
@@ -115,10 +115,10 @@ class Page(object):
         try:
             browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:
-            logger.exception(url)
+            logger.error("url is {}, error is {error}" url, error=e)
             return None
         except requests.exceptions.ConnectionError as e:
-            logger.exception(url)
+            logger.error("url is {}, error is {error}" url, error=e)
             return None
         else:
             soup = browser.get_current_page()
