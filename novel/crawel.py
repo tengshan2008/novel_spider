@@ -36,7 +36,6 @@ class Page(object):
 
     def __open(self, url):
         browser = Browser()
-        print(url)
         try:
             browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:

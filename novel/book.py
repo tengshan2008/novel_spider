@@ -27,10 +27,15 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __open(self, url):
-        print(url)
         browser = Browser(user_agent=USER_AGENT)
         try:
-            browser.open(url)
+            browser.open(url, timeout=(5, 60))
+        except requests.exceptions.ReadTimeout as e:
+            logger.error("url is {}, error is {error}", url, error=e)
+            return None
+        except requests.exceptions.ConnectionError as e:
+            logger.error("url is {}, error is {error}", url, error=e)
+            return None
         except requests.exceptions.SSLError as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
@@ -111,7 +116,6 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
-        print(url)
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'})
         try:
