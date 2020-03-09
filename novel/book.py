@@ -29,7 +29,7 @@ class Pagination(object):
     def __open(self, url):
         browser = Browser(user_agent=USER_AGENT)
         try:
-            browser.open(url, timeout=(5, 60))
+            browser.open(url, timeout=(10, 60))
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
@@ -119,7 +119,7 @@ class Page(object):
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'})
         try:
-            browser.open(url, timeout=(5, 60))
+            browser.open(url, timeout=(10, 60))
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None

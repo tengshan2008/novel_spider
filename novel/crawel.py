@@ -15,6 +15,9 @@ class Page(object):
 
     def get_items(self):
         soup = self.__open(self.url)
+        if soup is None:
+            return []
+
         main = soup.body("div", id="main", recursive=False)[0]
         t = main("div", class_="t", recursive=False)[1]
         block_list = t.table.tbody("tr", class_="tr3 t_one tac")[6:]
@@ -37,7 +40,7 @@ class Page(object):
     def __open(self, url):
         browser = Browser()
         try:
-            browser.open(url, timeout=(5, 60))
+            browser.open(url, timeout=(10, 60))
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
