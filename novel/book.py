@@ -27,6 +27,7 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __open(self, url):
+        print(url)
         browser = Browser(user_agent=USER_AGENT)
         try:
             browser.open(url, timeout=(10, 60))
@@ -116,6 +117,7 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
+        print(url)
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'})
         try:
@@ -142,7 +144,7 @@ class Page(object):
 
 class Novel(object):
     def __init__(self, url, tid=None, title=None, author=None, date=None,
-                 category=None):
+                 category=None, pages=None):
         """
         url: url for novel first page
         """
@@ -152,6 +154,7 @@ class Novel(object):
         self.author = author
         self.date = date
         self.category = category
+        self.pages = pages
         self.content = ''
         self.links = []
 

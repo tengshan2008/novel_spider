@@ -24,10 +24,11 @@ class Page(object):
         items = []
         for block in block_list:
             item = {}
-            link, title, author, _, _ = block("td")
+            link, info, author, _, _ = block("td")
             item["link"] = f"{host}/{link.a['href']}"
-            type_title = [i.strip() for i in list(title.strings)[:2]]
-            item["type"], item["title"] = type_title
+            item["type"] = list(info.stripped_strings)[0].strip()
+            item["title"] = list(info.stripped_strings)[1].strip()
+            item["pages"] = int(list(info.stripped_strings)[-2].strip()) 
             item["author"] = author.a.string.strip()
             if author.div.span is None:
                 item["date"] = author.div.string.strip()
@@ -38,6 +39,7 @@ class Page(object):
         return items
 
     def __open(self, url):
+        print(url)
         browser = Browser()
         try:
             browser.open(url, timeout=(10, 60))
@@ -71,7 +73,8 @@ class Crawl(object):
                               title=item['title'],
                               author=item['author'],
                               date=item['date'],
-                              category=item['type'])
+                              category=item['type'],
+                              pages=item['pages'])
                 novel.request()
                 novel.upload()
 
