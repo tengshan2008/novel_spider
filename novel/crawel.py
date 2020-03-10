@@ -33,7 +33,7 @@ class Page(object):
             if item["type"][0] != "[":
                 item["title"] = item["type"]
                 item["type"] = "[UNKOWN]"
-            if len(list(info.stripped_strings)) > 2:
+            if len(list(info.stripped_strings)) > 3:
                 item["pages"] = int(list(info.stripped_strings)[-2].strip())
             else:
                 item["pages"] = 1
