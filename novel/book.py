@@ -169,11 +169,13 @@ class Novel(object):
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
             dav.upload(self.title, self.id, self.content)
+        db.close()
 
     def delete(self):
         db = Database(filename='book.db')
         db.delete(self.id)
         dav.remove(self.title, self.id)
+        db.close()
 
     def __pagination(self):
         links = [(1, self.url)]
@@ -198,10 +200,11 @@ if __name__ == "__main__":
     pages = 4
     novel = Novel(url, tid='3829529', title='未知', author=author, pages=pages)
     novel.request()
+    novel.upload()
 
-    print(novel.author)
-    print(novel.content)
-    print(novel.links)
+    # print(novel.author)
+    # print(novel.content)
+    # print(novel.links)
     # page = Page(url, 1)
     # for cell in page.get_cells():
     #     print(cell.author)

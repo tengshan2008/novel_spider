@@ -67,6 +67,7 @@ class Crawl(object):
     def start(self):
         db = Database(logger=logger, filename='book.db')
         db.init()
+        db.close()
         self.__request_novel_list()
 
     def __request_novel_list(self):
@@ -88,6 +89,6 @@ class Crawl(object):
 if __name__ == "__main__":
     crawl = Crawl('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1')
     crawl.start()
-    # page = Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=2', 2)
+    # page = Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1', 1)
     # for i in page.get_items():
     #     print(i)
