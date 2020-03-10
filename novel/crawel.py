@@ -20,7 +20,9 @@ class Page(object):
 
         main = soup.body("div", id="main", recursive=False)[0]
         t = main("div", class_="t", recursive=False)[1]
-        block_list = t.table.tbody("tr", class_="tr3 t_one tac")[6:]
+        block_list = t.table.tbody("tr", class_="tr3 t_one tac")
+        if self.no == 1:
+            block_list = block_list[6:]
         items = []
         for block in block_list:
             item = {}
