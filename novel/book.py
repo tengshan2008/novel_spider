@@ -30,22 +30,21 @@ class Pagination(object):
         browser = Browser(user_agent=USER_AGENT)
         try:
             browser.open(url, timeout=(10, 60))
-            browser.close()
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         except requests.exceptions.ConnectionError as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         except requests.exceptions.SSLError as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         else:
             soup = browser.get_current_page()
+            browser.close()
             return soup
+        finally:
+            browser.close()
+            return None
 
     def __parse(self, url):
         soup = self.__open(url)
@@ -124,20 +123,20 @@ class Page(object):
                           soup_config={'features': 'html5lib'})
         try:
             browser.open(url, timeout=(10, 60))
-            browser.close()
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         except requests.exceptions.ConnectionError as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            return None
         else:
             soup = browser.get_current_page()
+            browser.close()
             soup = self.redirect(soup)
             return soup
+        finally:
+            browser.close()
+            return None
 
     def redirect(self, data: Tag):
         cleanbg = data.find_all("div", class_="cleanbg")
