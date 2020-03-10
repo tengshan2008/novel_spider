@@ -46,6 +46,7 @@ class Page(object):
 
     def __open(self, url):
         browser = Browser()
+        soup = None
         try:
             browser.open(url, timeout=(10, 60))
         except requests.exceptions.ReadTimeout as e:
@@ -56,11 +57,9 @@ class Page(object):
             logger.error("url is {}, error is {error}", url, error=e)
         else:
             soup = browser.get_current_page()
-            browser.close()
-            return soup
         finally:
             browser.close()
-            return None
+            return soup
 
 
 class Crawl(object):

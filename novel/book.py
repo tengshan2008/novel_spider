@@ -28,6 +28,7 @@ class Pagination(object):
 
     def __open(self, url):
         browser = Browser(user_agent=USER_AGENT)
+        soup = None
         try:
             browser.open(url, timeout=(10, 60))
         except requests.exceptions.ReadTimeout as e:
@@ -40,11 +41,9 @@ class Pagination(object):
             logger.error("url is {}, error is {error}", url, error=e)
         else:
             soup = browser.get_current_page()
-            browser.close()
-            return soup
         finally:
             browser.close()
-            return None
+            return soup
 
     def __parse(self, url):
         soup = self.__open(url)
@@ -121,6 +120,7 @@ class Page(object):
     def __open(self, url):
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'})
+        soup = None
         try:
             browser.open(url, timeout=(10, 60))
         except requests.exceptions.ReadTimeout as e:
@@ -131,12 +131,10 @@ class Page(object):
             logger.error("url is {}, error is {error}", url, error=e)
         else:
             soup = browser.get_current_page()
-            browser.close()
             soup = self.redirect(soup)
-            return soup
         finally:
             browser.close()
-            return None
+            return soup
 
     def redirect(self, data: Tag):
         cleanbg = data.find_all("div", class_="cleanbg")
