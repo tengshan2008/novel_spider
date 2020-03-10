@@ -159,7 +159,8 @@ class Novel(object):
         self.links = []
 
     def upload(self):
-        db = Database(logger=logger, filename='book.db')
+        database = Database(logger=logger, filename='book.db')
+        db = database.db
         if db.insert({"id": self.id,
                       "title": self.title,
                       "author": self.author,
@@ -172,7 +173,8 @@ class Novel(object):
         db.close()
 
     def delete(self):
-        db = Database(filename='book.db')
+        database = Database(filename='book.db')
+        db = database.db
         db.delete(self.id)
         dav.remove(self.title, self.id)
         db.close()

@@ -65,8 +65,8 @@ class Crawl(object):
         self.url = url
 
     def start(self):
-        db = Database(logger=logger, filename='book.db')
-        db.init()
+        database = Database(logger=logger, filename='book.db')
+        database.init()
         self.__request_novel_list()
 
     def __request_novel_list(self):
