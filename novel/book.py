@@ -30,6 +30,7 @@ class Pagination(object):
         browser = Browser(user_agent=USER_AGENT)
         try:
             browser.open(url, timeout=(10, 60))
+            browser.close()
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
@@ -123,6 +124,7 @@ class Page(object):
                           soup_config={'features': 'html5lib'})
         try:
             browser.open(url, timeout=(10, 60))
+            browser.close()
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
@@ -165,13 +167,13 @@ class Novel(object):
     def upload(self):
         db = Database(logger=logger, filename='book.db')
         if db.insert({"id": self.id,
-                            "title": self.title,
-                            "author": self.author,
-                            "date": self.date,
-                            "type": self.category,
-                            "link": self.url,
-                            "size": str(len(self.content)),
-                            "page": str(len(self.links))}):
+                      "title": self.title,
+                      "author": self.author,
+                      "date": self.date,
+                      "type": self.category,
+                      "link": self.url,
+                      "size": str(len(self.content)),
+                      "page": str(len(self.links))}):
             dav.upload(self.title, self.id, self.content)
         db.close()
 
@@ -204,11 +206,11 @@ if __name__ == "__main__":
     pages = 4
     novel = Novel(url, tid='3829529', title='未知', author=author, pages=pages)
     novel.request()
-    novel.upload()
+    # novel.upload()
 
-    # print(novel.author)
-    # print(novel.content)
-    # print(novel.links)
+    print(novel.author)
+    print(novel.content)
+    print(novel.links)
     # page = Page(url, 1)
     # for cell in page.get_cells():
     #     print(cell.author)

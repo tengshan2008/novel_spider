@@ -48,6 +48,7 @@ class Page(object):
         browser = Browser()
         try:
             browser.open(url, timeout=(10, 60))
+            broswer.close()
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
