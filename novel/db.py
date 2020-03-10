@@ -89,18 +89,21 @@ class Database(object):
                     self.logger.info("ignore {}, page {}",
                                      novel_info['title'],
                                      novel_info['page'])
+                    self.close()
                     return False
-
         except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
             self.logger.error('Could not complete operation, error: {}', e)
+            self.close()
             return False
         except ValueError as e:
             self.logger.error('novel info {} has wrong value', novel_info)
+            self.close()
             return False
         except Exception:
             self.logger.exception('detail')
+            self.close()
             return False
-
+        self.close()
         return True
 
     def delete(self, novel_id):
@@ -111,6 +114,7 @@ class Database(object):
             self.logger.error('Could not complete operation, error: {}', e)
         except Exception:
             self.logger.exception('detail')
+        self.close()
 
 
 if __name__ == "__main__":

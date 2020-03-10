@@ -45,7 +45,6 @@ class Page(object):
         return items
 
     def __open(self, url):
-        print(url)
         browser = Browser()
         try:
             browser.open(url, timeout=(10, 60))
@@ -53,6 +52,9 @@ class Page(object):
             logger.error("url is {}, error is {error}", url, error=e)
             return None
         except requests.exceptions.ConnectionError as e:
+            logger.error("url is {}, error is {error}", url, error=e)
+            return None
+        except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
         else:

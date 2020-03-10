@@ -27,7 +27,6 @@ class Pagination(object):
         self.links = self.__parse(url)
 
     def __open(self, url):
-        print(url)
         browser = Browser(user_agent=USER_AGENT)
         try:
             browser.open(url, timeout=(10, 60))
@@ -38,6 +37,9 @@ class Pagination(object):
             logger.error("url is {}, error is {error}", url, error=e)
             return None
         except requests.exceptions.SSLError as e:
+            logger.error("url is {}, error is {error}", url, error=e)
+            return None
+        except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
         else:
@@ -117,7 +119,6 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
-        print(url)
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'})
         try:
@@ -126,6 +127,9 @@ class Page(object):
             logger.error("url is {}, error is {error}", url, error=e)
             return None
         except requests.exceptions.ConnectionError as e:
+            logger.error("url is {}, error is {error}", url, error=e)
+            return None
+        except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
             return None
         else:
@@ -160,17 +164,15 @@ class Novel(object):
 
     def upload(self):
         database = Database(logger=logger, filename='book.db')
-        db = database.db
-        if db.insert({"id": self.id,
-                      "title": self.title,
-                      "author": self.author,
-                      "date": self.date,
-                      "type": self.category,
-                      "link": self.url,
-                      "size": str(len(self.content)),
-                      "page": str(len(self.links))}):
+        if database.insert({"id": self.id,
+                            "title": self.title,
+                            "author": self.author,
+                            "date": self.date,
+                            "type": self.category,
+                            "link": self.url,
+                            "size": str(len(self.content)),
+                            "page": str(len(self.links))}):
             dav.upload(self.title, self.id, self.content)
-        db.close()
 
     def delete(self):
         database = Database(filename='book.db')
