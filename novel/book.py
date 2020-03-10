@@ -7,8 +7,8 @@ from bs4.element import Tag
 from loguru import logger
 from mechanicalsoup import StatefulBrowser as Browser
 
-import dav
-from db import Database
+from . import dav
+from .db import Database
 
 base_path = os.path.split(os.path.realpath(__file__))[0]
 
@@ -150,6 +150,12 @@ class Novel(object):
                  category=None, pages=None):
         """
         url: url for novel first page
+        id: id of novel
+        title: title of novel
+        author: author of novel
+        date: create novel blog date
+        category: category of novel
+        pages: total pages of novel
         """
         self.url = url
         self.id = tid
@@ -158,7 +164,9 @@ class Novel(object):
         self.date = date
         self.category = category
         self.pages = pages
+
         self.content = ''
+        self.comment = []
         self.links = []
 
     def upload(self):
@@ -195,20 +203,5 @@ class Novel(object):
             for cell in page.get_cells():
                 if cell.author == self.author:
                     self.content += cell.content
-
-
-if __name__ == "__main__":
-    url = 'https://cl.330f.tk/htm_data/2002/20/3829529.html'
-    author = '路易十三'
-    pages = 4
-    novel = Novel(url, tid='3829529', title='未知', author=author, pages=pages)
-    novel.request()
-    # novel.upload()
-
-    print(novel.author)
-    print(novel.content)
-    print(novel.links)
-    # page = Page(url, 1)
-    # for cell in page.get_cells():
-    #     print(cell.author)
-    #     print(cell.content)
+                else:
+                    self.comment.append((cell.author, cell.content))
