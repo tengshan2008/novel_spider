@@ -28,7 +28,13 @@ class Page(object):
             item["link"] = f"{host}/{link.a['href']}"
             item["type"] = list(info.stripped_strings)[0].strip()
             item["title"] = list(info.stripped_strings)[1].strip()
-            item["pages"] = int(list(info.stripped_strings)[-2].strip()) 
+            if item["type"][0] != "[":
+                item["title"] = item["type"]
+                item["type"] = "[UNKOWN]"
+            if len(list(info.stripped_strings)) > 2:
+                item["pages"] = int(list(info.stripped_strings)[-2].strip())
+            else:
+                item["pages"] = 1
             item["author"] = author.a.string.strip()
             if author.div.span is None:
                 item["date"] = author.div.string.strip()
@@ -82,6 +88,6 @@ class Crawl(object):
 if __name__ == "__main__":
     crawl = Crawl('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1')
     crawl.start()
-    # page = Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1', 1)
+    # page = Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=2', 2)
     # for i in page.get_items():
     #     print(i)
