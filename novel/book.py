@@ -1,6 +1,3 @@
-import re
-import time
-
 import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
@@ -114,14 +111,20 @@ class Page(object):
                           soup_config={'features': 'html5lib'},
                           requests_adapters=requests_adapters)
         soup = None
+
+        open_exceptions = (
+            requests.exceptions.ReadTimeout,
+            requests.exceptions.ConnectionError,
+            requests.exceptions.ConnectTimeout
+        )
         try:
             browser.open(url, timeout=(5, 60))
-        except requests.exceptions.ReadTimeout as e:
+        except open_exceptions as e:
             logger.error("url is {}, error is {error}", url, error=e)
-        except requests.exceptions.ConnectionError as e:
-            logger.error("url is {}, error is {error}", url, error=e)
+            self.__record(url)
         except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
+            self.__record(url)
         else:
             soup = browser.get_current_page()
             soup = self.redirect(soup)
@@ -136,6 +139,20 @@ class Page(object):
         else:
             url = HOST + "/" + cleanbg[0].find_all("a")[1]['href']
             return self.__open(url)
+
+    def __record(self, url):
+        from urllib.parse import urlparse
+        from pathlib import Path
+
+        o = urlparse(url)
+        if o.query == "":
+            tid = o.path.split('/')[-1][:-5]
+        else:
+            tid = o.query.split('&')[0][4:]
+
+        pth = Path(__file__).parent / "record.txt"
+        with pth.open('a+') as f:
+            f.write(f"{tid},{url}\n")
 
 
 class Novel(object):

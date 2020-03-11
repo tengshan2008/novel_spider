@@ -108,3 +108,6 @@ venv.bak/
 
 # database file
 *.db
+
+# record file
+novel/record.txt
