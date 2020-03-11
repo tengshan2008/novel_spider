@@ -6,7 +6,7 @@ from .config import HOST
 
 
 def cmd():
-    parser = argparse.ArgumentParser(description="caoliu(t66y) crawl program ")
+    parser = argparse.ArgumentParser(description="caoliu(t66y) crawl novel program ")
     parser.add_argument("-s", "--start", type=int, default=1,
                         help="what page you what start")
     args = parser.parse_args()
