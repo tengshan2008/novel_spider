@@ -22,5 +22,5 @@ def page_test():
 
 
 if __name__ == "__main__":
-    # book_test()
-    page_test()
+    book_test()
+    # page_test()

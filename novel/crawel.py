@@ -65,8 +65,10 @@ class Page(object):
 
     def __filter_title(self, title):
         title = title.replace(':', '：')
-        title = title.replace('(', "（")
-        title = title.replace(')', "）")
+        title = title.replace('(', '（')
+        title = title.replace(')', '）')
+        title = title.replace('/', '')
+        title = title.replace(' ', '')
         return title
 
     def __open(self, url):

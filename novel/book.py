@@ -4,13 +4,11 @@ import time
 import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
+from requests.adapters import HTTPAdapter
 
 from . import dav, logger
-from .config import HOST, DB_FILE
+from .config import DB_FILE, HOST, USER_AGENT
 from .db import Database
-
-USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
-537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"""
 
 
 class Pagination(object):
@@ -110,11 +108,14 @@ class Page(object):
             yield Cell(t_t2)
 
     def __open(self, url):
+        adapter = HTTPAdapter(max_retries=3)
+        requests_adapters = {'http://': adapter, 'https://': adapter}
         browser = Browser(user_agent=USER_AGENT,
-                          soup_config={'features': 'html5lib'})
+                          soup_config={'features': 'html5lib'},
+                          requests_adapters=requests_adapters)
         soup = None
         try:
-            browser.open(url, timeout=(10, 60))
+            browser.open(url, timeout=(5, 60))
         except requests.exceptions.ReadTimeout as e:
             logger.error("url is {}, error is {error}", url, error=e)
         except requests.exceptions.ConnectionError as e:
