@@ -1,5 +1,5 @@
 from . import crawel
-from . import book
+from . import host
 import sys
 import argparse
 
@@ -10,7 +10,7 @@ def cmd():
                         help="what page you what start")
     args = parser.parse_args()
 
-    url = f"{book.host}/thread0806.php?fid=20&search=&page=1"
+    url = f"{host}/thread0806.php?fid=20&search=&page=1"
     crawl = crawel.Crawl(url, args.start)
     crawl.start()
 

@@ -1,21 +1,12 @@
-import os
 import re
 import time
 
 import requests
 from bs4.element import Tag
-from loguru import logger
 from mechanicalsoup import StatefulBrowser as Browser
 
-from . import dav
+from . import dav, host, logger
 from .db import Database
-
-base_path = os.path.split(os.path.realpath(__file__))[0]
-
-logger.add(os.path.join(base_path, 'output.log'),
-           colorize=True, encoding='utf-8')
-
-host = "https://cl.330f.tk"
 
 USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
 537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"""

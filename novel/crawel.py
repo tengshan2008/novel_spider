@@ -2,8 +2,8 @@ import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
 
+from . import host, logger
 from .book import Novel, Pagination
-from .book import logger, host
 from .db import Database
 
 
@@ -42,6 +42,7 @@ class Page(object):
             else:
                 item["date"] = author.div.span.string.strip()
             item["id"] = item["link"].split('/')[-1][:-5]
+            item["title"] = item["title"].replace(':', '：')
             items.append(item)
         return items
 

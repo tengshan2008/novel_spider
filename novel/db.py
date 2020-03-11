@@ -2,11 +2,9 @@
 """
 
 import sqlite3
-import os
+from pathlib import Path
 
-# from util import config
-
-base_path = os.path.split(os.path.realpath(__file__))[0]
+base_path = Path(__file__).parent
 
 sql_read = """
     SELECT size
@@ -39,17 +37,15 @@ class Database(object):
         self.db = self.get(filename)
 
     def get(self, filename):
-        db_path = os.path.join(base_path, filename)
-        db = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
-        return db
+        return sqlite3.connect(str(base_path / filename),
+                               detect_types=sqlite3.PARSE_DECLTYPES)
 
     def close(self):
         if self.db is not None:
             self.db.close()
 
     def init(self):
-        script_path = os.path.join(base_path, 'schema.sql')
-        with open(script_path, 'r') as f:
+        with open(str(base_path / "schema.sql"), 'r') as f:
             try:
                 with self.db:
                     self.db.executescript(f.read())
