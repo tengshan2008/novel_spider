@@ -64,8 +64,9 @@ class Page(object):
 
 
 class Crawl(object):
-    def __init__(self, url):
+    def __init__(self, url, start_page):
         self.url = url
+        self.start_page = start_page
 
     def start(self):
         database = Database(logger=logger, filename='book.db')
@@ -74,7 +75,7 @@ class Crawl(object):
 
     def __request_novel_list(self):
         pagination = Pagination(self.url, page_type="out")
-        for i, link in pagination.links:
+        for i, link in pagination.links[self.start_page-1:]:
             page = Page(link, i)
             for item in page.get_items():
                 novel = Novel(url=item['link'],
