@@ -6,7 +6,7 @@ from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
 
 from . import dav, logger
-from .config import HOST
+from .config import HOST, DB_FILE
 from .db import Database
 
 USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
@@ -162,7 +162,7 @@ class Novel(object):
         self.links = []
 
     def upload(self):
-        db = Database(logger=logger, filename='book.db')
+        db = Database(logger=logger, filename=DB_FILE)
         if db.insert({"id": self.id,
                       "title": self.title,
                       "author": self.author,
@@ -175,7 +175,7 @@ class Novel(object):
         db.close()
 
     def delete(self):
-        db = Database(filename='book.db')
+        db = Database(filename=DB_FILE)
         db.delete(self.id)
         dav.remove(self.title, self.id)
         db.close()

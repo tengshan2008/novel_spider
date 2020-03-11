@@ -4,7 +4,7 @@ from mechanicalsoup import StatefulBrowser as Browser
 
 from . import logger
 from .book import Novel, Pagination
-from .config import HOST
+from .config import DB_FILE, HOST
 from .db import Database
 
 
@@ -27,25 +27,47 @@ class Page(object):
         for block in block_list:
             item = {}
             link, info, author, _, _ = block("td")
-            item["link"] = f"{HOST}/{link.a['href']}"
-            item["type"] = list(info.stripped_strings)[0].strip()
-            item["title"] = list(info.stripped_strings)[1].strip()
-            if item["type"][0] != "[":
-                item["title"] = item["type"]
-                item["type"] = "[UNKOWN]"
-            if len(list(info.stripped_strings)) > 3:
-                item["pages"] = int(list(info.stripped_strings)[-2].strip())
-            else:
-                item["pages"] = 1
-            item["author"] = author.a.string.strip()
-            if author.div.span is None:
-                item["date"] = author.div.string.strip()
-            else:
-                item["date"] = author.div.span.string.strip()
-            item["id"] = item["link"].split('/')[-1][:-5]
-            item["title"] = item["title"].replace(':', '：')
+            item["link"] = self.__get_link(link)
+            item["title"], item["type"] = self.__get_title_type(info)
+            item["pages"] = self.__get_pages(info)
+            item["author"] = self.__get_author(author)
+            item["date"] = self.__get_date(author)
+            item["id"] = self.__get_id(item["link"])
             items.append(item)
         return items
+
+    def __get_link(self, data):
+        return f"{HOST}/{data.a['href']}"
+
+    def __get_title_type(self, data):
+        novel_title = list(data.stripped_strings)[1].strip()
+        novel_type = list(data.stripped_strings)[0].strip()
+        if novel_type[0] != "[":
+            novel_title = novel_type
+            novel_type = "[UNKOWN]"
+        return self.__filter_title(novel_title), novel_type
+
+    def __get_pages(self, data):
+        if len(list(data.stripped_strings)) > 3:
+            return int(list(data.stripped_strings)[-2].strip())
+        return 1
+
+    def __get_author(self, data):
+        return data.a.string.strip()
+
+    def __get_date(self, data):
+        if data.div.span is None:
+            return data.div.string.strip()
+        return data.div.span.string.strip()
+
+    def __get_id(self, data):
+        return data.split('/')[-1][:-5]
+
+    def __filter_title(self, title):
+        title = title.replace(':', '：')
+        title = title.replace('(', "（")
+        title = title.replace(')', "）")
+        return title
 
     def __open(self, url):
         browser = Browser()
@@ -71,7 +93,7 @@ class Crawl(object):
         self.start_page = start_page
 
     def start(self):
-        database = Database(logger=logger, filename='book.db')
+        database = Database(logger=logger, filename=DB_FILE)
         database.init()
         self.__request_novel_list()
 

@@ -1,7 +1,9 @@
 import os
 from pathlib import Path
 
-DAV = Path('/mnt/DAV/book')
+from .config import DAV_PATH
+
+DAV = Path(DAV_PATH)
 
 
 def upload(title, id, data):
@@ -15,8 +17,3 @@ def remove(title, id):
         filepath.unlink()
     else:
         print('file not exist')
-
-
-if __name__ == "__main__":
-    upload('test', 'ab12', 'this is a test/nbbb')
-    remove('test', 'ab12')

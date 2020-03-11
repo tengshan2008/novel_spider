@@ -106,9 +106,3 @@ class Database(object):
         except Exception:
             self.logger.exception('detail')
         self.close()
-
-
-if __name__ == "__main__":
-    from loguru import logger
-    dbase = Database(logger, 'caoliu.db')
-    dbase.get('test.db')
