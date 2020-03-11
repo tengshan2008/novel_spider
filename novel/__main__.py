@@ -1,5 +1,7 @@
 from . import crawel
+from . import book
 
 if __name__ == "__main__":
-    crawl = crawel.Crawl('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1')
+    url = f"{book.host}/thread0806.php?fid=20&search=&page=1"
+    crawl = crawel.Crawl(url)
     crawl.start()
