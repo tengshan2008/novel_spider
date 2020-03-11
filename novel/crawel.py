@@ -2,8 +2,9 @@ import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
 
-from . import host, logger
+from . import logger
 from .book import Novel, Pagination
+from .config import HOST
 from .db import Database
 
 
@@ -26,7 +27,7 @@ class Page(object):
         for block in block_list:
             item = {}
             link, info, author, _, _ = block("td")
-            item["link"] = f"{host}/{link.a['href']}"
+            item["link"] = f"{HOST}/{link.a['href']}"
             item["type"] = list(info.stripped_strings)[0].strip()
             item["title"] = list(info.stripped_strings)[1].strip()
             if item["type"][0] != "[":

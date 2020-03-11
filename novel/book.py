@@ -5,7 +5,8 @@ import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
 
-from . import dav, host, logger
+from . import dav, logger
+from .config import HOST
 from .db import Database
 
 USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
@@ -58,10 +59,10 @@ class Pagination(object):
         link = [(1, url)]
         for i in range(1, last):
             if self.page_type == "out":
-                link.append((i+1, (f"{host}/thread0806.php?"
+                link.append((i+1, (f"{HOST}/thread0806.php?"
                                    f"fid=20&search=&page={i+1}")))
             else:
-                link.append((i+1, (f"{host}/read.php?"
+                link.append((i+1, (f"{HOST}/read.php?"
                                    f"tid={tid}&page={i+1}")))
         return link
 
@@ -132,7 +133,7 @@ class Page(object):
         if len(cleanbg) == 0:
             return data
         else:
-            url = host + "/" + cleanbg[0].find_all("a")[1]['href']
+            url = HOST + "/" + cleanbg[0].find_all("a")[1]['href']
             return self.__open(url)
 
 
@@ -182,7 +183,7 @@ class Novel(object):
     def __pagination(self):
         links = [(1, self.url)]
         for i in range(2, self.pages+1):
-            links.append((i, (f"{host}/read.php?tid={self.id}&page={i}")))
+            links.append((i, (f"{HOST}/read.php?tid={self.id}&page={i}")))
         return links
 
     def request(self):
