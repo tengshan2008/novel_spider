@@ -15,7 +15,8 @@ def book_test():
 
 
 def page_test():
-    page = crawel.Page('https://cl.330f.tk/thread0806.php?fid=20&search=&page=1', 1)
+    url = 'https://cl.330f.tk/thread0806.php?fid=20&search=&page=1'
+    page = crawel.Page(url, 1)
     for i in page.get_items():
         print(i)
 

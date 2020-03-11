@@ -2,10 +2,9 @@ import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
 
-from .book import Novel, Pagination, logger
+from .book import Novel, Pagination
+from .book import logger, host
 from .db import Database
-
-host = "https://cl.330f.tk"
 
 
 class Page(object):
