@@ -76,14 +76,15 @@ class Crawl(object):
     def __request_novel_list(self):
         pagination = Pagination(self.url, page_type="out")
         for i, link in pagination.links[self.start_page-1:]:
-            page = Page(link, i)
-            for item in page.get_items():
-                novel = Novel(url=item['link'],
-                              tid=item['id'],
-                              title=item['title'],
-                              author=item['author'],
-                              date=item['date'],
-                              category=item['type'],
-                              pages=item['pages'])
-                novel.request()
-                novel.upload()
+            print(i, link)
+            # page = Page(link, i)
+            # for item in page.get_items():
+            #     novel = Novel(url=item['link'],
+            #                   tid=item['id'],
+            #                   title=item['title'],
+            #                   author=item['author'],
+            #                   date=item['date'],
+            #                   category=item['type'],
+            #                   pages=item['pages'])
+            #     novel.request()
+            #     novel.upload()
