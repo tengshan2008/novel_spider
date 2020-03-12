@@ -59,6 +59,8 @@ def download_link(link, filename):
         except Exception as e:
             logger.error("url is {}, error is {error}", link, error=e)
         else:
-            with open(pth, 'wb') as f:
+            if pth.exists():
+                pth.unlink()
+            with pth.open('wb') as f:
                 f.write(response.content)
             logger.info("{title} finished", title=filename)
