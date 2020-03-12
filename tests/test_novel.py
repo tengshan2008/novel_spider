@@ -2,12 +2,14 @@ from context import book, crawel
 
 
 def book_test():
-    url = 'https://cl.330f.tk/htm_data/2002/20/3829529.html'
-    author = '路易十三'
-    pages = 4
-    novel = book.Novel(url, tid='3829529', title='未知',
-                       author=author, pages=pages)
+    url = 'https://cl.330f.tk/htm_data/2002/20/3800260.html'
+    tid = '3829529'
+    author = 'hohoho12321'
+    pages = 5
+    novel = book.Novel(url, tid=tid, title='女儿的幸福', date=''
+                       category='', author=author, pages=pages)
     novel.request()
+    # novel.upload()
 
     print(novel.author)
     print(novel.content)

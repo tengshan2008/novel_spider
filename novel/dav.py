@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from . import logger
 from .config import DAV_PATH
 
 DAV = Path(DAV_PATH)
@@ -16,4 +17,4 @@ def remove(title, id):
     if filepath.exists():
         filepath.unlink()
     else:
-        print('file not exist')
+        logger.warning("{} not exist", title)
