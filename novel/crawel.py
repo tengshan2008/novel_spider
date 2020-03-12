@@ -69,6 +69,7 @@ class Page(object):
         title = title.replace(')', '）')
         title = title.replace('/', '')
         title = title.replace(' ', '')
+        title = title.replace('?', '？')
         return title
 
     def __open(self, url):
