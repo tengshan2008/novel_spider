@@ -4,7 +4,8 @@ from . import gif
 
 
 def cmd():
-    parser = argparse.ArgumentParser(description='caoliu(t66y) crawl picture program ')
+    description = 'caoliu(t66y) crawl picture program '
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument("-l", "--link", type=str,
                         help="blog link of picture")
     args = parser.parse_args()
