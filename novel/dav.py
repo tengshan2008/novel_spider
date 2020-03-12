@@ -16,5 +16,3 @@ def remove(title, id):
     filepath = DAV / f"{title}_{id}.txt"
     if filepath.exists():
         filepath.unlink()
-    else:
-        logger.warning("{} not exist", title)
