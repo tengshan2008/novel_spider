@@ -90,9 +90,10 @@ class Cell(object):
 
 
 class Page(object):
-    def __init__(self, url, no=None):
+    def __init__(self, url, no=None, pages=None):
         self.no = no
         self.url = url
+        self.pages = pages
 
     def get_cells(self):
         soup = self.__open(self.url)
@@ -121,10 +122,10 @@ class Page(object):
             browser.open(url, timeout=(5, 60))
         except open_exceptions as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            self.__record(url)
+            self.__record(url, self.pages)
         except Exception as e:
             logger.error("url is {}, error is {error}", url, error=e)
-            self.__record(url)
+            self.__record(url, self.pages)
         else:
             soup = browser.get_current_page()
             soup = self.redirect(soup)
@@ -140,7 +141,7 @@ class Page(object):
             url = HOST + "/" + cleanbg[0].find_all("a")[1]['href']
             return self.__open(url)
 
-    def __record(self, url):
+    def __record(self, url, pages):
         from urllib.parse import urlparse
         from pathlib import Path
 
@@ -152,7 +153,7 @@ class Page(object):
 
         pth = Path(__file__).parent / "record.txt"
         with pth.open('a+') as f:
-            f.write(f"{tid},{url}\n")
+            f.write(f"{tid},{url},{pages}\n")
 
 
 class Novel(object):
@@ -210,7 +211,7 @@ class Novel(object):
         # self.links = pagination.links
         self.links = self.__pagination()
         for i, link in self.links:
-            page = Page(link, i)
+            page = Page(link, i, len(self.links))
             for cell in page.get_cells():
                 if cell.author == self.author:
                     self.content += cell.content
