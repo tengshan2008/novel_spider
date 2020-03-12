@@ -29,7 +29,7 @@ def filter_title(title):
 def get_gif(url):
     with Browser() as browser:
         try:
-            browser.open(url, timeout=30)
+            browser.open(url, timeout=(10, 30))
         except open_exceptions as e:
             logger.error("url is {}, error is {error}", url, error=e)
         except Exception as e:
@@ -53,11 +53,11 @@ def download_link(link, filename):
     with Browser(user_agent=USER_AGENT,
                  requests_adapters=requests_adapters) as browser:
         try:
-            response = browser.open(link, timeout=60)
+            response = browser.open(link, timeout=(90, 90))
         except open_exceptions as e:
-            logger.error("url is {}, error is {error}", url, error=e)
+            logger.error("url is {}, error is {error}", link, error=e)
         except Exception as e:
-            logger.error("url is {}, error is {error}", url, error=e)
+            logger.error("url is {}, error is {error}", link, error=e)
         else:
             with open(pth, 'wb') as f:
                 f.write(response.content)
