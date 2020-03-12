@@ -1,5 +1,3 @@
-import time
-
 import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
@@ -192,8 +190,6 @@ class Novel(object):
                       "link": self.url,
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
-            dav.remove(self.title, self.id)
-            time.sleep(1)
             dav.upload(self.title, self.id, self.content)
         db.close()
 
