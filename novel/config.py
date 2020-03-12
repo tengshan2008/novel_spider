@@ -5,4 +5,4 @@ USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
 
 # store
 DAV_PATH = "/media/share/novel/books"
-DB_FILE = "book.db"
+DB_FILE = "media_book.db"
