@@ -43,8 +43,9 @@ def get_gif(url):
         else:
             soup = browser.get_current_page()
 
+    tid = url.split('/')[-1][:-5]
     title = filter_title(soup.head.title.string.strip())
-    title = title.replace("技術討論區草榴社區", "")
+    title = title.replace("技術討論區草榴社區", "") + "_" + tid
     for i, img in enumerate(soup.body.find_all('img')):
         file_link = img["data-src"]
         file_name = f"{i+1}.{file_link.split('.')[-1]}"
