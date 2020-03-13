@@ -12,6 +12,12 @@ sql_read = """
     WHERE nid = ?
 """
 
+sql_read_all = """
+    SELECT *
+    FROM novel
+    WHERE nid = ?
+"""
+
 sql_insert = """
     INSERT
     INTO novel(nid, title, author, ndate, ntype, link, size)
@@ -39,6 +45,30 @@ class Database(object):
     def get(self, filename):
         return sqlite3.connect(str(base_path / filename),
                                detect_types=sqlite3.PARSE_DECLTYPES)
+
+    def read(self, tid):
+        result = None
+        try:
+            with self.db:
+                result = self.db.execute(sql_read_all,
+                                         (int(tid),)).fetchone()
+        except (sqlite3.OperationalError, sqlite3.IntegrityError) as e:
+            self.logger.error('Could not complete operation, error: {}', e)
+        except ValueError as e:
+            self.logger.error('novel info {} has wrong value', novel_info)
+        except Exception:
+            self.logger.exception('detail')
+        if result is None:
+            return None
+        return {
+            "id": result[1],
+            "title": result[2],
+            "author": result[3],
+            "date": result[4],
+            "type": result[5],
+            "link": result[6],
+            "pages": 0,
+        }
 
     def close(self):
         if self.db is not None:

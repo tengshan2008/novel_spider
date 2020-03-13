@@ -1,12 +1,12 @@
-from context import book, crawel
+from context import book, check, crawel
 
 
 def book_test():
-    url = 'https://cl.330f.tk/htm_data/2002/20/3800260.html'
-    tid = '3829529'
-    author = 'hohoho12321'
-    pages = 5
-    novel = book.Novel(url, tid=tid, title='女儿的幸福', date=''
+    url = 'https://cl.330f.tk/htm_data/2003/5/3845387.html'
+    tid = '3845387'
+    author = '大神魔'
+    pages = 1
+    novel = book.Novel(url, tid=tid, title="「(原创)3D SuMthinDiFrnt - Man's Best Friend 2」.无码/MP4/1.6GB", date='',
                        category='', author=author, pages=pages)
     novel.request()
     # novel.upload()
@@ -23,6 +23,13 @@ def page_test():
         print(i)
 
 
+def check_test():
+    tid = '3842268'
+    result = check.get_novel_info(tid)
+    print(result)
+
+
 if __name__ == "__main__":
     book_test()
     # page_test()
+    # check_test()
