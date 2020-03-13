@@ -15,7 +15,7 @@ def get_date_dir(date):
     return f"{date_time.year}上半年合集"
 
 
-def upload(title, id, date, data):
+def upload(title, id, data, date):
     dirpath = DAV / get_date_dir(date)
     if not dirpath.exists():
         dirpath.mkdir()
