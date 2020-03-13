@@ -74,4 +74,4 @@ def download_link(link, dirname, filename):
                 pth.unlink()
             with pth.open('wb') as f:
                 f.write(response.content)
-            logger.info("{title} finished", title=filename)
+            logger.info("{dirname} {title} finished", title=filename)
