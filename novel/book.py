@@ -190,6 +190,7 @@ class Novel(object):
                       "link": self.url,
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
+            dav.remove(self.title, self.id, self.date)
             dav.upload(self.title, self.id, self.content, self.date)
         db.close()
 

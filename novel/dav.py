@@ -25,10 +25,7 @@ def upload(title, id, data, date):
 
 
 def remove(title, id, date):
-    dirpath = DAV / get_date_dir(date)
-    if not dirpath.exists():
-        dirpath.mkdir()
-    filepath = dirpath / f"{title}_{id}.txt"
+    filepath = DAV / get_date_dir(date) / f"{title}_{id}.txt"
     if filepath.exists():
         filepath.unlink()
 
