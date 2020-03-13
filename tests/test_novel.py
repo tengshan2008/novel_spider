@@ -6,7 +6,8 @@ def book_test():
     tid = '3845387'
     author = '大神魔'
     pages = 1
-    novel = book.Novel(url, tid=tid, title="「(原创)3D SuMthinDiFrnt - Man's Best Friend 2」.无码/MP4/1.6GB", date='',
+    title = "「(原创)3D SuMthinDiFrnt - Man's Best Friend 2」.无码/MP4/1.6GB"
+    novel = book.Novel(url, tid=tid, title=title, date='',
                        category='', author=author, pages=pages)
     novel.request()
     # novel.upload()
@@ -17,8 +18,8 @@ def book_test():
 
 
 def page_test():
-    url = 'https://cl.330f.tk/thread0806.php?fid=20&search=&page=1'
-    page = crawel.Page(url, 1)
+    url = 'https://cl.330f.tk/thread0806.php?fid=20&search=&page=9'
+    page = crawel.Page(url, 9)
     for i in page.get_items():
         print(i)
 

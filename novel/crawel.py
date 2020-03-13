@@ -104,9 +104,10 @@ class Page(object):
 
 
 class Crawl(object):
-    def __init__(self, url, start_page):
+    def __init__(self, url, start_page, end_page):
         self.url = url
         self.start_page = start_page
+        self.end_page = end_page
 
     def start(self):
         database = Database(logger=logger, filename=DB_FILE)
@@ -115,7 +116,7 @@ class Crawl(object):
 
     def __request_novel_list(self):
         pagination = Pagination(self.url, page_type="out")
-        for i, link in pagination.links[self.start_page-1:]:
+        for i, link in pagination.links[self.start_page-1:self.end_page]:
             logger.info("start crawl page {}", i)
             page = Page(link, i)
             for item in page.get_items():
