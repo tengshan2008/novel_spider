@@ -1,4 +1,5 @@
 import requests
+import datetime
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
 
@@ -57,19 +58,31 @@ class Page(object):
 
     def __get_date(self, data):
         if data.div.span is None:
-            return data.div.string.strip()
-        return data.div.span.string.strip()
+            date = data.div.string.strip()
+        else:
+            date = data.div.span.string.strip()
+        if "今天" in date:
+            date = str(datetime.date.today())
+        if "昨天" in date:
+            date = str(datetime.date.today() - datetime.timedelta(days=1))
+        return date
 
     def __get_id(self, data):
         return data.split('/')[-1][:-5]
 
     def __filter_title(self, title):
+        # Invaild symbol \ / : * ? < > |
+        title = title.replace("\\", '')
+        title = title.replace('/', '')
         title = title.replace(':', '：')
+        title = title.replace('*', '')
+        title = title.replace('?', '？')
+        title = title.replace('<', '《')
+        title = title.replace('>', '》')
+        title = title.replace('|', '')
         title = title.replace('(', '（')
         title = title.replace(')', '）')
-        title = title.replace('/', '')
         title = title.replace(' ', '')
-        title = title.replace('?', '？')
         return title
 
     def __open(self, url):

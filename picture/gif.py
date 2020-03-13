@@ -17,12 +17,18 @@ open_exceptions = (
 
 
 def filter_title(title):
+    # Invaild symbol \ / : * ? < > |
+    title = title.replace("\\", '')
+    title = title.replace('/', '')
     title = title.replace(':', '：')
+    title = title.replace('*', '')
+    title = title.replace('?', '？')
+    title = title.replace('<', '《')
+    title = title.replace('>', '》')
+    title = title.replace('|', '')
     title = title.replace('(', '（')
     title = title.replace(')', '）')
-    title = title.replace('/', '')
     title = title.replace(' ', '')
-    title = title.replace('?', '？')
     return title
 
 
@@ -40,12 +46,15 @@ def get_gif(url):
     title = filter_title(soup.head.title.string.strip())
     for i, img in enumerate(soup.body.find_all('img')):
         file_link = img["data-src"]
-        file_name = f"{title}_{i}.{file_link.split('.')[-1]}"
-        download_link(file_link, file_name)
+        file_name = f"{i+1}.{file_link.split('.')[-1]}"
+        download_link(file_link, title, file_name)
 
 
-def download_link(link, filename):
-    pth = Path('/mnt/DAV/images') / filename
+def download_link(link, dirname, filename):
+    dirpath = Path('/mnt/DAV/images') / dirname
+    if not dirpath.exists():
+        dirpath.mkdir()
+    pth = dirpath / filename
 
     adapter = HTTPAdapter(max_retries=3)
     requests_adapters = {'http://': adapter, 'https://': adapter}

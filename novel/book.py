@@ -190,13 +190,13 @@ class Novel(object):
                       "link": self.url,
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
-            dav.upload(self.title, self.id, self.content)
+            dav.upload(self.title, self.id, self.content, self.date)
         db.close()
 
     def delete(self):
         db = Database(filename=DB_FILE)
         db.delete(self.id)
-        dav.remove(self.title, self.id)
+        dav.remove(self.title, self.id, self.date)
         db.close()
 
     def __pagination(self):
