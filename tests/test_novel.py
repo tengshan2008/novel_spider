@@ -1,4 +1,4 @@
-from context import book, check, crawel
+from context import book, fix, crawel
 
 
 def book_test():
@@ -24,13 +24,13 @@ def page_test():
         print(i)
 
 
-def check_test():
+def fix_test():
     tid = '3842268'
-    result = check.get_novel_info(tid)
+    result = fix.get_novel_info(tid)
     print(result)
 
 
 if __name__ == "__main__":
     book_test()
     # page_test()
-    # check_test()
+    # fix_test()

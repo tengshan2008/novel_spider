@@ -192,6 +192,8 @@ class Novel(object):
                       "page": str(len(self.links))}):
             dav.remove(self.title, self.id, self.date)
             dav.upload(self.title, self.id, self.content, self.date)
+            if not dav.exist(self.title, self.id, self.date):
+                db.delete(self.id)
         db.close()
 
     def delete(self):
