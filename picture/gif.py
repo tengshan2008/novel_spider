@@ -74,7 +74,7 @@ class Page(object):
         with Browser(user_agent=USER_AGENT,
                      requests_adapters=requests_adapters) as browser:
             try:
-                response = browser.open(link, timeout=(90, 90))
+                response = browser.open(link, timeout=(120, 120))
             except open_exceptions as e:
                 logger.error("url is {}, error is {error}", link, error=e)
             except Exception as e:
