@@ -9,7 +9,8 @@ def cmd():
     parser.add_argument("-l", "--link", type=str,
                         help="blog link of picture")
     args = parser.parse_args()
-    gif.get_gif(args.link)
+    page = gif.Page(args.link)
+    page.download()
 
 
 if __name__ == "__main__":
