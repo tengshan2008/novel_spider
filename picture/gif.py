@@ -59,6 +59,8 @@ def download_link(link, dirname, filename):
     if not dirpath.exists():
         dirpath.mkdir()
     pth = dirpath / filename
+    if pth.exists():
+        return None
 
     adapter = HTTPAdapter(max_retries=3)
     requests_adapters = {'http://': adapter, 'https://': adapter}
