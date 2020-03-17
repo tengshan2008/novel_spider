@@ -24,6 +24,7 @@ class Page(object):
         self.init()
 
     def init(self):
+        soup = None
         with Browser() as browser:
             try:
                 browser.open(self.url, timeout=(10, 30))
@@ -33,7 +34,9 @@ class Page(object):
                 logger.error("url is {}, error is {error}", self.url, error=e)
             else:
                 soup = browser.get_current_page()
-
+        if soup is None:
+            logger.error("parse {} failed.", url)
+            return None
         self.imgs = soup.body.find_all('img')
         self.title = soup.head.title.string.strip()
         self.filter_title()
