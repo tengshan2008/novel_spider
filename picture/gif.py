@@ -21,9 +21,9 @@ open_exceptions = (
 class Page(object):
     def __init__(self, url):
         self.url = url
-        self.init()
+        self.parse()
 
-    def init(self):
+    def parse(self):
         soup = None
         with Browser() as browser:
             try:
@@ -37,8 +37,10 @@ class Page(object):
         if soup is None:
             logger.error("parse {} failed.", url)
             return None
-        self.imgs = soup.body.find_all('img')
-        self.title = soup.head.title.string.strip()
+        self.soup = soup
+
+        self.imgs = self.soup.body.find_all('img')
+        self.title = self.soup.head.title.string.strip()
         self.filter_title()
         self.get_title()
 
@@ -63,11 +65,8 @@ class Page(object):
         title = title.replace(' ', '')
         self.title = title
 
-    def download_link(self, dir_path, link, filename):
-        dirpath = Path(dir_path) / self.title
-        if not dirpath.exists():
-            dirpath.mkdir()
-        pth = dirpath / filename
+    def download_link(self, dirpath, link, filename):
+        pth = Path(dirpath) / filename
         if pth.exists():
             return None
 
@@ -91,7 +90,14 @@ class Page(object):
                             title=self.title, filename=filename)
 
     def download(self, dir_path=IMAGES_PATH):
+        dirpath = Path(dir_path) / self.title
+        if not dirpath.exists():
+            dirpath.mkdir()
+
+        html = dirpath / f"{self.title}.html"
+        html.write_text(str(self.soup))
+
         for i, img in enumerate(self.imgs):
             file_link = img["data-src"]
             file_name = f"{i+1}.{file_link.split('.')[-1]}"
-            self.download_link(dir_path, file_link, file_name)
+            self.download_link(str(dirpath), file_link, file_name)
