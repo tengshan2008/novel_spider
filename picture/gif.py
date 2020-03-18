@@ -6,8 +6,9 @@ from requests.adapters import HTTPAdapter
 
 from . import logger
 
-USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
-537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A"""
+USER_AGENT = """Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML,\
+ like Gecko) Raspbian Chromium/78.0.3904.108 Chrome/78.0.3904.108 Safari/537.36
+"""
 
 IMAGES_PATH = "/media/share/other/images"
 
