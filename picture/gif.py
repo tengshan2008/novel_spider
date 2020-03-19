@@ -10,7 +10,7 @@ USER_AGENT = """Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML,\
  like Gecko) Raspbian Chromium/78.0.3904.108 Chrome/78.0.3904.108 Safari/5\
 37.36"""
 
-IMAGES_PATH = "/media/share/other/images"
+IMAGES_PATH = "/tmp"
 
 open_exceptions = (
     requests.exceptions.ReadTimeout,
@@ -100,5 +100,8 @@ class Page(object):
 
         for i, img in enumerate(self.imgs):
             file_link = img["data-src"]
-            file_name = f"{i+1}.{file_link.split('.')[-1]}"
+            ext = file_link.split('.')[-1]
+            if len(ext) > 7:
+                continue
+            file_name = f"{i+1}.{ext}"
             self.download_link(str(dirpath), file_link, file_name)
