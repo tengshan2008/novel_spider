@@ -6,12 +6,12 @@ def book_test():
     tid = '3845387'
     author = '大神魔'
     pages = 1
-    title = "「(原创)3D SuMthinDiFrnt - Man's Best Friend 2」.无码/MP4/1.6GB"
-    novel = book.Novel(url, tid=tid, title=title, date='',
+    title = "「(原创)3D SuMthinDiFrnt - Man's Best Friend 2」.无码MP41.6GB"
+    date = '2020-3-16'
+    novel = book.Novel(url, tid=tid, title=title, date=date,
                        category='', author=author, pages=pages)
     novel.request()
-    # novel.upload()
-
+    novel.upload(dir_path="/tmp")
     print(novel.author)
     print(novel.content)
     print(novel.links)
