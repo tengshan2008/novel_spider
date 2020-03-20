@@ -12,16 +12,22 @@ def cmd():
                         help="what page you what start")
     parser.add_argument("-e", "--end", type=int,
                         help="what page you what end")
-    parser.add_argument("-l", "--loop", type=bool,
+    parser.add_argument("-l", "--loop", action="store_true",
                         help="is loop crawl")
+    parser.add_argument("-d", "--desc", action="store_true",
+                        help="is sort desc")
     args = parser.parse_args()
 
-    crawl_with_start_end(args.start, args.end)
+    if args.loop:
+        while True:
+            crawl_with_start_end(args.start, args.end, args.desc)
+    else:
+        crawl_with_start_end(args.start, args.end, args.desc)
 
 
-def crawl_with_start_end(start, end):
+def crawl_with_start_end(start, end, sort_desc):
     url = f"{HOST}/thread0806.php?fid=20&search=&page=1"
-    crawl = crawel.Crawl(url, start, end)
+    crawl = crawel.Crawl(url, start, end, sort_desc)
     crawl.start()
 
 

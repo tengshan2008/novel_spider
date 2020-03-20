@@ -191,8 +191,10 @@ class Novel(object):
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
             dav.remove(self.title, self.category, self.id, self.date, dir_path)
-            dav.upload(self.title, self.category, self.id, self.content, self.date, dir_path)
-            if not dav.exist(self.title, self.category, self.id, self.date, dir_path):
+            dav.upload(self.title, self.category, self.id, self.content,
+                       self.date, dir_path)
+            if not dav.exist(self.title, self.category, self.id, self.date,
+                             dir_path):
                 db.delete(self.id)
         db.close()
 
