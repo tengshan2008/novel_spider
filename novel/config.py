@@ -5,4 +5,4 @@ USER_AGENT = """Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/\
 
 # store
 DAV_PATH = "/mnt/DAV/Books"
-DB_FILE = "Books.db"
+DB_FILE = "books.db"

@@ -24,7 +24,7 @@ def upload(title, category, id, data, date, dir_path):
 
 
 def remove(title, category, id, date, dir_path):
-    if exist(title, id, date, dir_path):
+    if exist(title, category, id, date, dir_path):
         filepath.unlink()
 
 
