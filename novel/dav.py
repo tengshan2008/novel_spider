@@ -3,9 +3,6 @@ from datetime import datetime
 from pathlib import Path
 
 from . import logger
-from .config import DAV_PATH
-
-DAV = Path(DAV_PATH)
 
 
 def get_date_dir(date):
@@ -15,8 +12,8 @@ def get_date_dir(date):
     return f"{date_time.year}上半年合集"
 
 
-def upload(title, id, data, date):
-    dirpath = DAV / get_date_dir(date)
+def upload(title, id, data, date, dir_path):
+    dirpath = Path(dir_path) / get_date_dir(date)
     if not dirpath.exists():
         dirpath.mkdir()
     filepath = dirpath / f"{title}_{id}.txt"
@@ -24,13 +21,13 @@ def upload(title, id, data, date):
         f.write(data)
 
 
-def remove(title, id, date):
-    if exist(title, id, date):
+def remove(title, id, date, dir_path):
+    if exist(title, id, date, dir_path):
         filepath.unlink()
 
 
-def exist(title, id, date):
-    filepath = DAV / get_data_dir(date) / f"{title}_{id}.txt"
+def exist(title, id, date, dir_path):
+    filepath = Path(dir_path) / get_date_dir(date) / f"{title}_{id}.txt"
     return filepath.exists()
 
 

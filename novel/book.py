@@ -4,7 +4,7 @@ from mechanicalsoup import StatefulBrowser as Browser
 from requests.adapters import HTTPAdapter
 
 from . import dav, logger
-from .config import DB_FILE, HOST, USER_AGENT
+from .config import DAV_PATH, DB_FILE, HOST, USER_AGENT
 from .db import Database
 
 
@@ -180,7 +180,7 @@ class Novel(object):
         self.comment = []
         self.links = []
 
-    def upload(self):
+    def upload(self, dir_path=DAV_PATH):
         db = Database(logger=logger, filename=DB_FILE)
         if db.insert({"id": self.id,
                       "title": self.title,
@@ -190,9 +190,9 @@ class Novel(object):
                       "link": self.url,
                       "size": str(len(self.content)),
                       "page": str(len(self.links))}):
-            dav.remove(self.title, self.id, self.date)
-            dav.upload(self.title, self.id, self.content, self.date)
-            if not dav.exist(self.title, self.id, self.date):
+            dav.remove(self.title, self.id, self.date, dir_path)
+            dav.upload(self.title, self.id, self.content, self.date, dir_path)
+            if not dav.exist(self.title, self.id, self.date, dir_path):
                 db.delete(self.id)
         db.close()
 
