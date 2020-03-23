@@ -2,12 +2,13 @@ from context import gif
 
 
 def gif_test():
-    url = 'https://cb.333a.ml/htm_mob/2001/7/3790414.html'
+    url = 'http://cl.de33.xyz/htm_mob/2003/7/3857500.html'
     dir_path = '/tmp'
     page = gif.Page(url)
-    for i, img in enumerate(page.imgs):
-        print(i, img)
-    # page.download(dir_path)
+    page.parse()
+    # for i, img in enumerate(page.imgs):
+    #     print(i, img)
+    page.download(dir_path)
 
 
 if __name__ == "__main__":

@@ -30,7 +30,7 @@ class Page(object):
             else:
                 soup = browser.get_current_page()
         if soup is None:
-            logger.error("parse {} failed.", url)
+            logger.error("parse {} failed.", self.url)
             return None
         self.soup = soup
 
