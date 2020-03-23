@@ -31,7 +31,6 @@ def upload(title, category, id, data, date, dir_path):
 def remove(title, category, id, date, dir_path):
     filepath = get_path(title, category, id, date, dir_path)
     if filepath.exists():
-        filepath = dirpath / f"{category}_{title}_{id}.txt"
         filepath.unlink()
 
 
