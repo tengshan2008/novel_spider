@@ -14,23 +14,29 @@ def get_date_dir(date):
     return f"{date_time.year}上半年合集"
 
 
-def upload(title, category, id, data, date, dir_path):
+def get_path(title, category, id, date, dir_path):
     dirpath = Path(dir_path) / get_date_dir(date)
     if not dirpath.exists():
         dirpath.mkdir()
     filepath = dirpath / f"{category}_{title}_{id}.txt"
+    return filepath
+
+
+def upload(title, category, id, data, date, dir_path):
+    filepath = get_path(title, category, id, date, dir_path)
     with filepath.open('w', encoding='utf-8') as f:
         f.write(data)
 
 
 def remove(title, category, id, date, dir_path):
-    if exist(title, category, id, date, dir_path):
+    filepath = get_path(title, category, id, date, dir_path)
+    if filepath.exists():
+        filepath = dirpath / f"{category}_{title}_{id}.txt"
         filepath.unlink()
 
 
 def exist(title, category, id, date, dir_path):
-    dirpath = Path(dir_path) / get_date_dir(date)
-    filepath = dirpath / f"{category}_{title}_{id}.txt"
+    filepath = get_path(title, category, id, date, dir_path)
     return filepath.exists()
 
 
