@@ -25,6 +25,11 @@ class Database(object):
     def __init__(self, filename):
         self.filename = filename
 
+    def init(self):
+        with open(str(base_path / "schema.sql"), 'r') as f:
+            with self.db() as db:
+                db.executescript(f.read())
+
     def db(self):
         return sqlite3.connect(str(base_path / self.filename),
                                detect_types=sqlite3.PARSE_DECLTYPES)
