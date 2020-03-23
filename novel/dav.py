@@ -2,8 +2,6 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from . import logger
-
 
 def get_date_dir(date):
     date_time = datetime.strptime(date, "%Y-%m-%d")
