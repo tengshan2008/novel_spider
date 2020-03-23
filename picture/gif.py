@@ -4,13 +4,8 @@ import requests
 from mechanicalsoup import StatefulBrowser as Browser
 from requests.adapters import HTTPAdapter
 
-from . import logger
-
-USER_AGENT = """Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML,\
- like Gecko) Raspbian Chromium/78.0.3904.108 Chrome/78.0.3904.108 Safari/5\
-37.36"""
-
-IMAGES_PATH = "/media/share/other/images"
+from . import db, logger
+from .config import IMAGES_PATH, USER_AGENT, DB_FILE
 
 open_exceptions = (
     requests.exceptions.ReadTimeout,
@@ -20,9 +15,8 @@ open_exceptions = (
 
 
 class Page(object):
-    def __init__(self, url):
+    def __init__(self, url=None):
         self.url = url
-        self.parse()
 
     def parse(self):
         soup = None
@@ -71,6 +65,8 @@ class Page(object):
         if pth.exists():
             return None
 
+        database = db.Database(DB_FILE)
+
         adapter = HTTPAdapter(max_retries=3)
         requests_adapters = {'http://': adapter, 'https://': adapter}
 
@@ -80,8 +76,10 @@ class Page(object):
                 response = browser.open(link, timeout=(120, 120))
             except open_exceptions as e:
                 logger.error("url is {}, error is {error}", link, error=e)
+                database.insert(self.title, link, filename)
             except Exception as e:
                 logger.error("url is {}, error is {error}", link, error=e)
+                database.insert(self.title, link, filename)
             else:
                 if pth.exists():
                     pth.unlink()

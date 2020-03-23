@@ -10,6 +10,7 @@ def cmd():
                         help="blog link of picture")
     args = parser.parse_args()
     page = gif.Page(args.link)
+    page.parse()
     page.download()
 
 
