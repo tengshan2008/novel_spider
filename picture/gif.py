@@ -97,10 +97,13 @@ class Page(object):
         html.write_text(str(self.soup))
 
         for i, img in enumerate(self.imgs):
+            file_link = ""
             if "data-src" in img:
                 file_link = img["data-src"]
             if "data-ssa" in img:
                 file_link = img["data-ssa"]
+            if file_link == "":
+                continue
             ext = file_link.split('.')[-1]
             if len(ext) > 7:
                 continue
