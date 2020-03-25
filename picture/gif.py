@@ -98,11 +98,12 @@ class Page(object):
 
         for i, img in enumerate(self.imgs):
             file_link = ""
-            if "data-src" in img:
+            if "data-src" in img.attrs:
                 file_link = img["data-src"]
-            if "data-ssa" in img:
+            if "data-ssa" in img.attrs:
                 file_link = img["data-ssa"]
             if file_link == "":
+                logger.warning("{img} not found url", img=img)
                 continue
             ext = file_link.split('.')[-1]
             if len(ext) > 7:
