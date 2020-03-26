@@ -8,6 +8,7 @@ def check_all():
     database = db.Database(DB_FILE)
     for item in database.read():
         page = gif.Page()
+        page.title = item["title"]
 
         dirpath = Path(IMAGES_PATH) / item["title"]
         filename = item["filename"]
