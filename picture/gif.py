@@ -102,6 +102,8 @@ class Page(object):
                 file_link = img["data-src"]
             if "data-ssa" in img.attrs:
                 file_link = img["data-ssa"]
+            if "ess-data" in img.attrs:
+                file_link = img["ess-data"]
             if file_link == "":
                 logger.warning("{img} not found url", img=img)
                 continue
