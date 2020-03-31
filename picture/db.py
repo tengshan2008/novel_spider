@@ -20,6 +20,23 @@ sql_delete = """
     WHERE url = ?
 """
 
+sql_distinct = """
+    DELETE FROM picture_miss
+    WHERE
+        url IN (SELECT
+            url
+        FROM
+            picture_miss
+        GROUP BY url
+        HAVING COUNT(url) > 1)
+        AND id NOT IN (SELECT
+            MIN(id)
+        FROM
+            picture_miss
+        GROUP BY url
+        HAVING COUNT(url) > 1)
+"""
+
 
 class Database(object):
     def __init__(self, filename):
@@ -52,3 +69,7 @@ class Database(object):
     def delete(self, url):
         with self.db() as db:
             db.execute(sql_delete, (url,))
+
+    def distinct(self):
+        with self.db() as db:
+            db.execute(sql_distinct)

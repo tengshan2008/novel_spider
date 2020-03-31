@@ -6,6 +6,8 @@ from .config import DB_FILE, IMAGES_PATH
 
 def check_all():
     database = db.Database(DB_FILE)
+
+    database.distinct()
     for item in database.read():
         page = gif.Page()
         page.title = item["title"]
