@@ -1,31 +1,21 @@
 import time
-import argparse
-from multiprocessing import Process
+from daemon import runner
 
 
-def run(name):
-    time.sleep(1)
-    print('hello', name)
-    print('我是子进程')
+class App():
+    def __init__(self):
+        self.stdin_path = '/dev/null'
+        self.stdout_path = '/dev/tty'
+        self.stderr_path = '/dev/tty'
+        self.pidfile_path = '/tmp/foo.pid'
+        self.pidfile_timeout = 5
+
+    def run(self):
+        while True:
+            print("Howdy!  Gig'em!  Whoop!")
+            time.sleep(10)
 
 
-def cmd():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--daemon", action="store_true",
-                        help="daemon mode")
-    args = parser.parse_args()
-
-    if args.daemon:
-        backend('bob')
-        return
-
-    print("no daemon")
-
-
-def backend(name):
-    p = Process(target=run, args=(name,))
-    p.start()
-
-
-if __name__ == '__main__':
-    cmd()
+app = App()
+daemon_runner = runner.DaemonRunner(app)
+daemon_runner.do_action()
