@@ -33,6 +33,7 @@ def cmd():
                         help="check miss picture")
     parser.add_argument("-d", "--daemon", action="store_true",
                         help="daemon mode")
+    parser.add_argument("start")
     args = parser.parse_args()
 
     app = App(args.link)
