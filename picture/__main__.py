@@ -36,7 +36,6 @@ def cmd():
 
 def backend(url):
     p = Process(target=run, args=(url,))
-    p.daemon = True
     p.start()
 
 
