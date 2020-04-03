@@ -32,7 +32,8 @@ def cmd():
         check.check_all()
         return
     if args.daemon:
-        with DaemonContext():
+        errlog = Path(__file__).parent / "err.log"
+        with DaemonContext(stderr=errlog.open("w")):
             run(args.link)
         return
 
