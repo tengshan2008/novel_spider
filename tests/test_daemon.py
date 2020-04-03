@@ -15,8 +15,9 @@ class App():
 
     def run(self):
         while True:
-            with open('/tmp/output.log', 'a') as f:
-                f.write(self.text + "\n")
+            print("it is ok !!!")
+            # with open('/tmp/output.log', 'a') as f:
+            #     f.write(self.text + "\n")
             time.sleep(1)
 
 
@@ -38,7 +39,8 @@ def cmd():
         text = args.test
     app = App(text)
 
-    with DaemonContext():
+    with DaemonContext(stdout=sys.stdout,
+                       stderr=sys.stderr):
         app.run()
 
 

@@ -1,12 +1,15 @@
 from argparse import ArgumentParser
 
+from pathlib import Path
 from daemon import DaemonContext
 
-from . import check, db, gif
+from . import check, db, gif, logger
 from .config import DB_FILE
 
 
 def run(url):
+    logger.add(Path(__file__).parent / 'output.log',
+               colorize=True, encoding='utf-8')
     database = db.Database(DB_FILE)
     database.init()
     page = gif.Page(url)
