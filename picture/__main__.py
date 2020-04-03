@@ -1,12 +1,22 @@
-import argparse
+from argparse import ArgumentParser
+
+from daemon import DaemonContext
 
 from . import check, db, gif
 from .config import DB_FILE
 
 
+def run(url):
+    database = db.Database(DB_FILE)
+    database.init()
+    page = gif.Page(url)
+    page.parse()
+    page.download()
+
+
 def cmd():
     description = 'caoliu(t66y) crawl picture program '
-    parser = argparse.ArgumentParser(description=description)
+    parser = ArgumentParser(description=description)
     parser.add_argument("-l", "--link", type=str,
                         help="blog link of picture")
     parser.add_argument("-c", "--check", action="store_true",
@@ -19,15 +29,11 @@ def cmd():
         check.check_all()
         return
     if args.daemon:
-        # daemon_runner = runner.DaemonRunner(app)
-        # daemon_runner.do_action()
+        with DaemonContext():
+            run(args.link)
         return
 
-    database = db.Database(DB_FILE)
-    database.init()
-    page = gif.Page(args.link)
-    page.parse()
-    page.download()
+    run(args.link)
 
 
 if __name__ == "__main__":
