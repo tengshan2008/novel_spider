@@ -12,3 +12,6 @@ loop:
 
 stop:
 	pkill novel
+
+picture check:
+	nohup python -m picture --check 1>/dev/null 2>picture/error.log &
