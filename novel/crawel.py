@@ -80,6 +80,7 @@ class Page(object):
         title = title.replace('<', '《')
         title = title.replace('>', '》')
         title = title.replace('|', '')
+        title = title.replace('%', '')
         title = title.replace('(', '（')
         title = title.replace(')', '）')
         title = title.replace(' ', '')
