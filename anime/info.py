@@ -28,7 +28,7 @@ def parser(url):
     form = soup.body.find_all('form')[0]
     params = []
     for param in form.find_all('input'):
-        params.append(f"{param["name"]}={param["value"]}")
+        params.append(f"{param['name']}={param['value']}")
 
     return f"http://www.rmdown.com/download.php?{'&'.join(params)}"
 
