@@ -1,5 +1,6 @@
 # from . import book
 from mechanicalsoup import StatefulBrowser as Browser
+from pathlib import Path
 
 
 def get_title(url):
@@ -20,6 +21,12 @@ def get_url(url):
 # reff=6298cba0d34bf6102b9b930e4f59
 # ref=201ec060d86484f402f4e078b585ef023f3264d13ed
 
+# http://www.rmdown.com/download.php
+# ?reff=7e4f81ad31908bc9
+# &ref=201ec060d86484f402f4e078b585ef023f3264d13ed
+
+# http://www.rmdown.com/download.php?reff=3bf69ea456e07d05&ref=201ec060d86484f402f4e078b585ef023f3264d13ed
+# http://www.rmdown.com/download.php?reff=2269ba61404f4&ref=201ec060d86484f402f4e078b585ef023f3264d13ed
 
 def parser(url):
     with Browser() as browser:
@@ -33,10 +40,12 @@ def parser(url):
     return f"http://www.rmdown.com/download.php?{'&'.join(params)}"
 
 
-def download_torrent(url):
+def download_torrent(url, path):
+    print(url)
+    print(path)
     with Browser() as browser:
-        browser.download_link(link=parser(url))
-    # browser
+        resp = browser.download_link(link=parser(url), file=path)
+    print(resp.status_code)
 
 
 def test():
@@ -44,7 +53,8 @@ def test():
     thash = "201ec060d86484f402f4e078b585ef023f3264d13ed"
     url = f"http://{host}/link.php?hash={thash}"
     link = parser(url)
-    print(link)
+    path = Path(__file__).parent / "test.torrent"
+    download_torrent(link, str(path))
 
 
 if __name__ == "__main__":
