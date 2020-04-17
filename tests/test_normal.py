@@ -18,11 +18,13 @@ def video_frame(url):
     soup = open_html(url)
     main = soup.body.find_all("div", id="main", recursive=False)[0]
     tpc_cont = main.find_all("div", class_="tpc_cont", recursive=False)[0]
-    print(tpc_cont)
+    _, in_a = tpc_cont.find_all("a", recursive=False)
+    source_link = in_a["onclick"].split('=')[1][1:-12]
+    return source_link
 
 
 if __name__ == "__main__":
-    # url = "https://cl.fr67.ga/htm_mob/2001/22/3776206.html"
-    # video_frame(url)
-    url = "https://jjdong5.com/embed/2431"
-    video_source(url)
+    url = "http://cl.hn32.xyz/htm_mob/2004/22/3890174.html"
+    source_link = video_frame(url)
+    print(source_link)
+    # video_source(source_link)
