@@ -44,7 +44,7 @@ def download_torrent(url, path):
     print(url)
     print(path)
     with Browser() as browser:
-        resp = browser.download_link(link=parser(url), file=path)
+        resp = browser.download_link(link=url, file=path)
     print(resp.status_code)
 
 
