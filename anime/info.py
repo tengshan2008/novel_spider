@@ -1,6 +1,7 @@
 # from . import book
 from mechanicalsoup import StatefulBrowser as Browser
 from pathlib import Path
+import requests
 
 
 def get_title(url):
@@ -43,9 +44,14 @@ def parser(url):
 def download_torrent(url, path):
     print(url)
     print(path)
-    with Browser() as browser:
-        resp = browser.download_link(link=url, file=path)
-    print(resp.status_code)
+    # with Browser() as browser:
+    #     resp = browser.download_link(link=url, file=path)
+    # print(resp.status_code)
+
+    response = requests.get(url)
+    with open(path, 'wb') as f:
+        f.write(response.content)
+    print(response.status_code)
 
 
 def test():
