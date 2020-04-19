@@ -98,11 +98,16 @@ class Page(object):
     def get_cells(self):
         soup = self.__open(self.url)
         if soup is None:
+            logger.warning("url is {}, soup is {}", self.url, soup)
             return []
-        main = soup.body("div", id="main", recursive=False)[0]
-        if len(main("form")) > 0 and main.form["name"] == "delatc":
-            main = main.form
-        for t_t2 in main("div", class_="t t2", recursive=False):
+        main_divs = soup.body("div", id="main", recursive=False)
+        if len(main_divs) == 0:
+            logger.warning("url is {}, soup is {}", self.url, soup)
+            return []
+        main_div = main_divs[0]
+        if len(main_div("form")) > 0 and main_div.form["name"] == "delatc":
+            main_div = main_div.form
+        for t_t2 in main_div("div", class_="t t2", recursive=False):
             yield Cell(t_t2)
 
     def __open(self, url):
