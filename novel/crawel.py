@@ -61,7 +61,7 @@ class Page(object):
             date = data.div.string.strip()
         else:
             date = data.div.span.string.strip()
-        if "今天" in date:
+        if "今天" in date or "Top" in date:
             date = str(datetime.date.today())
         if "昨天" in date:
             date = str(datetime.date.today() - datetime.timedelta(days=1))
