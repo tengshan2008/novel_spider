@@ -98,7 +98,6 @@ class Page(object):
     def get_cells(self):
         soup = self.__open(self.url)
         if soup is None:
-            logger.warning("url is {}, soup is {}", self.url, soup)
             return []
         main_divs = soup.body("div", id="main", recursive=False)
         if len(main_divs) == 0:
