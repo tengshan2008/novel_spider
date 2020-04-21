@@ -115,10 +115,6 @@ class Page(object):
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'},
                           requests_adapters=requests_adapters)
-        # browser.session.proxies = {
-        #     'https': '14.115.105.148:808',
-        #     'http': '61.135.186.243:80'
-        # }
 
         open_exceptions = (
             requests.exceptions.ReadTimeout,
