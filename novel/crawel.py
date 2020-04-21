@@ -18,9 +18,12 @@ class Page(object):
         soup = self.__open(self.url)
         if soup is None:
             return []
-
-        main = soup.body("div", id="main", recursive=False)[0]
-        t = main("div", class_="t", recursive=False)[1]
+        main_divs = soup.body("div", id="main", recursive=False)
+        if len(main_divs) == 0:
+            logger.warning("url is {}, soup is {}", self.url, soup)
+            return []
+        main_div = main_divs[0]
+        t = main_div("div", class_="t", recursive=False)[1]
         block_list = t.table.tbody("tr", class_="tr3 t_one tac")
         if self.no == 1:
             block_list = block_list[6:]
