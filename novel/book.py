@@ -115,13 +115,17 @@ class Page(object):
         browser = Browser(user_agent=USER_AGENT,
                           soup_config={'features': 'html5lib'},
                           requests_adapters=requests_adapters)
-        soup = None
+        browser.session.proxies = {
+            'https': '114.234.83.253:9000',
+            'http': '114.234.83.253:9000'
+        }
 
         open_exceptions = (
             requests.exceptions.ReadTimeout,
             requests.exceptions.ConnectionError,
             requests.exceptions.ConnectTimeout
         )
+        soup = None
         try:
             browser.open(url, timeout=(5, 60))
         except open_exceptions as e:
