@@ -19,12 +19,12 @@ def cmd():
                         help="is sort desc")
     args = parser.parse_args()
 
-    crawl_with_start_end(args.start, args.end, args.desc)
-
     if args.loop:
         while True:
-            time.sleep(12 * 60 * 60)
             crawl_with_start_end(args.start, args.end, args.desc)
+            time.sleep(12 * 60 * 60)
+    else:
+        crawl_with_start_end(args.start, args.end, args.desc)
 
 
 def crawl_with_start_end(start, end, sort_desc):

@@ -5,7 +5,7 @@ from mechanicalsoup import StatefulBrowser as Browser
 
 from . import logger
 from .book import Novel, Pagination
-from .config import DB_FILE, HOST
+from .config import DB_FILE, HOST, USER_AGENT
 from .db import Database
 
 
@@ -90,7 +90,7 @@ class Page(object):
         return title
 
     def __open(self, url):
-        browser = Browser()
+        browser = Browser(user_agent=USER_AGENT)
         soup = None
         try:
             browser.open(url, timeout=(10, 60))
