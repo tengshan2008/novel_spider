@@ -116,8 +116,7 @@ class Page(object):
                           soup_config={'features': 'html5lib'},
                           requests_adapters=requests_adapters)
         browser.session.proxies = {
-            'https': '114.234.83.253:9000',
-            'http': '114.234.83.253:9000'
+            'http': '61.135.186.243:80'
         }
 
         open_exceptions = (
