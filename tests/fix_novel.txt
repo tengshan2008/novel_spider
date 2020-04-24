@@ -1,13 +1,4 @@
 {
-    "id": 3824855,
-    "title": "高中的炮友小美",
-    "author": "wipons1024",
-    "date": "2020-02-24",
-    "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/2002/20/3824855.html",
-    "pages": 4
-}
-{
     "id": 3825791,
     "title": "下班后的偷情",
     "author": "晨起凸起",
