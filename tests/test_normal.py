@@ -1,4 +1,5 @@
 from mechanicalsoup import StatefulBrowser as Browser
+from urllib.parse import urlparse
 
 
 def filter_title(title):
@@ -20,14 +21,28 @@ def filter_title(title):
 def open_html(url):
     soup = None
     with Browser() as browser:
-        browser.open(url)
+        try:
+            browser.open(url)
+        except Exception as e:
+            print(e)
+            return None
         soup = browser.get_current_page()
     return soup
 
 
 def video_source(url):
     soup = open_html(url)
-    print(soup)
+    if soup is None:
+        return None
+    if "-video" in soup.head.title.string:
+        golinks = soup.body.find_all("div", class_="golink")
+        if len(golinks) != 0:
+            host = golinks[0].a.string.replace('立即访问：', '').strip()
+            return host
+        else:
+            return None
+    else:
+        return None
 
 
 def video_frame(url):
@@ -43,7 +58,11 @@ def video_frame(url):
 
 
 if __name__ == "__main__":
-    url = "http://cl.dn37.xyz/htm_mob/2001/22/3775997.html"
+    url = "http://cl.dn37.xyz/htm_mob/2001/22/3776206.html"
     title, source_link = video_frame(url)
+    # print(f"you-get -d {source_link} -O \"{title}\"")
+    host = video_source(source_link)
+    if host is not None:
+        parsed = urlparse(source_link)
+        source_link = parsed._replace(netloc=host).geturl()
     print(f"you-get -d {source_link} -O \"{title}\"")
-    # video_source(source_link)

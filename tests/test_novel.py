@@ -30,7 +30,13 @@ def fix_test():
     print(result)
 
 
+def fix_load_test():
+    for k, v in fix.load_record().items():
+        print(k, v)
+
+
 if __name__ == "__main__":
-    book_test()
+    # book_test()
     # page_test()
     # fix_test()
+    fix_load_test()

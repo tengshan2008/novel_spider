@@ -6,7 +6,7 @@ from .book import Novel, Page
 from .config import DB_FILE
 from .db import Database
 
-record_path = Path(__file__).parent / 'record.txt'
+record_path = Path(__file__).parent / 'record-need.txt'
 
 
 def load_record():
