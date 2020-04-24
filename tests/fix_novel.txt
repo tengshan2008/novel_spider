@@ -1,13 +1,4 @@
 {
-    "id": 3816236,
-    "title": "嫖娼往事之酒店的高级服务",
-    "author": "kingspace7",
-    "date": "2020-02-17",
-    "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/2002/20/3816236.html",
-    "pages": 7
-}
-{
     "id": 3710571,
     "title": "男朋友的老爸插进来了",
     "author": "Lession",
