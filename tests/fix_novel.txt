@@ -1,13 +1,4 @@
 {
-    "id": 3823103,
-    "title": "火车上的女孩儿",
-    "author": "潇湘竹",
-    "date": "2020-02-23",
-    "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/2002/20/3823103.html",
-    "pages": 7
-}
-{
     "id": 3816236,
     "title": "嫖娼往事之酒店的高级服务",
     "author": "kingspace7",
