@@ -1,13 +1,4 @@
 {
-    "id": 3825331,
-    "title": "[原创]毕业生",
-    "author": "小黄文",
-    "date": "2020-02-24",
-    "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/2002/20/3825331.html",
-    "pages": 4
-}
-{
     "id": 3824855,
     "title": "高中的炮友小美",
     "author": "wipons1024",

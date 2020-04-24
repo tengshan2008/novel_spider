@@ -2,15 +2,18 @@ from context import book, fix, crawel
 
 
 def book_test():
-    url = 'https://cl.dn37.xyz/htm_data/2002/20/3825331.html'
-    tid = '3825331'
-    author = '小黄文'
-    pages = 4
-    title = "[原创]毕业生"
-    date = '2020-02-24'
-    category = '[現代奇幻]'
-    novel = book.Novel(url, tid=tid, title=title, date=date,
-                       category=category, author=author, pages=pages)
+    info = {
+        "id": 3824855,
+        "title": "高中的炮友小美",
+        "author": "wipons1024",
+        "date": "2020-02-24",
+        "type": "[現代奇幻]",
+        "link": "https://cl.dn37.xyz/htm_data/2002/20/3824855.html",
+        "pages": 4
+    }
+    novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
+                       date=info['date'], category=info['type'],
+                       author=info['author'], pages=info['pages'])
     novel.request()
     # dir_path = "/tmp"
     novel.upload()
