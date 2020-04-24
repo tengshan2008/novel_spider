@@ -60,4 +60,6 @@ def main():
             if reload_novel:
                 break
         if need_reload:
-            reload_novel(info, pages)
+            info['pages'] = pages
+            print(info)
+            # reload_novel(info, pages)
