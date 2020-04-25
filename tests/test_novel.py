@@ -3,13 +3,13 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 3428019,
-        "title": "深宅旧梦[完结+番外]",
-        "author": "弱水淫魔",
-        "date": "2019-02-04",
-        "type": "[古典武俠]",
-        "link": "https://cb.321i.xyz/htm_data/1902/20/3428019.html",
-        "pages": 24
+        "id": 1640915,
+        "title": "同学的可爱女友糖糖（精校版）（1-30完结）作者：好色男",
+        "author": "苧蒛",
+        "date": "2015-09-17",
+        "type": "[現代奇幻]",
+        "link": "https://cb.321i.xyz/htm_data/1509/20/1640915.html",
+        "pages": 25
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
