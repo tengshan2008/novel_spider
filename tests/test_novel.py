@@ -3,13 +3,13 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1632808,
-        "title": "穿越天龙八部之风流虚雨（1-162完结）作者：天柱墨客",
-        "author": "苧蒛",
-        "date": "2015-09-11",
-        "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1509/20/1632808.html",
-        "pages": 16
+        "id": 1211852,
+        "title": "任中杰传奇",
+        "author": "xianjianlin",
+        "date": "2014-09-01",
+        "type": "[古典武俠]",
+        "link": "https://cb.321i.xyz/htm_data/1409/20/1211852.html",
+        "pages": 18
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
