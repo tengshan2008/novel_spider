@@ -8,7 +8,7 @@ def book_test():
         "author": "israfel",
         "date": "2008-04-08",
         "type": "[現代奇幻]",
-        "link": "https://cl.dn37.xyz/htm_data/0804/20/124265.html",
+        "link": "https://cb.321i.xyz/htm_data/0804/20/124265.html",
         "pages": 25
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
