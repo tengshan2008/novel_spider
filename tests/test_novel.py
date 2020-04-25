@@ -3,13 +3,13 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1537909,
-        "title": "探亲（全本）作者：hide1988[完结]",
-        "author": "你这动作很怪",
-        "date": "2015-06-27",
-        "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1506/20/1537909.html",
-        "pages": 15
+        "id": 1282154,
+        "title": "[先鋒原創文學]殞落城市（全）",
+        "author": "曉秋",
+        "date": "2014-12-18",
+        "type": "[另類禁忌]",
+        "link": "https://cb.321i.xyz/htm_data/1412/20/1282154.html",
+        "pages": 16
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
