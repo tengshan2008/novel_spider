@@ -1,13 +1,4 @@
 {
-    "id": 1302470,
-    "title": "[王牌女警之滿員痴漢列車]（完结）",
-    "author": "Judins",
-    "date": "2015-01-06",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1501/20/1302470.html",
-    "pages": 23
-}
-{
     "id": 1540124,
     "title": "大学刑法课作者：rescueme[完结]",
     "author": "wgf535311",
