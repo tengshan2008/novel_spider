@@ -1,13 +1,4 @@
 {
-    "id": 1088715,
-    "title": "[Rep]香色女人（长篇）补充更新完整版",
-    "author": "airman",
-    "date": "2014-05-24",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1405/20/1088715.html",
-    "pages": 26
-}
-{
     "id": 1320797,
     "title": "红楼春梦（1-118回全）",
     "author": "davyqiang",
