@@ -3,12 +3,12 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1500006,
-        "title": "8人吹（1-71章完）作者：风中影",
-        "author": "为民哥哥",
-        "date": "2015-05-27",
+        "id": 1649740,
+        "title": "红粉战驹[共21卷完]作者：水临枫",
+        "author": "纷飞的叶",
+        "date": "2015-09-24",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1505/20/1500006.html",
+        "link": "https://cb.321i.xyz/htm_data/1509/20/1649740.html",
         "pages": 28
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
