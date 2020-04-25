@@ -4,7 +4,7 @@
     "author": "Lession",
     "date": "2019-11-12",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1911/20/3710571.html",
+    "link": "https://cb.321i.xyz/htm_data/1911/20/3710571.html",
     "pages": 8
 }
 {
@@ -13,7 +13,7 @@
     "author": "Starboat",
     "date": "2019-12-23",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1912/20/3756326.html",
+    "link": "https://cb.321i.xyz/htm_data/1912/20/3756326.html",
     "pages": 10
 }
 {
@@ -22,7 +22,7 @@
     "author": "茎滑水跃",
     "date": "2014-05-08",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1100313.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1100313.html",
     "pages": 11
 }
 {
@@ -31,7 +31,7 @@
     "author": "十条街扛把子",
     "date": "2015-01-11",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1341361.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1341361.html",
     "pages": 11
 }
 {
@@ -40,7 +40,7 @@
     "author": "杯子爱喝水",
     "date": "2014-01-26",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1401/20/1021886.html",
+    "link": "https://cb.321i.xyz/htm_data/1401/20/1021886.html",
     "pages": 11
 }
 {
@@ -49,7 +49,7 @@
     "author": "剑子仙迹",
     "date": "2020-03-13",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/2003/20/3846608.html",
+    "link": "https://cb.321i.xyz/htm_data/2003/20/3846608.html",
     "pages": 11
 }
 {
@@ -58,7 +58,7 @@
     "author": "dasfdafd",
     "date": "2014-01-13",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1401/20/1016265.html",
+    "link": "https://cb.321i.xyz/htm_data/1401/20/1016265.html",
     "pages": 13
 }
 {
@@ -67,7 +67,7 @@
     "author": "你这动作很怪",
     "date": "2015-06-27",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1506/20/1537909.html",
+    "link": "https://cb.321i.xyz/htm_data/1506/20/1537909.html",
     "pages": 15
 }
 {
@@ -76,7 +76,7 @@
     "author": "曉秋",
     "date": "2014-12-18",
     "type": "[另類禁忌]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1282154.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1282154.html",
     "pages": 16
 }
 {
@@ -85,7 +85,7 @@
     "author": "苧蒛",
     "date": "2015-09-11",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1509/20/1632808.html",
+    "link": "https://cb.321i.xyz/htm_data/1509/20/1632808.html",
     "pages": 16
 }
 {
@@ -94,7 +94,7 @@
     "author": "xianjianlin",
     "date": "2014-09-01",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1211852.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1211852.html",
     "pages": 18
 }
 {
@@ -103,7 +103,7 @@
     "author": "lj413025",
     "date": "2008-04-09",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/0804/20/124423.html",
+    "link": "https://cb.321i.xyz/htm_data/0804/20/124423.html",
     "pages": 19
 }
 {
@@ -112,7 +112,7 @@
     "author": "二雷",
     "date": "2016-01-11",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1601/20/1794745.html",
+    "link": "https://cb.321i.xyz/htm_data/1601/20/1794745.html",
     "pages": 22
 }
 {
@@ -121,7 +121,7 @@
     "author": "Judins",
     "date": "2015-01-06",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1302470.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1302470.html",
     "pages": 23
 }
 {
@@ -130,7 +130,7 @@
     "author": "wgf535311",
     "date": "2015-06-29",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1506/20/1540124.html",
+    "link": "https://cb.321i.xyz/htm_data/1506/20/1540124.html",
     "pages": 24
 }
 {
@@ -139,17 +139,8 @@
     "author": "弱水淫魔",
     "date": "2019-02-04",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1902/20/3428019.html",
+    "link": "https://cb.321i.xyz/htm_data/1902/20/3428019.html",
     "pages": 24
-}
-{
-    "id": 124265,
-    "title": "老婆的两个表妹续集（完）",
-    "author": "israfel",
-    "date": "2008-04-08",
-    "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/0804/20/124265.html",
-    "pages": 25
 }
 {
     "id": 1640915,
@@ -157,7 +148,7 @@
     "author": "苧蒛",
     "date": "2015-09-17",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1509/20/1640915.html",
+    "link": "https://cb.321i.xyz/htm_data/1509/20/1640915.html",
     "pages": 25
 }
 {
@@ -166,7 +157,7 @@
     "author": "airman",
     "date": "2014-05-24",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1088715.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1088715.html",
     "pages": 26
 }
 {
@@ -175,7 +166,7 @@
     "author": "davyqiang",
     "date": "2014-12-25",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1320797.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1320797.html",
     "pages": 26
 }
 {
@@ -184,7 +175,7 @@
     "author": "夏沫花谢",
     "date": "2013-12-29",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1312/20/999317.html",
+    "link": "https://cb.321i.xyz/htm_data/1312/20/999317.html",
     "pages": 27
 }
 {
@@ -193,7 +184,7 @@
     "author": "guhuen",
     "date": "2014-09-06",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1191744.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1191744.html",
     "pages": 27
 }
 {
@@ -202,7 +193,7 @@
     "author": "为民哥哥",
     "date": "2015-05-27",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1505/20/1500006.html",
+    "link": "https://cb.321i.xyz/htm_data/1505/20/1500006.html",
     "pages": 28
 }
 {
@@ -211,7 +202,7 @@
     "author": "纷飞的叶",
     "date": "2015-09-24",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1509/20/1649740.html",
+    "link": "https://cb.321i.xyz/htm_data/1509/20/1649740.html",
     "pages": 28
 }
 {
@@ -220,7 +211,7 @@
     "author": "壹零贰肆",
     "date": "2014-09-08",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1191813.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1191813.html",
     "pages": 28
 }
 {
@@ -229,7 +220,7 @@
     "author": "moxx",
     "date": "2014-09-10",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1193082.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1193082.html",
     "pages": 29
 }
 {
@@ -238,7 +229,7 @@
     "author": "武当山",
     "date": "2014-05-25",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1092142.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1092142.html",
     "pages": 33
 }
 {
@@ -247,7 +238,7 @@
     "author": "aba",
     "date": "2014-01-29",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1401/20/996880.html",
+    "link": "https://cb.321i.xyz/htm_data/1401/20/996880.html",
     "pages": 34
 }
 {
@@ -256,7 +247,7 @@
     "author": "大叔丶愛我",
     "date": "2014-05-25",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1104615.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1104615.html",
     "pages": 35
 }
 {
@@ -265,7 +256,7 @@
     "author": "成就成陈旧",
     "date": "2015-01-08",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1300572.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1300572.html",
     "pages": 36
 }
 {
@@ -274,7 +265,7 @@
     "author": "guhuen",
     "date": "2014-09-06",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1192074.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1192074.html",
     "pages": 36
 }
 {
@@ -283,7 +274,7 @@
     "author": "Shadowy",
     "date": "2014-12-04",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1266061.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1266061.html",
     "pages": 44
 }
 {
@@ -292,7 +283,7 @@
     "author": "武当山",
     "date": "2014-05-25",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1091271.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1091271.html",
     "pages": 44
 }
 {
@@ -301,7 +292,7 @@
     "author": "西北军总司令",
     "date": "2015-01-10",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1306745.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1306745.html",
     "pages": 47
 }
 {
@@ -310,7 +301,7 @@
     "author": "苧蒛",
     "date": "2015-09-11",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1509/20/1633030.html",
+    "link": "https://cb.321i.xyz/htm_data/1509/20/1633030.html",
     "pages": 47
 }
 {
@@ -319,7 +310,7 @@
     "author": "尼姑的慌乱",
     "date": "2015-06-20",
     "type": "[另類禁忌]",
-    "link": "https://cl.dn37.xyz/htm_data/1506/20/1527380.html",
+    "link": "https://cb.321i.xyz/htm_data/1506/20/1527380.html",
     "pages": 48
 }
 {
@@ -328,7 +319,7 @@
     "author": "mmotmard",
     "date": "2014-05-08",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1012266.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1012266.html",
     "pages": 54
 }
 {
@@ -337,7 +328,7 @@
     "author": "你这动作很怪",
     "date": "2015-07-09",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1507/20/1523970.html",
+    "link": "https://cb.321i.xyz/htm_data/1507/20/1523970.html",
     "pages": 55
 }
 {
@@ -346,7 +337,7 @@
     "author": "38℃",
     "date": "2014-07-28",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1145704.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1145704.html",
     "pages": 63
 }
 {
@@ -355,7 +346,7 @@
     "author": "guhuen",
     "date": "2014-09-01",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1185383.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1185383.html",
     "pages": 63
 }
 {
@@ -364,7 +355,7 @@
     "author": "爱的色色",
     "date": "2014-07-22",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1139893.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1139893.html",
     "pages": 64
 }
 {
@@ -373,7 +364,7 @@
     "author": "天空很蓝",
     "date": "2014-05-13",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1081599.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1081599.html",
     "pages": 67
 }
 {
@@ -382,7 +373,7 @@
     "author": "苧蒛",
     "date": "2015-09-28",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1509/20/1654782.html",
+    "link": "https://cb.321i.xyz/htm_data/1509/20/1654782.html",
     "pages": 69
 }
 {
@@ -391,7 +382,7 @@
     "author": "二雷",
     "date": "2016-01-03",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1601/20/1784155.html",
+    "link": "https://cb.321i.xyz/htm_data/1601/20/1784155.html",
     "pages": 69
 }
 {
@@ -400,7 +391,7 @@
     "author": "中直对正",
     "date": "2014-02-03",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1402/20/1002156.html",
+    "link": "https://cb.321i.xyz/htm_data/1402/20/1002156.html",
     "pages": 73
 }
 {
@@ -409,7 +400,7 @@
     "author": "xianjianlin",
     "date": "2014-05-05",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1066136.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1066136.html",
     "pages": 76
 }
 {
@@ -418,7 +409,7 @@
     "author": "38℃",
     "date": "2014-07-25",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1143113.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1143113.html",
     "pages": 77
 }
 {
@@ -427,7 +418,7 @@
     "author": "幽格十",
     "date": "2015-07-10",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1507/20/1526995.html",
+    "link": "https://cb.321i.xyz/htm_data/1507/20/1526995.html",
     "pages": 77
 }
 {
@@ -436,7 +427,7 @@
     "author": "淡蓝色冷风",
     "date": "2015-08-16",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1508/20/1600466.html",
+    "link": "https://cb.321i.xyz/htm_data/1508/20/1600466.html",
     "pages": 79
 }
 {
@@ -445,7 +436,7 @@
     "author": "成就成陈旧",
     "date": "2015-02-15",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1502/20/1338241.html",
+    "link": "https://cb.321i.xyz/htm_data/1502/20/1338241.html",
     "pages": 80
 }
 {
@@ -454,7 +445,7 @@
     "author": "3tmax",
     "date": "2014-09-09",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1194642.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1194642.html",
     "pages": 81
 }
 {
@@ -463,7 +454,7 @@
     "author": "寞.年",
     "date": "2014-12-16",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1279788.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1279788.html",
     "pages": 81
 }
 {
@@ -472,7 +463,7 @@
     "author": "小伙伴美利坚",
     "date": "2014-05-26",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1091842.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1091842.html",
     "pages": 85
 }
 {
@@ -481,7 +472,7 @@
     "author": "暗影翼",
     "date": "2014-04-30",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1404/20/1069045.html",
+    "link": "https://cb.321i.xyz/htm_data/1404/20/1069045.html",
     "pages": 90
 }
 {
@@ -490,7 +481,7 @@
     "author": "kyliner",
     "date": "2015-04-21",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1504/20/1424353.html",
+    "link": "https://cb.321i.xyz/htm_data/1504/20/1424353.html",
     "pages": 96
 }
 {
@@ -499,7 +490,7 @@
     "author": "Judins",
     "date": "2015-01-07",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1303036.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1303036.html",
     "pages": 97
 }
 {
@@ -508,7 +499,7 @@
     "author": "拖拖收米",
     "date": "2014-09-09",
     "type": "[另類禁忌]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1193084.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1193084.html",
     "pages": 101
 }
 {
@@ -517,7 +508,7 @@
     "author": "武当山",
     "date": "2014-05-25",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1092024.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1092024.html",
     "pages": 106
 }
 {
@@ -526,7 +517,7 @@
     "author": "请叫我J先生",
     "date": "2014-12-08",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1270571.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1270571.html",
     "pages": 109
 }
 {
@@ -535,7 +526,7 @@
     "author": "音乐虫子",
     "date": "2014-09-16",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1199532.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1199532.html",
     "pages": 112
 }
 {
@@ -544,7 +535,7 @@
     "author": "mmotmard",
     "date": "2018-09-20",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1809/20/3226354.html",
+    "link": "https://cb.321i.xyz/htm_data/1809/20/3226354.html",
     "pages": 113
 }
 {
@@ -553,7 +544,7 @@
     "author": "小伙伴美利坚",
     "date": "2014-05-27",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1085122.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1085122.html",
     "pages": 131
 }
 {
@@ -562,7 +553,7 @@
     "author": "茎滑水跃",
     "date": "2014-05-05",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1072264.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1072264.html",
     "pages": 138
 }
 {
@@ -571,7 +562,7 @@
     "author": "一生为尼",
     "date": "2014-05-25",
     "type": "[另類禁忌]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1038867.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1038867.html",
     "pages": 141
 }
 {
@@ -580,7 +571,7 @@
     "author": "38℃",
     "date": "2014-07-26",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1140344.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1140344.html",
     "pages": 141
 }
 {
@@ -589,7 +580,7 @@
     "author": "liqi778",
     "date": "2014-09-09",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1409/20/1193875.html",
+    "link": "https://cb.321i.xyz/htm_data/1409/20/1193875.html",
     "pages": 143
 }
 {
@@ -598,7 +589,7 @@
     "author": "暗影翼",
     "date": "2014-05-03",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1073548.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1073548.html",
     "pages": 148
 }
 {
@@ -607,7 +598,7 @@
     "author": "哑嗓",
     "date": "2015-05-12",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1505/20/1485517.html",
+    "link": "https://cb.321i.xyz/htm_data/1505/20/1485517.html",
     "pages": 156
 }
 {
@@ -616,7 +607,7 @@
     "author": "苧蒛",
     "date": "2015-06-27",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1506/20/1506071.html",
+    "link": "https://cb.321i.xyz/htm_data/1506/20/1506071.html",
     "pages": 163
 }
 {
@@ -625,7 +616,7 @@
     "author": "38℃",
     "date": "2014-07-21",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1139278.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1139278.html",
     "pages": 166
 }
 {
@@ -634,7 +625,7 @@
     "author": "四荒",
     "date": "2014-12-15",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1279889.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1279889.html",
     "pages": 189
 }
 {
@@ -643,7 +634,7 @@
     "author": "airman",
     "date": "2014-05-08",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1078020.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1078020.html",
     "pages": 191
 }
 {
@@ -652,7 +643,7 @@
     "author": "一时兴起",
     "date": "2018-12-07",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1812/20/3286088.html",
+    "link": "https://cb.321i.xyz/htm_data/1812/20/3286088.html",
     "pages": 193
 }
 {
@@ -661,7 +652,7 @@
     "author": "airman",
     "date": "2014-05-27",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1088851.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1088851.html",
     "pages": 197
 }
 {
@@ -670,7 +661,7 @@
     "author": "函胡清越",
     "date": "2014-04-18",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1404/20/1031154.html",
+    "link": "https://cb.321i.xyz/htm_data/1404/20/1031154.html",
     "pages": 206
 }
 {
@@ -679,7 +670,7 @@
     "author": "小草梦魇",
     "date": "2014-04-22",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1404/20/1063194.html",
+    "link": "https://cb.321i.xyz/htm_data/1404/20/1063194.html",
     "pages": 241
 }
 {
@@ -688,7 +679,7 @@
     "author": "中直对正",
     "date": "2014-01-31",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1401/20/1008561.html",
+    "link": "https://cb.321i.xyz/htm_data/1401/20/1008561.html",
     "pages": 248
 }
 {
@@ -697,7 +688,7 @@
     "author": "请叫我J先生",
     "date": "2015-01-22",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1262526.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1262526.html",
     "pages": 277
 }
 {
@@ -706,7 +697,7 @@
     "author": "四荒",
     "date": "2014-12-19",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1284011.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1284011.html",
     "pages": 320
 }
 {
@@ -715,7 +706,7 @@
     "author": "淡天师",
     "date": "2014-04-29",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1404/20/1070584.html",
+    "link": "https://cb.321i.xyz/htm_data/1404/20/1070584.html",
     "pages": 328
 }
 {
@@ -724,7 +715,7 @@
     "author": "panbiao108",
     "date": "2015-04-11",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1504/20/1409733.html",
+    "link": "https://cb.321i.xyz/htm_data/1504/20/1409733.html",
     "pages": 337
 }
 {
@@ -733,7 +724,7 @@
     "author": "寞.年",
     "date": "2014-12-07",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1412/20/1290109.html",
+    "link": "https://cb.321i.xyz/htm_data/1412/20/1290109.html",
     "pages": 345
 }
 {
@@ -742,7 +733,7 @@
     "author": "五花八门",
     "date": "2015-06-17",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1506/20/1524438.html",
+    "link": "https://cb.321i.xyz/htm_data/1506/20/1524438.html",
     "pages": 356
 }
 {
@@ -751,7 +742,7 @@
     "author": "小伙伴美利坚",
     "date": "2014-05-23",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1405/20/1090465.html",
+    "link": "https://cb.321i.xyz/htm_data/1405/20/1090465.html",
     "pages": 362
 }
 {
@@ -760,7 +751,7 @@
     "author": "38℃",
     "date": "2014-07-14",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1123497.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1123497.html",
     "pages": 390
 }
 {
@@ -769,7 +760,7 @@
     "author": "38℃",
     "date": "2014-07-23",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1137545.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1137545.html",
     "pages": 408
 }
 {
@@ -778,7 +769,7 @@
     "author": "Judins",
     "date": "2015-01-10",
     "type": "[古典武俠]",
-    "link": "https://cl.dn37.xyz/htm_data/1501/20/1305416.html",
+    "link": "https://cb.321i.xyz/htm_data/1501/20/1305416.html",
     "pages": 427
 }
 {
@@ -787,7 +778,7 @@
     "author": "狼烟",
     "date": "2015-04-30",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1504/20/1431616.html",
+    "link": "https://cb.321i.xyz/htm_data/1504/20/1431616.html",
     "pages": 468
 }
 {
@@ -796,7 +787,7 @@
     "author": "游云滞雨",
     "date": "2014-07-07",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1124695.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1124695.html",
     "pages": 476
 }
 {
@@ -805,7 +796,7 @@
     "author": "殇小木",
     "date": "2014-07-20",
     "type": "[現代奇幻]",
-    "link": "https://cl.dn37.xyz/htm_data/1407/20/1135070.html",
+    "link": "https://cb.321i.xyz/htm_data/1407/20/1135070.html",
     "pages": 483
 }
 {
@@ -814,6 +805,6 @@
     "author": "明月照狗窝",
     "date": "2014-01-10",
     "type": "[另類禁忌]",
-    "link": "https://cl.dn37.xyz/htm_data/1401/20/915941.html",
+    "link": "https://cb.321i.xyz/htm_data/1401/20/915941.html",
     "pages": 755
 }
