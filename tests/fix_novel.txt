@@ -1,13 +1,4 @@
 {
-    "id": 1191744,
-    "title": "[Rep]铁汉[完]",
-    "author": "guhuen",
-    "date": "2014-09-06",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1409/20/1191744.html",
-    "pages": 27
-}
-{
     "id": 1500006,
     "title": "8人吹（1-71章完）作者：风中影",
     "author": "为民哥哥",
