@@ -1,13 +1,4 @@
 {
-    "id": 1540124,
-    "title": "大学刑法课作者：rescueme[完结]",
-    "author": "wgf535311",
-    "date": "2015-06-29",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1506/20/1540124.html",
-    "pages": 24
-}
-{
     "id": 3428019,
     "title": "深宅旧梦[完结+番外]",
     "author": "弱水淫魔",
