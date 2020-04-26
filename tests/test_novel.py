@@ -3,13 +3,13 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1527380,
-        "title": "新人妻肛虐全書————作者：結城彩雨",
-        "author": "尼姑的慌乱",
-        "date": "2015-06-20",
-        "type": "[另類禁忌]",
-        "link": "https://cb.321i.xyz/htm_data/1506/20/1527380.html",
-        "pages": 48
+        "id": 1012266,
+        "title": "[8月29日更新]如影逐形[全文完]",
+        "author": "mmotmard",
+        "date": "2014-05-08",
+        "type": "[古典武俠]",
+        "link": "https://cb.321i.xyz/htm_data/1405/20/1012266.html",
+        "pages": 54
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
