@@ -1,4 +1,5 @@
 from context import book, fix, crawel
+import time
 
 
 def book_test():
@@ -29,13 +30,26 @@ def page_test():
         print(i)
 
 
+def info_cache():
+    items = []
+    for i in range(1, 27):
+        time.sleep(10)
+        url = f"https://cl.hn32.xyz/thread0806.php?fid=20&search=&page={i}"
+        page = crawel.Page(url, i)
+        for item in page.get_items():
+            items.append(str(item))
+    with open('tests/novel_info.txt', 'w', encoding='utf-8') as f:
+        f.write('\n'.join(items))
+
+
 def fix_load_test():
     fix.main()
 
 
 if __name__ == "__main__":
-    book_test()
+    # book_test()
     # page_test()
     # fix_test()
     # fix_load_test()
     # temp()
+    info_cache()
