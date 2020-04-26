@@ -34,8 +34,8 @@ def fix_load_test():
 
 
 if __name__ == "__main__":
-    # book_test()
-    page_test()
+    book_test()
+    # page_test()
     # fix_test()
     # fix_load_test()
     # temp()
