@@ -1,13 +1,4 @@
 {
-    "id": 1300572,
-    "title": "美少女战士[完]",
-    "author": "成就成陈旧",
-    "date": "2015-01-08",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1501/20/1300572.html",
-    "pages": 36
-}
-{
     "id": 1192074,
     "title": "[Rep]暗夜情魔[全]",
     "author": "guhuen",
