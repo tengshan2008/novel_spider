@@ -1,5 +1,6 @@
 from context import book, fix, crawel
 import time
+from pathlib import Path
 
 
 def book_test():
@@ -42,6 +43,18 @@ def info_cache():
         f.write('\n'.join(items))
 
 
+def local_cache():
+    book_names = []
+    books = Path("/mnt/DAV/teracloud/Books")
+    for year in books.iterdir():
+        if year.is_dir():
+            for book in year.iterdir():
+                if '.txt' in str(book):
+                    book_names.append(book.stem)
+    with open('tests/local_info.txt', 'w', encoding='utf-8') as f:
+        f.write('\n'.join(book_names))
+
+
 def fix_load_test():
     fix.main()
 
@@ -52,4 +65,5 @@ if __name__ == "__main__":
     # fix_test()
     # fix_load_test()
     # temp()
-    info_cache()
+    # info_cache()
+    local_cache()
