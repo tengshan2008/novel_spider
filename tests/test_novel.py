@@ -3,12 +3,12 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1649740,
-        "title": "红粉战驹[共21卷完]作者：水临枫",
-        "author": "纷飞的叶",
-        "date": "2015-09-24",
+        "id": 1191813,
+        "title": "老江吃嫩草[完结]",
+        "author": "壹零贰肆",
+        "date": "2014-09-08",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1509/20/1649740.html",
+        "link": "https://cb.321i.xyz/htm_data/1409/20/1191813.html",
         "pages": 28
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
