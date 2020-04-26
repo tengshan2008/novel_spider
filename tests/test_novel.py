@@ -3,13 +3,13 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1633030,
-        "title": "天魔（1-16集完结）作者：棺材里的笑声",
-        "author": "苧蒛",
-        "date": "2015-09-11",
-        "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1509/20/1633030.html",
-        "pages": 47
+        "id": 1527380,
+        "title": "新人妻肛虐全書————作者：結城彩雨",
+        "author": "尼姑的慌乱",
+        "date": "2015-06-20",
+        "type": "[另類禁忌]",
+        "link": "https://cb.321i.xyz/htm_data/1506/20/1527380.html",
+        "pages": 48
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
