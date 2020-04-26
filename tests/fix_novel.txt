@@ -1,13 +1,4 @@
 {
-    "id": 1192074,
-    "title": "[Rep]暗夜情魔[全]",
-    "author": "guhuen",
-    "date": "2014-09-06",
-    "type": "[古典武俠]",
-    "link": "https://cb.321i.xyz/htm_data/1409/20/1192074.html",
-    "pages": 36
-}
-{
     "id": 1266061,
     "title": "横行都市[完]",
     "author": "Shadowy",
