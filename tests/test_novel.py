@@ -3,13 +3,13 @@ from context import book, fix, crawel
 
 def book_test():
     info = {
-        "id": 1193082,
-        "title": "大唐双龙之重生边不负（1-36章+大结局）[完]",
-        "author": "moxx",
-        "date": "2014-09-10",
-        "type": "[古典武俠]",
-        "link": "https://cb.321i.xyz/htm_data/1409/20/1193082.html",
-        "pages": 29
+        "id": 1092142,
+        "title": "我和校花娇妻的淫乱性史[35章全]",
+        "author": "武当山",
+        "date": "2014-05-25",
+        "type": "[現代奇幻]",
+        "link": "https://cb.321i.xyz/htm_data/1405/20/1092142.html",
+        "pages": 33
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
