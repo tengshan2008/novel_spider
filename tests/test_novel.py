@@ -59,11 +59,21 @@ def fix_load_test():
     fix.main()
 
 
+def diff_load():
+    # lines = []
+    with open('tests/novel_cache.txt', 'r', encoding='utf-8') as f:
+        lines = [int(eval(line.strip())['id']) for line in f.readlines()]
+    lines.sort()
+    with open('/tmp/online_tid.txt', 'w', encoding='utf-8') as f:
+        f.write('\n'.join([str(line) for line in lines]))
+
+
 if __name__ == "__main__":
-    # book_test()
+    book_test()
     # page_test()
     # fix_test()
     # fix_load_test()
     # temp()
     # info_cache()
-    local_cache()
+    # local_cache()
+    # diff_load()
