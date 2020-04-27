@@ -1,13 +1,4 @@
 {
-    "id": 1002156,
-    "title": "堕落之王全集（超长篇未删节精校版）已完版",
-    "author": "中直对正",
-    "date": "2014-02-03",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1402/20/1002156.html",
-    "pages": 73
-}
-{
     "id": 1066136,
     "title": "华夏神龙",
     "author": "xianjianlin",
