@@ -41,6 +41,7 @@ class Page(object):
         self.title = self.soup.head.title.string.strip()
         self.filter_title()
         self.get_title()
+        return self.soup
 
     def get_title(self):
         tid = self.url.split('/')[-1][:-5]
