@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1270571,
-        "title": "乡村活寡[第一部连载完结]",
-        "author": "请叫我J先生",
-        "date": "2014-12-08",
+        "id": 1199532,
+        "title": "蓝天航空公司的淫荡空姐[全文完]",
+        "author": "音乐虫子",
+        "date": "2014-09-16",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1412/20/1270571.html",
-        "pages": 109
+        "link": "https://cb.321i.xyz/htm_data/1409/20/1199532.html",
+        "pages": 112
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
