@@ -1,13 +1,4 @@
 {
-    "id": 1199532,
-    "title": "蓝天航空公司的淫荡空姐[全文完]",
-    "author": "音乐虫子",
-    "date": "2014-09-16",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1409/20/1199532.html",
-    "pages": 112
-}
-{
     "id": 3226354,
     "title": "Y奇抄之锁情咒[全]",
     "author": "mmotmard",
