@@ -13,7 +13,8 @@ def run(url):
     database = db.Database(DB_FILE)
     database.init()
     page = gif.Page(url)
-    page.parse()
+    if page.parse() is None:
+        return
     page.download()
 
 

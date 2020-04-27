@@ -32,6 +32,9 @@ class Page(object):
         if soup is None:
             logger.error("parse {} failed.", self.url)
             return None
+        if '無法找到頁面' in soup.head.title.string:
+            logger.error("url is {}, page 404", self.url)
+            return None
         self.soup = soup
 
         self.imgs = self.soup.body.find_all('img')
