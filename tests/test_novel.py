@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1139893,
-        "title": "女皇保卫战[未删节精校版十七集完][可下载]",
-        "author": "爱的色色",
-        "date": "2014-07-22",
+        "id": 1081599,
+        "title": "我本风流（未删节1—375章已完结）",
+        "author": "天空很蓝",
+        "date": "2014-05-13",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1407/20/1139893.html",
-        "pages": 64
+        "link": "https://cb.321i.xyz/htm_data/1405/20/1081599.html",
+        "pages": 67
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
