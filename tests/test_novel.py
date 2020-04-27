@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1069045,
-        "title": "鹿鼎风流记[未删节共220章完]",
-        "author": "暗影翼",
-        "date": "2014-04-30",
-        "type": "[古典武俠]",
-        "link": "https://cb.321i.xyz/htm_data/1404/20/1069045.html",
-        "pages": 90
+        "id": 1424353,
+        "title": "田野花香（1-216全）",
+        "author": "kyliner",
+        "date": "2015-04-21",
+        "type": "[現代奇幻]",
+        "link": "https://cb.321i.xyz/htm_data/1504/20/1424353.html",
+        "pages": 96
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
