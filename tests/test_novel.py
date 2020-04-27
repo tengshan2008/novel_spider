@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1081599,
-        "title": "我本风流（未删节1—375章已完结）",
-        "author": "天空很蓝",
-        "date": "2014-05-13",
-        "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1405/20/1081599.html",
-        "pages": 67
+        "id": 1654782,
+        "title": "穿越大周（武唐风流）（1-348完）作者：寂寞石头",
+        "author": "苧蒛",
+        "date": "2015-09-28",
+        "type": "[古典武俠]",
+        "link": "https://cb.321i.xyz/htm_data/1509/20/1654782.html",
+        "pages": 69
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
