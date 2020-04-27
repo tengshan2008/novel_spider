@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1784155,
-        "title": "乡野痞医（1-23集全）作者：兰亭叙",
-        "author": "二雷",
-        "date": "2016-01-03",
+        "id": 1002156,
+        "title": "堕落之王全集（超长篇未删节精校版）已完版",
+        "author": "中直对正",
+        "date": "2014-02-03",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1601/20/1784155.html",
-        "pages": 69
+        "link": "https://cb.321i.xyz/htm_data/1402/20/1002156.html",
+        "pages": 73
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
