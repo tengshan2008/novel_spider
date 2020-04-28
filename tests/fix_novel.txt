@@ -1,13 +1,4 @@
 {
-    "id": 1279889,
-    "title": "猎美玉龙[完]",
-    "author": "四荒",
-    "date": "2014-12-15",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1412/20/1279889.html",
-    "pages": 189
-}
-{
     "id": 1078020,
     "title": "无耻魔霸（长篇完）",
     "author": "airman",
