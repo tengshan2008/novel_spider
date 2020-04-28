@@ -1,13 +1,4 @@
 {
-    "id": 1088851,
-    "title": "出轨的女人（长篇）",
-    "author": "airman",
-    "date": "2014-05-27",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1405/20/1088851.html",
-    "pages": 197
-}
-{
     "id": 1031154,
     "title": "浪荡皇帝[全文完]",
     "author": "函胡清越",
