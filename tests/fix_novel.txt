@@ -1,13 +1,4 @@
 {
-    "id": 3286088,
-    "title": "有一种巧合叫租在隔壁（下）",
-    "author": "一时兴起",
-    "date": "2018-12-07",
-    "type": "[現代奇幻]",
-    "link": "https://cb.321i.xyz/htm_data/1812/20/3286088.html",
-    "pages": 193
-}
-{
     "id": 1088851,
     "title": "出轨的女人（长篇）",
     "author": "airman",
