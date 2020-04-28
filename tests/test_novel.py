@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1506071,
-        "title": "红尘都市（第一部）（1-475完结）作者：生活所迫",
-        "author": "苧蒛",
-        "date": "2015-06-27",
+        "id": 1139278,
+        "title": "交换系列（1-70）[全文完]",
+        "author": "38℃",
+        "date": "2014-07-21",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1506/20/1506071.html",
-        "pages": 163
+        "link": "https://cb.321i.xyz/htm_data/1407/20/1139278.html",
+        "pages": 166
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
