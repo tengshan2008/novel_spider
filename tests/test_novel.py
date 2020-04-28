@@ -5,13 +5,13 @@ from pathlib import Path
 
 def book_test():
     info = {
-        "id": 1485517,
-        "title": "陌野村医（1-902章）作者：陌原[完结]",
-        "author": "哑嗓",
-        "date": "2015-05-12",
+        "id": 1506071,
+        "title": "红尘都市（第一部）（1-475完结）作者：生活所迫",
+        "author": "苧蒛",
+        "date": "2015-06-27",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1505/20/1485517.html",
-        "pages": 156
+        "link": "https://cb.321i.xyz/htm_data/1506/20/1506071.html",
+        "pages": 163
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
