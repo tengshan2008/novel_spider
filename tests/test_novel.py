@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1070584,
-        "title": "丹药大亨（960章完结）",
-        "author": "淡天师",
-        "date": "2014-04-29",
-        "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1404/20/1070584.html",
-        "pages": 328
+        "id": 1409733,
+        "title": "娇娇师娘（与爱同行）[4卷240章]",
+        "author": "panbiao108",
+        "date": "2015-04-11",
+        "type": "[古典武俠]",
+        "link": "https://cb.321i.xyz/htm_data/1504/20/1409733.html",
+        "pages": 337
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
