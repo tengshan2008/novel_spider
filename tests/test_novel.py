@@ -9,7 +9,7 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 
 def book_test():
-    info = {'link': 'https://cl.hn32.xyz/htm_data/1505/20/1500006.html', 'title': '8人吹（1-71章完）作者：风中影', 'type': '[現代奇幻]', 'pages': 28, 'author': '为民哥哥', 'date': '2015-05-27', 'id': 1500006}
+    info = {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1209251.html', 'title': '我不知道我这么做算不算背叛男朋友（一个吞精液女孩的感受）（图文）20P', 'type': '[現代奇幻]', 'pages': 14, 'author': '春宵', 'date': '2014-08-29', 'id': 1209251}
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
                        author=info['author'], pages=info['pages'])

@@ -8,4 +8,3 @@
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1181498.html', 'title': '[Rep]阴阳神功[全本完]', 'type': '[古典武俠]', 'pages': 20, 'author': 'guhuen', 'date': '2014-08-31', 'id': 1181498}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1181613.html', 'title': '梅花三弄（完）', 'type': '[現代奇幻]', 'pages': 34, 'author': '迷你卡', 'date': '2014-08-30', 'id': 1181613}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1209251.html', 'title': '我不知道我这么做算不算背叛男朋友（一个吞精液女孩的感受）（图文）20P', 'type': '[現代奇幻]', 'pages': 14, 'author': '春宵', 'date': '2014-08-29', 'id': 1209251}
-{'link': 'https://cl.hn32.xyz/htm_data/1505/20/1500006.html', 'title': '8人吹（1-71章完）作者：风中影', 'type': '[現代奇幻]', 'pages': 28, 'author': '为民哥哥', 'date': '2015-05-27', 'id': 1500006}
