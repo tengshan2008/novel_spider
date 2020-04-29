@@ -20,4 +20,3 @@
 {'link': 'https://cl.hn32.xyz/htm_data/1512/20/1758501.html', 'title': '[Rep]妻韵（1-41章）（完结）作者：macooops3', 'type': '[現代奇幻]', 'pages': 23, 'author': 'han1991313', 'date': '2015-12-15', 'id': 1758501}
 {'link': 'https://cl.hn32.xyz/htm_data/1512/20/1761377.html', 'title': '我的M不是人（更新至第四季第10章（已完结））作者：小清河', 'type': '[現代奇幻]', 'pages': 36, 'author': '苧蒛', 'date': '2015-12-17', 'id': 1761377}
 {'link': 'https://cl.hn32.xyz/htm_data/1903/20/3479641.html', 'title': '三石原创之禁播的采访', 'type': '[另類禁忌]', 'pages': 15, 'author': '神行三石', 'date': '2019-03-29', 'id': 3479641}
-{'link': 'https://cl.hn32.xyz/htm_data/1904/20/3498316.html', 'title': '我的OL娇妻夏颜', 'type': '[現代奇幻]', 'pages': 17, 'author': '弱水淫魔', 'date': '2019-04-16', 'id': 3498316}
