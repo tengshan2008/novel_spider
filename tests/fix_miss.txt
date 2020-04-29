@@ -3,4 +3,3 @@
 {'link': 'https://cl.hn32.xyz/htm_data/1404/20/1055237.html', 'title': '艳乱都市[未删节共三十五章全书完]', 'type': '[現代奇幻]', 'pages': 10, 'author': '流言蜚語', 'date': '2014-04-05', 'id': 1055237}
 {'link': 'https://cl.hn32.xyz/htm_data/1405/20/1087175.html', 'title': '家政美人（个人原创）', 'type': '[現代奇幻]', 'pages': 15, 'author': '左小邪', 'date': '2014-05-19', 'id': 1087175}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1178192.html', 'title': '豹情三部曲之一-黑豹冷情[完结]', 'type': '[現代奇幻]', 'pages': 24, 'author': '音乐虫子', 'date': '2014-08-28', 'id': 1178192}
-{'link': 'https://cl.hn32.xyz/htm_data/1408/20/1178994.html', 'title': '豹情三部曲之二-雪豹柔情[完结]', 'type': '[現代奇幻]', 'pages': 30, 'author': '音乐虫子', 'date': '2014-08-28', 'id': 1178994}
