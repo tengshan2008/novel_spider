@@ -1,5 +1,5 @@
 # web
-HOST = "https://cl.hn32.xyz"
+HOST = "https://cl.dc72.xyz"
 USER_AGENT = """Mozilla/5.0 (Linux; U; Android 8.1.0; zh-CN; EML-AL00 Build/\
 HUAWEIEML-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57\
 .0.2987.108 UCBrowser/11.9.4.974 UWS/2.13.1.48 Mobile Safari/537.36 AliApp(D\
