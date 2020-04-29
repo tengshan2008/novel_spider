@@ -9,7 +9,7 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 
 def book_test():
-    info = {'link': 'https://cl.hn32.xyz/htm_data/1312/20/999852.html', 'title': '闯王宝藏之谜（全文完）', 'type': '[古典武俠]', 'pages': 9, 'author': '夏沫花谢', 'date': '2013-12-14', 'id': 999852}
+    info = {'link': 'https://cl.hn32.xyz/htm_data/1404/20/1076077.html', 'title': '情撼半生（9楼，三部完）', 'type': '[現代奇幻]', 'pages': 5, 'author': '稻田大队长', 'date': '2014-04-05', 'id': 1076077}
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
                        author=info['author'], pages=info['pages'])
