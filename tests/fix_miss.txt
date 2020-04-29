@@ -4,7 +4,6 @@
 {'link': 'https://cl.hn32.xyz/htm_data/1404/20/1055237.html', 'title': '艳乱都市[未删节共三十五章全书完]', 'type': '[現代奇幻]', 'pages': 10, 'author': '流言蜚語', 'date': '2014-04-05', 'id': 1055237}
 {'link': 'https://cl.hn32.xyz/htm_data/1405/20/1071599.html', 'title': '携美游江湖（未删节共9卷）', 'type': '[古典武俠]', 'pages': 60, 'author': '暗影翼', 'date': '2014-05-01', 'id': 1071599}
 {'link': 'https://cl.hn32.xyz/htm_data/1405/20/1072460.html', 'title': '[Rep]宝莲灯之猎艳风流（未删节1-2卷共200章）', 'type': '[古典武俠]', 'pages': 70, 'author': '暗影翼', 'date': '2014-05-02', 'id': 1072460}
-{'link': 'https://cl.hn32.xyz/htm_data/1404/20/1076077.html', 'title': '情撼半生（9楼，三部完）', 'type': '[現代奇幻]', 'pages': 5, 'author': '稻田大队长', 'date': '2014-04-05', 'id': 1076077}
 {'link': 'https://cl.hn32.xyz/htm_data/1405/20/1080090.html', 'title': '浪漫官途（长篇）', 'type': '[現代奇幻]', 'pages': 111, 'author': 'airman', 'date': '2014-05-14', 'id': 1080090}
 {'link': 'https://cl.hn32.xyz/htm_data/1405/20/1087175.html', 'title': '家政美人（个人原创）', 'type': '[現代奇幻]', 'pages': 15, 'author': '左小邪', 'date': '2014-05-19', 'id': 1087175}
 {'link': 'https://cl.hn32.xyz/htm_data/1406/20/1126430.html', 'title': '新任英语教师[全本11章完]', 'type': '[另類禁忌]', 'pages': 7, 'author': '蒙牛酸酸乳', 'date': '2014-06-08', 'id': 1126430}
