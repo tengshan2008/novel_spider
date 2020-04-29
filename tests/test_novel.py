@@ -9,7 +9,7 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 
 def book_test():
-    info = {'link': 'https://cl.hn32.xyz/htm_data/1903/20/3479641.html', 'title': '三石原创之禁播的采访', 'type': '[另類禁忌]', 'pages': 15, 'author': '神行三石', 'date': '2019-03-29', 'id': 3479641}
+    info = {'link': 'https://cl.hn32.xyz/htm_data/1512/20/1761377.html', 'title': '我的M不是人（更新至第四季第10章（已完结））作者：小清河', 'type': '[現代奇幻]', 'pages': 36, 'author': '苧蒛', 'date': '2015-12-17', 'id': 1761377}
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
                        author=info['author'], pages=info['pages'])
