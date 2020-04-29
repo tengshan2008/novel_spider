@@ -4,4 +4,3 @@
 {'link': 'https://cl.hn32.xyz/htm_data/1405/20/1087175.html', 'title': '家政美人（个人原创）', 'type': '[現代奇幻]', 'pages': 15, 'author': '左小邪', 'date': '2014-05-19', 'id': 1087175}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1178192.html', 'title': '豹情三部曲之一-黑豹冷情[完结]', 'type': '[現代奇幻]', 'pages': 24, 'author': '音乐虫子', 'date': '2014-08-28', 'id': 1178192}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1178994.html', 'title': '豹情三部曲之二-雪豹柔情[完结]', 'type': '[現代奇幻]', 'pages': 30, 'author': '音乐虫子', 'date': '2014-08-28', 'id': 1178994}
-{'link': 'https://cl.hn32.xyz/htm_data/1408/20/1180189.html', 'title': '春光无限好（全书完）', 'type': '[現代奇幻]', 'pages': 47, 'author': '迷你卡', 'date': '2014-08-28', 'id': 1180189}
