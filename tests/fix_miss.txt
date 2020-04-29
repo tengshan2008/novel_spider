@@ -6,4 +6,3 @@
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1178994.html', 'title': '豹情三部曲之二-雪豹柔情[完结]', 'type': '[現代奇幻]', 'pages': 30, 'author': '音乐虫子', 'date': '2014-08-28', 'id': 1178994}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1180189.html', 'title': '春光无限好（全书完）', 'type': '[現代奇幻]', 'pages': 47, 'author': '迷你卡', 'date': '2014-08-28', 'id': 1180189}
 {'link': 'https://cl.hn32.xyz/htm_data/1408/20/1181498.html', 'title': '[Rep]阴阳神功[全本完]', 'type': '[古典武俠]', 'pages': 20, 'author': 'guhuen', 'date': '2014-08-31', 'id': 1181498}
-{'link': 'https://cl.hn32.xyz/htm_data/1408/20/1181613.html', 'title': '梅花三弄（完）', 'type': '[現代奇幻]', 'pages': 34, 'author': '迷你卡', 'date': '2014-08-30', 'id': 1181613}
