@@ -1,17 +1,22 @@
-from context import book, fix, crawel
 import time
 from pathlib import Path
+
+import requests
+
+from context import book, crawel, fix
+
+SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 
 def book_test():
     info = {
-        "id": 1284011,
-        "title": "王老五的情欲生活[完]",
-        "author": "四荒",
-        "date": "2014-12-19",
+        "id": 1070584,
+        "title": "丹药大亨（960章完结）",
+        "author": "淡天师",
+        "date": "2014-04-29",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1412/20/1284011.html",
-        "pages": 320
+        "link": "https://cb.321i.xyz/htm_data/1404/20/1070584.html",
+        "pages": 328
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
@@ -19,6 +24,9 @@ def book_test():
     novel.request()
     # dir_path = "/tmp"
     novel.upload()
+    payload = {'text': f"script finished, id is {info['id']}",
+               'desp': f"title is {info['title']}"}
+    requests.get(url=f"https://sc.ftqq.com/{SCKEY}.send", params=payload)
     # print(novel.author)
     # print(novel.content)
     # print(novel.links)
