@@ -9,7 +9,15 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 
 def book_test():
-    info = {'link': 'https://cl.hn32.xyz/htm_data/1312/20/1000440.html', 'title': '书剑恩仇录续（超长篇28章全）', 'type': '[古典武俠]', 'pages': 15, 'author': 'aba', 'date': '2013-12-15', 'id': 1000440}
+    info = {
+        'link': 'https://cl.hn32.xyz/htm_data/1405/20/1071599.html',
+        'title': '携美游江湖（未删节共9卷）',
+        'type': '[古典武俠]',
+        'pages': 60,
+        'author': '暗影翼',
+        'date': '2014-05-01',
+        'id': 1071599
+    }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
                        author=info['author'], pages=info['pages'])
