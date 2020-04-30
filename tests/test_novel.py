@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1409733,
-        "title": "娇娇师娘（与爱同行）[4卷240章]",
-        "author": "panbiao108",
-        "date": "2015-04-11",
-        "type": "[古典武俠]",
-        "link": "https://cb.321i.xyz/htm_data/1504/20/1409733.html",
-        "pages": 337
+        "id": 1290109,
+        "title": "偷香猎人[180W字更新完毕]",
+        "author": "寞.年",
+        "date": "2014-12-07",
+        "type": "[現代奇幻]",
+        "link": "https://cb.321i.xyz/htm_data/1412/20/1290109.html",
+        "pages": 345
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
