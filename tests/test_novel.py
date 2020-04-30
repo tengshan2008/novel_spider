@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        'link': 'https://cl.hn32.xyz/htm_data/1405/20/1072460.html',
-        'title': '[Rep]宝莲灯之猎艳风流（未删节1-2卷共200章）',
-        'type': '[古典武俠]',
-        'pages': 70,
-        'author': '暗影翼',
-        'date': '2014-05-02',
-        'id': 1072460
+        'link': 'https://cl.hn32.xyz/htm_data/1405/20/1080090.html',
+        'title': '浪漫官途（长篇）',
+        'type': '[現代奇幻]',
+        'pages': 111,
+        'author': 'airman',
+        'date': '2014-05-14',
+        'id': 1080090
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
