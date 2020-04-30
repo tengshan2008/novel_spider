@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1090465,
-        "title": "少龙外传（1-1151章全本完结）",
-        "author": "小伙伴美利坚",
-        "date": "2014-05-23",
+        "id": 1123497,
+        "title": "山柳村的寡妇情史（1-182）[全本完]",
+        "author": "38℃",
+        "date": "2014-07-14",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1405/20/1090465.html",
-        "pages": 362
+        "link": "https://cb.321i.xyz/htm_data/1407/20/1123497.html",
+        "pages": 390
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
