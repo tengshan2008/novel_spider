@@ -1,3 +1,6 @@
+import time
+import random
+
 import requests
 from bs4.element import Tag
 from mechanicalsoup import StatefulBrowser as Browser
@@ -222,6 +225,8 @@ class Novel(object):
         # self.links = pagination.links
         self.links = self.__pagination()
         for i, link in self.links:
+            duration = random.randint(2, 5)
+            time.sleep(duration)
             page = Page(link, i, len(self.links))
             for cell in page.get_cells():
                 if cell.author == self.author:
