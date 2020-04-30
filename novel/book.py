@@ -135,12 +135,12 @@ class Page(object):
             self.__record(url, self.pages)
         else:
             soup = browser.get_current_page()
-            soup = self.redirect(soup)
+            soup = self.__redirect(soup)
         finally:
             browser.close()
             return soup
 
-    def redirect(self, data: Tag):
+    def __redirect(self, data: Tag):
         cleanbg = data.find_all("div", class_="cleanbg")
         if len(cleanbg) == 0:
             return data
