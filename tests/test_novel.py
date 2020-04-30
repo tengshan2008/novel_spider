@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1090465,
-        "title": "少龙外传（1-1151章全本完结）",
-        "author": "小伙伴美利坚",
-        "date": "2014-05-23",
+        "id": 1524438,
+        "title": "春床：鲁班秘传三十六式床谱（长篇小说）作者：推窗望岳[完结]",
+        "author": "五花八门",
+        "date": "2015-06-17",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1405/20/1090465.html",
-        "pages": 362
+        "link": "https://cb.321i.xyz/htm_data/1506/20/1524438.html",
+        "pages": 356
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
