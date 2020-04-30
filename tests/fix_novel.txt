@@ -1,13 +1,4 @@
 {
-    'link': 'https://cl.hn32.xyz/htm_data/1405/20/1080090.html',
-    'title': '浪漫官途（长篇）',
-    'type': '[現代奇幻]',
-    'pages': 111,
-    'author': 'airman',
-    'date': '2014-05-14',
-    'id': 1080090
-}
-{
     "id": 1409733,
     "title": "娇娇师娘（与爱同行）[4卷240章]",
     "author": "panbiao108",
