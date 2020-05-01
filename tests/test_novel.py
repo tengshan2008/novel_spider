@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1431616,
-        "title": "大团结（合集）",
-        "author": "狼烟",
-        "date": "2015-04-30",
+        "id": 1124695,
+        "title": "都市偷心龙爪手（未删1-1371章）[全本完]",
+        "author": "游云滞雨",
+        "date": "2014-07-07",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1504/20/1431616.html",
-        "pages": 468
+        "link": "https://cb.321i.xyz/htm_data/1407/20/1124695.html",
+        "pages": 476
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
