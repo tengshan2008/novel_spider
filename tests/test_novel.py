@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1305416,
-        "title": "绝色风流王（未删节第1---第320章）[全文完]",
-        "author": "Judins",
-        "date": "2015-01-10",
-        "type": "[古典武俠]",
-        "link": "https://cb.321i.xyz/htm_data/1501/20/1305416.html",
-        "pages": 427
+        "id": 1431616,
+        "title": "大团结（合集）",
+        "author": "狼烟",
+        "date": "2015-04-30",
+        "type": "[現代奇幻]",
+        "link": "https://cb.321i.xyz/htm_data/1504/20/1431616.html",
+        "pages": 468
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
