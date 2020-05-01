@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1124695,
-        "title": "都市偷心龙爪手（未删1-1371章）[全本完]",
-        "author": "游云滞雨",
-        "date": "2014-07-07",
+        "id": 1135070,
+        "title": "《权色挣扎：官路》（全本六卷）",
+        "author": "殇小木",
+        "date": "2014-07-20",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1407/20/1124695.html",
-        "pages": 476
+        "link": "https://cb.321i.xyz/htm_data/1407/20/1135070.html",
+        "pages": 483
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
