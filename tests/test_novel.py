@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1135070,
-        "title": "《权色挣扎：官路》（全本六卷）",
-        "author": "殇小木",
-        "date": "2014-07-20",
-        "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1407/20/1135070.html",
-        "pages": 483
+        "id": 915941,
+        "title": "[原创连载中]草榴首发《白领丽人》",
+        "author": "明月照狗窝",
+        "date": "2014-01-10",
+        "type": "[另類禁忌]",
+        "link": "https://cb.321i.xyz/htm_data/1401/20/915941.html",
+        "pages": 755
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
