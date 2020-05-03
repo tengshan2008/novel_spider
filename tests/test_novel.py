@@ -10,13 +10,13 @@ SCKEY = "SCU94031T56e85df7072dc2c313d2f4de1b3ef1315e96c7a1afe53"
 
 def book_test():
     info = {
-        "id": 1137545,
-        "title": "黑蕾丝系列（十三本合一）[全本完]",
-        "author": "38℃",
-        "date": "2014-07-23",
+        "id": 1290109,
+        "title": "偷香猎人[180W字更新完毕]",
+        "author": "寞.年",
+        "date": "2014-12-07",
         "type": "[現代奇幻]",
-        "link": "https://cb.321i.xyz/htm_data/1407/20/1137545.html",
-        "pages": 408
+        "link": "https://cb.321i.xyz/htm_data/1412/20/1290109.html",
+        "pages": 345
     }
     novel = book.Novel(info['link'], tid=str(info['id']), title=info['title'],
                        date=info['date'], category=info['type'],
