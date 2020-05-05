@@ -226,7 +226,7 @@ class Novel(object):
         self.links = self.__pagination()
         for i, link in self.links:
             duration = random.randint(2, 5)
-            # time.sleep(duration)
+            time.sleep(duration)
             page = Page(link, i, len(self.links))
             for cell in page.get_cells():
                 if cell.author == self.author:
