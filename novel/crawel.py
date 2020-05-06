@@ -46,7 +46,7 @@ class Page(object):
     def __get_title_type(self, data):
         novel_title = list(data.stripped_strings)[1].strip()
         novel_type = list(data.stripped_strings)[0].strip()
-        if novel_type[0] != "[":
+        if novel_type[0] != "[" or novel_title == "[":
             novel_title = novel_type
             novel_type = "[UNKOWN]"
         return self.__filter_title(novel_title), novel_type
